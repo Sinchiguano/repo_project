@@ -1,0 +1,1 @@
+/usr/bin/cc  -O3 -DNDEBUG   CMakeFiles/astra_usb_reset.dir/src/usb_reset.c.o  -o /home/casch/yumi_depends_ws/devel/lib/astra_camera/astra_usb_reset  -L/home/casch/yumi_depends_ws/src/Astra/ros_astra_camera/include/openni2_redist/x64 -rdynamic 
