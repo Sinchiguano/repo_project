@@ -11,8 +11,9 @@ Finally I got in xyz coordinates according to ROS
 """
 
 
+
 import sys
-sys.path.insert(0, '/home/sinchiguano/yumi_depends_ws/src/yumi_main/scripts/project')
+sys.path.insert(0, '/home/casch/yumi_depends_ws/src/thesis_pkg/yumi_main/scripts/project')
 from thesis_library import *
 
 
@@ -60,9 +61,9 @@ def publish_transforms(br):
     t0 = geometry_msgs.msg.TransformStamped()
     t0.header.stamp = rospy.Time.now()
     t0.header.frame_id = "world"
-    t0.child_frame_id = "panda_link0"
-    #t0.child_frame_id = "yumi_base_link"
-    t0.child_frame_id = "base_link"
+    #t0.child_frame_id = "panda_link0"
+    t0.child_frame_id = "yumi_base_link"
+    #t0.child_frame_id = "base_link"
     t0.transform.translation.x = 0.0
     t0.transform.translation.y = 0.0
     t0.transform.translation.z = 0.0
@@ -179,7 +180,7 @@ def print_information(rotation_vector,translation_vector,rvec_matrix):
 
 def draw_show_on_image(frame,axi_imgpts,corners,ret,line_width=2):
     # We can now plot limes on the 3D image using the cv2.line function,numpy.ravel-->Return a contiguous flattened array.
-    #cv2.drawChessboardCorners(frame, (7,9), corners, ret)#column and rows 7x9 after the calibration i do not need anymore
+    #cv2.drawChessboardCorners(frame, (8,9), corners, ret)#column and rows 7x9 after the calibration i do not need anymore
     cv2.line(frame, tuple(axi_imgpts[3].ravel()), tuple(axi_imgpts[1].ravel()), (0,255,0), line_width) #GREEN Y
     cv2.line(frame, tuple(axi_imgpts[3][0]), tuple(axi_imgpts[2].ravel()), (255,0,0), line_width) #BLUE Z
     cv2.line(frame, tuple(axi_imgpts[3,0]), tuple(axi_imgpts[0].ravel()), (0,0,255), line_width) #RED x
@@ -188,8 +189,8 @@ def draw_show_on_image(frame,axi_imgpts,corners,ret,line_width=2):
     #     idx_as_str = '{}'.format(idx)
     #     text_pos = (corner + np.array([3.5,-7])).astype(int)
     #     cv2.putText(frame, idx_as_str, tuple(text_pos),cv2.FONT_HERSHEY_PLAIN, 1, (0, 0,255))
-    #print(axi_imgpts)
-    #print()
+    # #print(axi_imgpts)
+    # #print()
 
     text_pos = (axi_imgpts[0].ravel() + np.array([3.5,-7])).astype(int)
     cv2.putText(frame,'X', tuple(text_pos),cv2.FONT_HERSHEY_PLAIN, 1, (0, 0,255))
@@ -198,8 +199,8 @@ def draw_show_on_image(frame,axi_imgpts,corners,ret,line_width=2):
     text_pos = (axi_imgpts[2].ravel() + np.array([3.5,-7])).astype(int)
     cv2.putText(frame,'Z', tuple(text_pos),cv2.FONT_HERSHEY_PLAIN, 1, (0, 0,255))
 
-    text_pos = (axi_imgpts[3].ravel() + np.array([0,-100])).astype(int)
-    cv2.putText(frame,'1unit=2cm', tuple(text_pos),cv2.FONT_HERSHEY_PLAIN, 1, (0, 0,255))
+    text_pos = (axi_imgpts[3].ravel() + np.array([200,50])).astype(int)
+    cv2.putText(frame,'1unit=1cm', tuple(text_pos),cv2.FONT_HERSHEY_PLAIN, 1, (0, 0,255))
 
     # Display the resulting frame
     cv2.imshow('Target locator',frame)
@@ -208,11 +209,15 @@ def draw_show_on_image(frame,axi_imgpts,corners,ret,line_width=2):
 def locate_target_orientation(frame,ret, corners):
 
     # 3D world points.
-    x,y=np.meshgrid(range(7),range(9))#col row
-    world_points_3d=np.hstack((y.reshape(63,1)*0.020,x.reshape(63,1)*0.020,np.zeros((63,1)))).astype(np.float32)
-    # print(world_points_3d)
-    # print(corners)
-    # exit(0)
+    # #horizontal configuration
+    # y,x=np.meshgrid(range(9),range(8))#col row horizontal
+    # world_points_3d=np.hstack((x.reshape(72,1)*0.01,y.reshape(72,1)*0.01,np.zeros((72,1)))).astype(np.float32)
+
+
+    #Vertical configuration
+    x,y=np.meshgrid(range(8),range(9))#col row vertical
+    world_points_3d=np.hstack((y.reshape(72,1)*0.01,x.reshape(72,1)*0.01,np.zeros((72,1)))).astype(np.float32)
+
 
     # Camera internals
     #Intrinsic parameters===>>> from the intrinsic calibration!!!!
@@ -234,7 +239,7 @@ def locate_target_orientation(frame,ret, corners):
 
 
     # World coordinates system
-    axis = np.float32([[0.10,0,0],[0,0.10,0],[0,0,0.10],[0,0,0]])
+    axis = np.float32([[0.09,0,0],[0,0.08,0],[0,0,0.06],[0,0,0]])
     axis_imgpts, jacobian = cv2.projectPoints(axis, rotation_vector, translation_vector,cameraMatrix_ar, distCoef_ar)
     print('coordinates syste in camera image')
     print('axi_imgpts: ',axis_imgpts)
@@ -266,8 +271,8 @@ def main():
 
         # Capture frame-by-frame
 
-        frame=cv2.imread('temp3.jpg')
-        #frame=camObj.get_image()
+        #frame=cv2.imread('temp3.jpg')
+        frame=camObj.get_image()
 
         #print(type(frame))
         if frame is None:
@@ -277,11 +282,21 @@ def main():
         if cv2.waitKey(1) & 0xFF == ord('q'):
             cv2.imwrite('temp3.jpg', frame)
             break
-
+        # sx : int
+        #     Number of chessboard corners in x-direction.
+        # sy : int
+        #     Number of chessboard corners in y-direction.
         try:
             # 2D image points
             # To handle the corners array more easily, we can reshape it as follows
-            ret, corners = cv2.findChessboardCorners(frame, (7,9))#coulmn and rows
+
+            #Horizontal configuration
+            #ret, corners = cv2.findChessboardCorners(frame, (9,8))#columns and rows numbers of points horizontal
+            
+            
+            #Vertical configuration 
+            ret, corners = cv2.findChessboardCorners(frame, (8,9))
+
             corners=corners.reshape(-1,2)#undefied number of rows
             if not ret:
                 print('\nPlease, locate well the calibration target!!!')

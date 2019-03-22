@@ -7,5 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PATH="/opt/ros/kinetic/bin:/home/casch/anaconda2/envs/ros_env/bin:/home/casch/anaconda2/bin:/home/casch/bin:/home/casch/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 export PWD="/home/casch/yumi_depends_ws/build"

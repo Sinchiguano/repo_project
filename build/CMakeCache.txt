@@ -826,6 +826,12 @@ diagnostic_updater_DIR:PATH=/opt/ros/kinetic/share/diagnostic_updater/cmake
 //The directory containing a CMake configuration file for dynamic_reconfigure.
 dynamic_reconfigure_DIR:PATH=/opt/ros/kinetic/share/dynamic_reconfigure/cmake
 
+//Value Computed by CMake
+easy_handeye_BINARY_DIR:STATIC=/home/casch/yumi_depends_ws/build/easy_handeye/easy_handeye
+
+//Value Computed by CMake
+easy_handeye_SOURCE_DIR:STATIC=/home/casch/yumi_depends_ws/src/easy_handeye/easy_handeye
+
 //The directory containing a CMake configuration file for eigen_conversions.
 eigen_conversions_DIR:PATH=/opt/ros/kinetic/share/eigen_conversions/cmake
 
@@ -1103,6 +1109,12 @@ rostest_DIR:PATH=/opt/ros/kinetic/share/rostest/cmake
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/kinetic/share/rostime/cmake
 
+//Value Computed by CMake
+rqt_easy_handeye_BINARY_DIR:STATIC=/home/casch/yumi_depends_ws/build/easy_handeye/rqt_easy_handeye
+
+//Value Computed by CMake
+rqt_easy_handeye_SOURCE_DIR:STATIC=/home/casch/yumi_depends_ws/src/easy_handeye/rqt_easy_handeye
+
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/kinetic/share/sensor_msgs/cmake
 
@@ -1138,6 +1150,9 @@ srdfdom_DIR:PATH=/opt/ros/kinetic/share/srdfdom/cmake
 
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/kinetic/share/std_msgs/cmake
+
+//The directory containing a CMake configuration file for std_srvs.
+std_srvs_DIR:PATH=/opt/ros/kinetic/share/std_srvs/cmake
 
 //The directory containing a CMake configuration file for tf2.
 tf2_DIR:PATH=/opt/ros/kinetic/share/tf2/cmake
@@ -1282,6 +1297,9 @@ urdf_DIR:PATH=/opt/ros/kinetic/share/urdf/cmake
 
 //The directory containing a CMake configuration file for urdfdom_py.
 urdfdom_py_DIR:PATH=/opt/ros/kinetic/share/urdfdom_py/cmake
+
+//The directory containing a CMake configuration file for visp_hand2eye_calibration.
+visp_hand2eye_calibration_DIR:PATH=/opt/ros/kinetic/share/visp_hand2eye_calibration/cmake
 
 //The directory containing a CMake configuration file for visualization_msgs.
 visualization_msgs_DIR:PATH=/opt/ros/kinetic/share/visualization_msgs/cmake
@@ -1540,7 +1558,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=55
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=57
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
