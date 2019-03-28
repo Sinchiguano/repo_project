@@ -6961,6 +6961,24 @@ clean: KTH_ros_pkg/industrial_core/simple_message/CMakeFiles/_run_tests_simple_m
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory tf_turtles
+
+# Convenience name for "all" pass in the directory.
+tf_turtles/all:
+
+.PHONY : tf_turtles/all
+
+# Convenience name for "clean" pass in the directory.
+tf_turtles/clean:
+
+.PHONY : tf_turtles/clean
+
+# Convenience name for "preinstall" pass in the directory.
+tf_turtles/preinstall:
+
+.PHONY : tf_turtles/preinstall
+
+#=============================================================================
 # Directory level rules for directory Astra/ros_astra_camera
 
 # Convenience name for "all" pass in the directory.

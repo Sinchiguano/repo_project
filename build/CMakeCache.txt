@@ -1172,6 +1172,12 @@ tf_DIR:PATH=/opt/ros/kinetic/share/tf/cmake
 //The directory containing a CMake configuration file for tf_conversions.
 tf_conversions_DIR:PATH=/opt/ros/kinetic/share/tf_conversions/cmake
 
+//Value Computed by CMake
+tf_turtles_BINARY_DIR:STATIC=/home/casch/yumi_depends_ws/build/tf_turtles
+
+//Value Computed by CMake
+tf_turtles_SOURCE_DIR:STATIC=/home/casch/yumi_depends_ws/src/tf_turtles
+
 //The directory containing a CMake configuration file for trajectory_msgs.
 trajectory_msgs_DIR:PATH=/opt/ros/kinetic/share/trajectory_msgs/cmake
 
@@ -1558,7 +1564,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=57
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=58
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

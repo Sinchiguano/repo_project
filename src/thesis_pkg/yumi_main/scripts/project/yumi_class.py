@@ -73,9 +73,7 @@ class MoveGroup(object):
         Sends an effort command to the selected gripper. Should be in the range of
         -20.0 (fully open) to 20.0 (fully closed)
         """
-        #self.pub_gripper = rospy.Publisher(pubname, std_msgs.msg.Float64, queue_size=10, latch=True)
-
-
+        self.pub_gripper = rospy.Publisher(pubname, std_msgs.msg.Float64, queue_size=10, latch=True)
         # Misc variables
         self.robot = robot
         self.scene = scene
@@ -185,8 +183,12 @@ class MoveGroup(object):
 
         success=all_close(pose_target, current_pose, 0.03)
 
-        print
+        print()
         print('Success! '+self.tag_name,success)
+        print "\n============ Press `Enter` to open the gripperL ..."
+        raw_input()
+        yumiR.pub_gripper.publish(std_msgs.msg.Float64(-5))
+        rospy.sleep(1)
         print('-  -  -  -  -  -  -  -  -  -  -  -')
         print
 
@@ -283,6 +285,7 @@ def all_close(goal, actual, tolerance):
 
 def measurements(arm_name):
 
+    print('///====================================================')
     print('current joints values '+arm_name.tag_name)
     print(arm_name.move_group.get_current_joint_values())
     # # ''''Get the current pose of the end-effector of the group.'''
@@ -298,8 +301,7 @@ def measurements(arm_name):
     print(arm_name.move_group.get_current_rpy())
     print
     print('Rotation in quaternion convention (x,y,z,w)!!!')
-    #the orientation is given in quaternion
     temP=arm_name.move_group.get_current_pose().pose
     quaternion = (temP.orientation.x,temP.orientation.y,temP.orientation.z,temP.orientation.w)
     print(quaternion)
-    print
+    print('')

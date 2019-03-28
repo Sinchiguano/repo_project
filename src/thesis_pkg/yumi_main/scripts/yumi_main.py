@@ -9,6 +9,8 @@
 """
 
 """
+import sys
+sys.path.insert(0, '/home/casch/yumi_depends_ws/src/thesis_pkg/yumi_main/scripts/project')
 from yumi_lib import *
 from yumi_class import MoveGroup,all_close,measurements
 
@@ -28,6 +30,9 @@ def main():
     #pose_ee = [0.07, 0.07, 0.10, 0.0, 3.14, 3.14]
     grip_effort = -10.0
 
+    home_L_=list()
+    home_R_=list()
+
 
     counter=0
     while(True):
@@ -39,68 +44,61 @@ def main():
         ############################################################
 
         #print "\n============ Press `Enter` to execute a sample movement using a joint state goal ..."
-        print "\n============ Press 1 home, 2 random or any number to do nothing==>>joint state goal ..."
-        #raw_input()
+        # print "\n============ Press 1 to home, 2 to random or any number to do nothing==>>joint state goal ..."
+        # raw_input()
+        # temp=raw_input()
+        # control_=int(temp)
+
+        # print('go_to_joint_goal')
+        # print('------------------>>>>>>>>>>>>>>>>>>>')
+        # print('right arm ready to move!!!')
+        # if control_==1:        print("\n============ Press Enter to open the gripperL ...")
+        #     state=yumiL.go_to_joint_state(safeJointPositionL)
+        # elif control_==2:
+        #     state=yumiL.go_to_joint_state()
+        # else:
+        #     print('nothing')
+        #measurements(yumiL)
+
+
+        # time.sleep(3)
+
+        #############################################################
+
+
+
+        print("\n============ Press 1 or 2 to open or to close...gripperL ...")
         temp=raw_input()
         control_=int(temp)
 
-        print('go_to_joint_goal')
-        print('------------------>>>>>>>>>>>>>>>>>>>')
-        print('left arm moving!!!')#It is working fine and not complaint at all!!!!
-        if control_==1:
-            state=yumiL.go_to_joint_state(safeJointPositionL)
-        elif control_==2:
-            state=yumiL.go_to_joint_state()
-        else:
-            print('nothing')
+        if (control_==1):
+            yumiL.pub_gripper.publish(std_msgs.msg.Float64(-5))
+            rospy.sleep(1)
+        elif(control_==2):
+            yumiL.pub_gripper.publish(std_msgs.msg.Float64(+5))
+            rospy.sleep(1)
 
-        measurements(yumiL)
-        # #
-        # print('go_to_joint_goal')
-        # print('------------------>>>>>>>>>>>>>>>>>>>')
-        # print('right arm moving!!!')#It ain't working fine in real robot some complaint always!!!!
-        # #state=yumiR.go_to_joint_state(safeJointPositionR)
-        # state=yumiR.go_to_joint_state()
-        #
-        # measurements(yumiR)
 
-        time.sleep(3)
-
-        #############################################################
         ############################################################
 
-        print "\n============ Press `Enter` to execute a sample movement using a pose goal ..."
-        raw_input()
-
-        print('go_to_random_pose_goal')
-        print('------------------------>>>>>>>>>>>>>>>>>>>')
-        print('left arm moving!!!')
-        state=False
-
-        print('i am trying!!!')
-        state=yumiL.go_to_pose_goal(pose_ee)
-        measurements(yumiL)
+        # print "\n============ Press `Enter` to execute a sample movement using a pose goal ..."
+        # raw_input()
+        # print('go_to_pose_goal')
+        # print('------------------------>>>>>>>>>>>>>>>>>>>')
+        # print('right arm ready to move!!!')
 
 
+        # print('i am trying!!!')
+        # state=yumiL.go_to_pose_goal(pose_ee)
+        # measurements(yumiL)
+
+        #state=False
         # while(not state):
         #     print('i am trying!!!')
         #     state=yumiL.go_to_pose_goal(pose_ee)
         #     measurements(yumiL)
         # print('done!!!')
 
-
-        # print "\n============ Press `Enter` to open the gripperL ..."
-        # raw_input()
-        # yumiL.pub_gripper.publish(std_msgs.msg.Float64(-5))
-        # rospy.sleep(1)
-        #
-        #
-        # print "\n============ Press `Enter` to close the gripperL ..."
-        # raw_input()
-        # yumiL.pub_gripper.publish(std_msgs.msg.Float64(5))
-        # rospy.sleep(1)
-        #
-        # measurements(yumiL)
 
 
 
@@ -114,10 +112,10 @@ def main():
         # print('done!!!')
         # measurements(yumiR)
 
-        #############################################################
-        ############################################################
+        # ############################################################
+        # ###########################################################
 
-        #
+
         # print('plan_cartesian_path')
         # raw_input()
         # print('I am working...')
@@ -132,11 +130,11 @@ if __name__=='__main__':
 
     print "============ Press `Enter` to start (press ctrl-d to exit) ......"
     raw_input()
-    #yumiR=MoveGroup('right_arm',gripperR)
-    #yumiL=MoveGroup('left_arm',gripperL)
+    yumiR=MoveGroup('right_arm',gripperR)
+    yumiL=MoveGroup('left_arm',gripperL)
 
 
-    # measurements(yumiL)
-    # measurements(yumiR)
+    measurements(yumiL)
+    measurements(yumiR)
 
     main()

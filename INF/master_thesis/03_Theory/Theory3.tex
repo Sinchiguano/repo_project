@@ -1,206 +1,101 @@
 
 \chapter{Theory}
 \label{chap:theo}
+This section presents the theory as well as the whole individual steps in details of the implemented system. The implemented system or pose estimation pipeline as we refer interchangeably in this thesis is fed with two point clouds as input data, one generated from the CAD model and the other one is generated from the output sensory device(RealSense or Astra camera for purpose of comparison).
 
-This chapter presents a briefly theoretical background and overview of the several API's and tools used in this thesis. The reader can skip this chapter, but it is good to know in order to better follow the thesis. To dive deeply in any topic described ahead, a reference is given.
+The 3D CAD model is rendered with the use of software tools described in the previous chapter. The pipeline has two parts, the first part as we refer as the offline stage where the CAD model is preprocessed, and the second one an online stage where the point cloud taken from the scence undergoes a preprocessing step similar to the one described above. In addition to, several filter techniques are used in order to segment the ROI (region of interest) and as a final step a matching stragy is applied where it outputs a 6-DOF pose estimation(ground truth) of the object.  
 
-\section{ RGB-D sensors}
-Nowadays novel camera systems like the Astra Orbbec and RealSense which provide both color and depth images became readily available. There are great expectations that such systems will lead to a boost of new 3D perception-based applications in the fields of robotics. We are specifically interested in using RGB-D sensors for recognition and localization of an isolated part. In this thesis both camera are used.
+\section{Pose estimation pipeline}
+
+Using a local feature base method, the pose estimation pipeline is seen in Figure \ref{fig:pipeline}. The pipeline used in this thesis is inspired in \cite{cadPipeline1}, \cite{cadPipeline2} and \cite{cadPipeline3}, with two major modifications, the first one is that the pipeline used in this thesis has the filtering part included in the preprocessing stage in order to better isolate the 3D object and the second modification is related to the matching strategy\cite{repMatching} where in most of the literatures, the preferred one is a hash table-based voting scheme, in contrast to the one used in this thesis, the hypothesize-and-test paradigm\cite{repMatching}, e.g. RANSAC scheme, which is suitable in this thesis. For more detail about matching strategies, the reader should refer to the reference. 
+
+
+For the offline stage the 3D CAD model is rendered and it is converted to a point cloud data(PCD) format for a better subsequent use. As to the online stage, the pose estimation pipeline takes as input both clouds, the first one, a cloud from the 3D CAD model and the second one, a cloud from the scene, both clouds are filtered in order to remove noise and outliers. Since this is a tabletop application, we need to extract the candidate point cloud from the table. The table can be removed from the cloud with RANSAC as it was done in \cite{cadPipeline3}, which used to find the largest plane in the image. After, both clouds are downsampled by a Voxel Grid (VG) filtering method, and key points with their features descriptors are computed. Then the two clouds are feeding to the matching algorithm where a coerse 6-DoF pose (3 for translation and 3 for rotation) is obtained. The coerse pose is refined with an ICP algorithm registration. Each step is carefully explained in details ahead. 
+
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=2in]{figures02/astraorbbec.jpg}
-\caption{RGB-D sensor(from Astra Orbbec documentation))}%\cite{temp2}}
+\includegraphics[width=3in]{figures03/pipeline.png}
+\caption{General architecture of proposed pose estimation pipeline}%\cite{temp2}}
+\label{fig:pipeline}
 \end{center}
-%\label{fig2:mypicture3}
 \end{figure}
 
-\section{ Camera Pinhole Model}
-There are many lens models but Pinhole camera is used in this thesis. Pinhole camera is the simplest device that captures accurately the geometry of perspective projection. The image of the object is formed by the intersection of the light rays with the image plane. An illustration of the pinhole camera is seen in  Figure 1. This mapping from the three dimensions onto two dimensions is called perspective projection. The camera projects point in the world frame $ P_{w}=(X,Y,Z)^{T} \in \textbf{R}^{3}$ through the pinhole to  the point $p_{c}=(u,v)$ on the image plane.
- 
+
+
+
+\subsection{Filtering a Point cloud}
+The point cloud from the output sensory device contains undesired points, those are often noisy and contains outliers that lead to a high computation time and possibly produces a wrong pose estimation of object. Therefore, it is crucial to remove the noise and outliers from the point cloud in order to obtain accurate point clouds that are suitable for further processing. 
+
+In order to identify these suitable point clouds, algorithms for filtering them are already implemented in the Point Cloud Library such as Conditional Removal, Radius/Statistical Outlier Removal, Color Filtering and Passthrough. 
+Since there are few widely used techniques already developed for point cloud filtering. Some of them are aimed at reducing the amount of points in order to speed up the computation time. Others are used to discard outliars. In this thesis we exploit a simple and commonly used filtration pipeline which it has been proven to be an effective combination of methods in several works \cite{algFiltering}.
+
+\subsubsection{Filtering a PointCloud using a PassThrough filter}
+PassThrough passes points in a cloud based on constraints or threshold for one particular field (X,Y,Z) of the point type. Namely, it removes points where values of selected field are out of range. The filtration pipeline can be seen in the Figure \ref{fig:passthrough}. For more details and working examples the reader you should refer to \cite{pcl}
+
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=2in]{figures02/pinhole_camera_model.png}
-\caption{View of a Pinhole camera geometry (from Camera Calibration and 3D Reconstruction, openCV)}%\cite{temp2}}
+\includegraphics[width=3in]{figures03/passthrough.png}
+\caption{Filtration pipeline used in this thesis}%\cite{temp2}}
+\label{fig:passthrough}
 \end{center}
-%\label{fig2:mypicture3}
 \end{figure}
 
-\subsection{Parameters of camera model}
-We use $(u,v,1)^{T}$ to represent a 2D point position in pixel coordinates or image plane. And $(x_{w},y_{w},z_{w},1)^{T}$ is used to represent a 3D point position in world coordinates. Note: they were expressed in augmented notation of homogeneous coordinates which is the most common notation in robotics and rigid body transforms. Referring to the pinhole camera model, a camera matrix is used to denote a projective mapping from world coordinates  to Pixel coordinates(or image plane), the camera matrix is giving by the Equation \ref{eq1}.
 
-\begin{equation}\label{eq1}
-z_{c}*
-\left[ {\begin{array}{c}
-u \\
-v \\
-1 \\
-\end{array} } \right]
-= K*
-\left[ {\begin{array}{c}
-\textbf{R} \ \textbf{t} \\
-\end{array} } \right]
-*\left[ {\begin{array}{c}
-X_{w}\\
-Y_{w} \\
-Z_{w} \\
-1\\
-\end{array} } \right]\end{equation}
+\subsection{Preprocessing stage}
+
+After the filtering step, which is only applied to the point cloud represented the scence. The two clouds are downsampled with technique already implemented in the Point Cloud Library, such as Voxelgrid (VG) filter or Approximate Voxelgrid filtering. This step is required for speed up the computation process. 
+Since it is a computer vision problem known as Tabletop, it has a dominant plane. Therefore, RANSAC is used to find this dominat plane in the image. 
+
+\subsubsection{Downsampling a PointCloud using a VoxelGrid filter}
+
+Voxel Grid filtering method \cite{algFiltering} creates a 3D Voxel Grid
+(3D boxes in 3D space) for each one of the point cloud (model and scene cloud). Then, in each voxel, a point is chosen to approximate all the points that lie on that voxel. Usually, the centroid (an arithmetic mean) of these points or the center (the point in the interior that is equidistant from all points) of this voxel is used as the approximation. The centroid is slower than the center approximation. As a remark, the voxel grid method often drives to geometric information loss. See Figure \ref{fig:voxeldown} to see the result of applying voxel grid. For more information about this filtering, the reader should see \cite{algDownsampling}
 
 
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=3in]{figures03/voxelcloud1.png}
+\caption{Left to Right: Input Image, Output after voxelGrid}%\cite{temp2}}
+\label{fig:voxeldown}
+\end{center}
+\end{figure}
 
-\subsection{Camera's Intrinsic Parameters}
-Images coordinates are measured in pixels, normally with the origin in the left upper corner. The focal
-plane in the pinhole camera model is embedded $\in R^{3}$ so we need to have a mapping that translates
-the points in the image plane into pixels, see Figure \ref{fig:intrinsic}.
 
-\begin{equation}\label{eq2}
-   K=
-    \left[ {\begin{array}{cccc}
-   f_{x} & 0 & c_{x} \\
-   0 & f_{y} & c_{y} \\
-   0 & 0 & 1\\
+\subsubsection{Plane Segmentation}
+Since the point cloud from the scene contains undesirable points such as points that represents a table where the object is kept. A further filtering is needed, such filtering is know as plane segmentation. And it is achievable with the RAMSAC based plane fitting method. RAMSAC method finds the largest set of points that fit to a plane. The plane equation in three dimensional point cloud can be defined as:
 
-  \end{array} } \right]    
+\begin{equation}
+    ax+by+cz+d=0
 \end{equation}
+Where the a,b, and c are the parameters of the plane and d is the distance of the plane from the origin.
+
+RAMSAC selects randomly three points from dataset and computes the parameters of the corresponding plane, after that it tries to enlarge the plane according to a given threshold,\cite{algPlane}. The step of segmenting the plane in order to remove it, is required condition for the subsequent use. Where a global registration is applied. 
+\\
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\KwResult{ o (object candidate point cloud) }
+\KwData{p (3D point cloud), $\tau$ , MaxIter, IR }
+ initialization\;
+ \While{$t<MaxIter$ - $InlierRatio>IR$}
+ {
+ Pick 3 points (A, B, C) at random from p \;
+ Fit a plane (ax + by + cz + d = 0) to these 3 points\;
+    AB = B - A\;
+    AC = C - A\;
+    N = AB x AC\;
+    N has the values of (a, b, c)\;
+    %d = −A^{T} \cdot N\\  
+    Find outlier points o (object candidate points)\\
+    %f(x)$>$\tau\\
+    Here, f (x) is plugging in point x into the plane equation divided by the norm of N to measure residual and $\tau$ is the threshold\\
+    Find Inlier Ratio as ratio of number of inlier points to total number of points
+}
+\caption{RANSAC for plane segmentation \cite{cadPipeline3}}
+\end{algorithm}
 
 
 
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=2in]{figures02/intrinsic.png}
-\caption{Overview of the transformation between the focal plane and the image plane}%\cite{temp2}}
-\label{fig:intrinsic}
-\end{center}
-\end{figure}
+\subsection{Feature descriptor}
 
-
-\subsection{Camera's Extrinsic Parameters}
-
-The transformation between the world coordinate system and the camera coordinate system is achieved be a rotation and a translation. The translation is represented by a vector $t \in \textbf{R}^{3}$ and the rotation by a 3x3 orthogonal matrix \textbf{R}. So $\textbf{R}$ represents a rotation matrix, and it must satisfy the following properties:
-
-\begin{equation}\label{eq3} 
-     det(\textbf{R})=1 
-\end{equation}
-\begin{equation}\label{eq4}  
-    \textbf{R}^{T}\textbf{R}=I      
-\end{equation}
-
-
-Where I is the identity matrix. The matrix \textbf{R} and the vector \textbf{t} altogether are called camera's extrinsic parameters, see Figure.
-
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=2in]{figures02/extrinsic.png}
-\caption{Overview of a world coordinate system and camera coordinate system}%\cite{temp2}}
-\end{center}
-%\label{fig2:mypicture3}
-\end{figure}
-
-
-The transformation of a representation of point in the world coordinate system, $ P_{w}=(X,Y,Z)^{T}$ into the camera coordinate system, $ P_{c}=(X,Y,Z)^{T}$ can be done with the following equation.
-\begin{equation}\label{eq4} 
-P_{c}=\textbf{R}.P_{w}+\textbf{t}
-\end{equation}
-
- The Equation \ref{eq4} can also be written as:
-
-
-\begin{equation}\label{eq5} 
-    P_{c}=\left[\textbf{R} \ \textbf{t}\right]\left[\frac{P_{w}}{1}\right]   
-\end{equation}
-
-\section{Point Cloud}
-
- The receive measurement data from the input sensor get converted in a more generic data structure called point cloud, which is a set of vertices in a three-dimensional coordinate system usually defined by X, Y, and Z coordinates. The vertices are typically intended to represent the external surface of an object.
- Point clouds can be acquired from hardware sensors such as stereo cameras, 3D scanners, or time-of-flight cameras, or generated from a computer program synthetically.
-
-
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=2in]{figures02/pcd.png}
-\caption{Overview of a point cloud (from MathWorks documentation)}%\cite{temp2}}
-\end{center}
-\label{fig2:mypicture3}
-\end{figure}
-
-
-\section{Robotic Operating System}
-
-For this thesis The Robotic Operating System (ROS) is used as main platform. In addition, it is used for visualization purpose and debugging steps. ROS is a flexible framework for writing robot software. In addition, it is  a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behaviour across a wide variety of robotic platforms. It is based on the concepts of nodes, topics, messages and services. A node is an executable program that performs computation. Nodes need to communicate with each other to complete the whole task. The communicated data are called messages. ROS provides an easy way for passing messages and establishing communication links between nodes, which are running independently. They pass these messages to each other over a Topic, which is a simple string. However, topics are asynchronous, synchronous communication is provided by services. Services act in a call-response manner where one node requests that another node execute a one-time computation and provide a response. For more details about ROS, the reader can refer to \cite{ros}.
-
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=2in]{figures02/ros_workflows.png}
-\caption{A ROS Overview}%\cite{temp2}}
-\end{center}
-%\label{fig2:mypicture3}
-\end{figure}
-
-
-\section{PCL}
-
-The PCL\cite{pcl} framework contains numerous state-of-the art algorithms including filtering, feature estimation, surface reconstruction, registration, model fitting and segmentation. These algorithms can be used, for example, to filter outliers from noisy data, align 3D point clouds together, segment relevant parts of a scene, extract keypoints and compute descriptors to recognize objects in the world based on their geometric appearance, and create surfaces from point clouds and visualize them. 
-
-For different processing steps, a Python bindings for the Point Cloud Library (PCL) is used. This is a reasonable python binding to the point cloud library. At present the following features of PCL, using PointXYZ point clouds, are available;
-
-\begin{enumerate}
-    \item I/O and integration; saving and loading PCD (point cloud data) files
-    \item segmentation
-    \item sample consensus model fittting (RANSAC + others, cylinders, planes, common geometry)
-    \item smoothing (median least squares)
-    \item filtering (voxel grid downsampling, passthrough, statistical outlier removal)
-    \item exporting, importing and analysing pointclouds with numpy
-\end{enumerate}
-
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=2in]{figures02/pcl1.png}
-\caption{An  example  of  the  PCL  implementation  pipeline  for  Fast  Point Feature Histogram (FPFH) \cite{fpfh} estimation.}
-\end{center}
-%\label{fig2:mypicture3}
-\end{figure}
-
-
-\section{Open3D}
-
-For the purpose of working with any ideal registration algorithm, the Open3D is used in this thesis which is an open-source library that supports rapid development of software that deals with 3D data. The Open3D frontend exposes a set of carefully selected data structures and algorithms in both C++ and Python. Open3D provides data structures for three kinds of representations: point clouds, meshes, and RGB-D images.  For each representation, it offers a complete set of basic processing algorithms such as sampling, visualization, and data conversion. In addition, Open3D  provides  implementations  of  multiple  state-of-the-art surface registration methods, including pairwise global registration, pairwise local refinement as the ICP registration \cite{icp}, and multiway registration  using  pose  graph  optimization. 
-
-\section{Tools for 3D data}
-For the purpose of rendering, convertion and manipulation of any 3D data(CAD model) several tools from the open source communities are used in this thesis such as CloudCompare, MeshLab and FreeCAD. 
-
-\subsection{CloudCompare}
-CloudCompare is a 3D point cloud (and triangular mesh) processing software. It has been originally designed to perform comparison between two dense 3D points clouds (such as the ones acquired with a laser scanner) or between a point cloud and a triangular mesh. It relies on a specific octree structure dedicated to this task.  Afterwards, it has been extended to a more generic point cloud processing software, including many advanced algorithms (registration, resampling, color/normal/scalar fields handling, statistics computation, sensor management, interactive or automatic segmentation, display enhancement, etc.)\cite{cloudcompare},. 
-
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=2in]{figures02/cloudcompare.jpg}
-\caption{CloudCompare (view, edit and process).}
-\end{center}
-%\label{fig2:mypicture3}
-\end{figure}
-
-
-\subsection{MeshLab}
-Meshlab is an open source system for processing and editing 3D triangular meshes.
-It provides a set of tools for editing, cleaning, healing, inspecting, rendering, texturing and converting meshes. It offers features for processing raw data produced by 3D digitization tools/devices and for preparing models for 3D printing \cite{meshlab}.
-
- \begin{figure}[!h]
-\begin{center}
-\includegraphics[width=2in]{figures02/meshlab.png}
-\caption{MeshLab (view, edit and process).}
-\end{center}
-%\label{fig2:mypicture3}
-\end{figure}
-
-
-\subsection{FreeCAD}
-FreeCAD is a 3D CAD/CAE parametric modeling application. It is primarily made for mechanical design, but also serves all other uses where you need to model 3D objects with precision and control over modeling history \cite{freecad}.
-
- \begin{figure}[!h]
-\begin{center}
-\includegraphics[width=2in]{figures02/freecad.jpg}
-\caption{A view of the FreeCAD interface.}
-\end{center}
-%\label{fig2:mypicture3}
-\end{figure}
