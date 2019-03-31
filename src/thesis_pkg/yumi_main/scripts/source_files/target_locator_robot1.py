@@ -57,71 +57,65 @@ def publish_transforms(br):
     global euler_angles_
     global position_
 
+    # t0 = geometry_msgs.msg.TransformStamped()
+    # t0.header.stamp = rospy.Time.now()
+    # t0.header.frame_id = "world"
+    # #t0.child_frame_id = "panda_link0"
+    # t0.child_frame_id = "yumi_base_link"
+    # #t0.child_frame_id = "base_link"
+    # t0.transform.translation.x = 0.0
+    # t0.transform.translation.y = 0.0
+    # t0.transform.translation.z = 0.0
 
-    t0 = geometry_msgs.msg.TransformStamped()
-    t0.header.stamp = rospy.Time.now()
-    t0.header.frame_id = "world"
-    #t0.child_frame_id = "panda_link0"
-    t0.child_frame_id = "yumi_base_link"
-    #t0.child_frame_id = "base_link"
-    t0.transform.translation.x = 0.0
-    t0.transform.translation.y = 0.0
-    t0.transform.translation.z = 0.0
-    
-    tmp_rot=np.array([[1,0, 0], [0, 1, 0],[0, 0, 1]])
-    tmp_trans=np.array([[0.30],[0],[0] ])
-    myrot =np.hstack((tmp_rot,tmp_trans))
-    myrot=np.vstack((myrot,[0.0,0.0,0.0,1.0]))
-    #print('my rotation: \n {}'.format(myrot) )
-    
-    q0 = tf.transformations.quaternion_from_matrix(myrot)
-    t0.transform.rotation.x = q0[0]
-    t0.transform.rotation.y = q0[1]
-    t0.transform.rotation.z = q0[2]
-    t0.transform.rotation.w = q0[3]
-    br.sendTransform(t0)
+    # tmp_rot=np.array([[1,0, 0], [0, 1, 0],[0, 0, 1]])
+    # tmp_trans=np.array([[0.30],[0],[0] ])
+    # myrot =np.hstack((tmp_rot,tmp_trans))
+    # myrot=np.vstack((myrot,[0.0,0.0,0.0,1.0]))
+    # #print('my rotation: \n {}'.format(myrot) )
+
+    # q0 = tf.transformations.quaternion_from_matrix(myrot)
+    # t0.transform.rotation.x = q0[0]
+    # t0.transform.rotation.y = q0[1]
+    # t0.transform.rotation.z = q0[2]
+    # t0.transform.rotation.w = q0[3]
+    # br.sendTransform(t0)
 
 
     # t1 = geometry_msgs.msg.TransformStamped()
     # t1.header.stamp = rospy.Time.now()
-    # t1.header.frame_id = "target"
-    # t1.child_frame_id = "object"
-    # t1.transform.translation.x = 0.12
-    # t1.transform.translation.y = 0.12
-    # t1.transform.translation.z = 0.0
+    # t1.header.frame_id = "gripper_l_base"
+    # #t1.header.frame_id = "yumi_link_7_l"
+    # t1.child_frame_id = "target"
+    # t1.transform.translation.x = 0.0
+    # t1.transform.translation.y = 0.035
+    # t1.transform.translation.z = 0.18
 
-    # q1 = tf.transformations.quaternion_from_euler(0, 0, 0)
-    # t1.transform.rotation.x = q1[0]
-    # t1.transform.rotation.y = q1[1]
-    # t1.transform.rotation.z = q1[2]
-    # t1.transform.rotation.w = q1[3]
+
+    # # tmp_rot=np.array([[0, 1, 0], [1
+
+    # # tmp_trans=np.array([[0.30],[0],
+
+    # # myrot =np.hstack((tmp_rot,tmp_t
+
+    # # myrot=np.vstack((myrot,[0.0,0.0
+
+    # #print('my rotation: \n {}'.forma
+
+
+    # #q1 = tf.transformations.quaterni
+
+    # #q1 = tf.transformations.quaterni
+
+    # t1.transform.rotation.x = -0.7071
+
+    # t1.transform.rotation.y = 0.0
+    # t1.transform.rotation.z = -0.7071
+    # t1.transform.rotation.w = 0.0
     # br.sendTransform(t1)
-
-    t1 = geometry_msgs.msg.TransformStamped()
-    t1.header.stamp = rospy.Time.now()
-    t1.header.frame_id = "world"
-    t1.child_frame_id = "target"
-    t1.transform.translation.x = 0.30
-    t1.transform.translation.y = 0.0
-    t1.transform.translation.z = 0.0
-
-    # tmp_rot=np.array([[0, 1, 0], [1, 0, 0],[0, 0, -1]])
-    # tmp_trans=np.array([[0.30],[0],[0] ])
-    # myrot =np.hstack((tmp_rot,tmp_trans))
-    # myrot=np.vstack((myrot,[0.0,0.0,0.0,1.0]))
-    #print('my rotation: \n {}'.format(myrot) )
-
-    #q1 = tf.transformations.quaternion_from_matrix(myrot)
-    q1 = tf.transformations.quaternion_from_euler(0, 0, 0)
-    t1.transform.rotation.x = q1[0]
-    t1.transform.rotation.y = q1[1]
-    t1.transform.rotation.z = q1[2]
-    t1.transform.rotation.w = q1[3]
-    br.sendTransform(t1)
 
     t2 = geometry_msgs.msg.TransformStamped()
     t2.header.stamp = rospy.Time.now()
-    t2.header.frame_id = "target"
+    t2.header.frame_id = "yumi_tcp"
     t2.child_frame_id = "camera_link"
     t2.transform.translation.x = 1.0*position_[0]
     t2.transform.translation.y = 1.0*position_[1]
@@ -129,14 +123,16 @@ def publish_transforms(br):
     #orientation according to openCV
     q3 = tf.transformations.quaternion_from_euler(euler_angles_[0],euler_angles_[1],euler_angles_[2])
     #orientation of camera link. which is parallel to world frame
-    q2 = tf.transformations.quaternion_from_euler(math.pi/2,-math.pi/2,0)
+    import math
+    #q2 = tf.transformations.quaternion_from_euler(math.pi/2,-math.pi/2,0)
     #correction of camera frame according to openCV orientation
-    q4=quaternion_multiply(q3,q2)#rotation,origin
-    t2.transform.rotation.x = q4[0]
-    t2.transform.rotation.y = q4[1]
-    t2.transform.rotation.z = q4[2]
-    t2.transform.rotation.w = q4[3]
+    #q4=quaternion_multiply(q3,q2)#rotation,origin
+    t2.transform.rotation.x = q3[0]
+    t2.transform.rotation.y = q3[1]
+    t2.transform.rotation.z = q3[2]
+    t2.transform.rotation.w = q3[3]
     br.sendTransform(t2)
+
 
 def print_information(rotation_vector,translation_vector,rvec_matrix):
 
