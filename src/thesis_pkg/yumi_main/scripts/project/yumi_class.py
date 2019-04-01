@@ -290,18 +290,18 @@ def measurements(arm_name):
     print(arm_name.move_group.get_current_joint_values())
     # # ''''Get the current pose of the end-effector of the group.'''
     print
-    print('current pose of the end-effector '+arm_name.tag_name)
-    print(arm_name.move_group.get_current_pose().pose)
+    # print('current pose of the end-effector '+arm_name.tag_name)
+    # print(arm_name.move_group.get_current_pose().pose)
 
-    print('Position x, y and z!!!')
-    temP=arm_name.move_group.get_current_pose().pose
-    print(temP.position.x,temP.position.y,temP.position.z)
-    print
-    print('Rotation in Euler convention (rpy)!!!')
-    print(arm_name.move_group.get_current_rpy())
-    print
-    print('Rotation in quaternion convention (x,y,z,w)!!!')
-    temP=arm_name.move_group.get_current_pose().pose
-    quaternion = (temP.orientation.x,temP.orientation.y,temP.orientation.z,temP.orientation.w)
-    print(quaternion)
-    print('')
+    # print('Position x, y and z!!!')
+    # temP=arm_name.move_group.get_current_pose().pose
+    # print(temP.position.x,temP.position.y,temP.position.z)
+    # print
+    # print('Rotation in Euler convention (rpy)!!!')
+    # print(arm_name.move_group.get_current_rpy())
+    # print
+    # print('Rotation in quaternion convention (x,y,z,w)!!!')
+    # temP=arm_name.move_group.get_current_pose().pose
+    # quaternion = (temP.orientation.x,temP.orientation.y,temP.orientation.z,temP.orientation.w)
+    # print(quaternion)
+    # print('')

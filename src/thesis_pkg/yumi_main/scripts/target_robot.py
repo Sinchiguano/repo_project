@@ -55,31 +55,21 @@ def publish_transforms(br):
     global euler_angles_
     global position_
 
-    t1 = geometry_msgs.msg.TransformStamped()
-    t1.header.stamp = rospy.Time.now()
-    #t1.header.frame_id = "yumi_tcp"
-    t1.header.frame_id = "world"
-    t1.child_frame_id = "target"
-    t1.transform.translation.x = 0.0
-    t1.transform.translation.y = 0.0
-    t1.transform.translation.z = 0.0
-
-    q1 = tf.transformations.quaternion_from_euler(0, 0, 0)
-    t1.transform.rotation.x = q1[0]
-    t1.transform.rotation.y = q1[1]
-    t1.transform.rotation.z = q1[2]
-    t1.transform.rotation.w = q1[3]
-    br.sendTransform(t1)
-
     t2 = geometry_msgs.msg.TransformStamped()
     t2.header.stamp = rospy.Time.now()
-    t2.header.frame_id = "target"
+    t2.header.frame_id = "yumi_tcp"
+    #t2.header.frame_id = "world"
     t2.child_frame_id = "camera_link"
     t2.transform.translation.x = 1.0*position_[0]
     t2.transform.translation.y = 1.0*position_[1]
     t2.transform.translation.z = 1.0*position_[2]
-    #orientation according to openCV
     q3 = tf.transformations.quaternion_from_euler(euler_angles_[0],euler_angles_[1],euler_angles_[2])
+
+    # #orientation of camera link. which is parallel to world frame
+    # q2 = tf.transformations.quaternion_from_euler(math.pi/2,-math.pi/2,0)
+    # #correction of camera frame according to openCV orientation
+    # q4=quaternion_multiply(q3,q2)#rotation,origin
+
     t2.transform.rotation.x = q3[0]
     t2.transform.rotation.y = q3[1]
     t2.transform.rotation.z = q3[2]
@@ -201,8 +191,8 @@ def main():
     counter=0
     tmpNamec='temp2.jpg'
 
-    pub_pose = rospy.Publisher('pose_camera_topic', Pose, queue_size=10)
-    sub_pose = rospy.Subscriber('/pose_camera_topic', Pose, pose_camera_callback)
+    pub_pose = rospy.Publisher('pose_yumi_tcp_camera', Pose, queue_size=10)
+    sub_pose = rospy.Subscriber('/pose_yumi_tcp_camera', Pose, pose_camera_callback)
     br = tf2_ros.TransformBroadcaster()
 
     rate = rospy.Rate(10) # 10hz
@@ -250,7 +240,6 @@ def main():
             print(ex)
             print('-------------------------------------------------')
             continue
-
 
         # Extrinsic calibration!!!
         axis_imgpts,corners,ret,rvec_matrix,translation_vector,rotation_vector= locate_target_orientation(frame,ret, corners)

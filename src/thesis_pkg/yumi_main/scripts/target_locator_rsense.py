@@ -62,8 +62,8 @@ def publish_transforms(br):
     t0.header.stamp = rospy.Time.now()
     t0.header.frame_id = "world"
     #t0.child_frame_id = "panda_link0"
-    t0.child_frame_id = "yumi_base_link"
-    #t0.child_frame_id = "base_link"
+    #t0.child_frame_id = "yumi_base_link"
+    t0.child_frame_id = "base_link"
     t0.transform.translation.x = 0.0
     t0.transform.translation.y = 0.0
     t0.transform.translation.z = 0.0

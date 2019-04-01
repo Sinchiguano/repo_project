@@ -24,6 +24,14 @@ For the offline stage the 3D CAD model is rendered and it is converted to a poin
 
 
 
+
+
+
+\subsection{Preprocessing stage}
+
+After the filtering step, which is only applied to the point cloud represented the scence. The two clouds are downsampled with technique already implemented in the Point Cloud Library, such as Voxelgrid (VG) filter or Approximate Voxelgrid filtering. This step is required for speed up the computation process. 
+Since it is a computer vision problem known as Tabletop, it has a dominant plane. Therefore, RANSAC is used to find this dominat plane in the image. 
+
 \subsection{Filtering a Point cloud}
 The point cloud from the output sensory device contains undesired points, those are often noisy and contains outliers that lead to a high computation time and possibly produces a wrong pose estimation of object. Therefore, it is crucial to remove the noise and outliers from the point cloud in order to obtain accurate point clouds that are suitable for further processing. 
 
@@ -40,28 +48,6 @@ PassThrough passes points in a cloud based on constraints or threshold for one p
 \label{fig:passthrough}
 \end{center}
 \end{figure}
-
-
-\subsection{Preprocessing stage}
-
-After the filtering step, which is only applied to the point cloud represented the scence. The two clouds are downsampled with technique already implemented in the Point Cloud Library, such as Voxelgrid (VG) filter or Approximate Voxelgrid filtering. This step is required for speed up the computation process. 
-Since it is a computer vision problem known as Tabletop, it has a dominant plane. Therefore, RANSAC is used to find this dominat plane in the image. 
-
-\subsubsection{Downsampling a PointCloud using a VoxelGrid filter}
-
-Voxel Grid filtering method \cite{algFiltering} creates a 3D Voxel Grid
-(3D boxes in 3D space) for each one of the point cloud (model and scene cloud). Then, in each voxel, a point is chosen to approximate all the points that lie on that voxel. Usually, the centroid (an arithmetic mean) of these points or the center (the point in the interior that is equidistant from all points) of this voxel is used as the approximation. The centroid is slower than the center approximation. As a remark, the voxel grid method often drives to geometric information loss. See Figure \ref{fig:voxeldown} to see the result of applying voxel grid. For more information about this filtering, the reader should see \cite{algDownsampling}
-
-
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=3in]{figures03/voxelcloud1.png}
-\caption{Left to Right: Input Image, Output after voxelGrid}%\cite{temp2}}
-\label{fig:voxeldown}
-\end{center}
-\end{figure}
-
-
 \subsubsection{Plane Segmentation}
 Since the point cloud from the scene contains undesirable points such as points that represents a table where the object is kept. A further filtering is needed, such filtering is know as plane segmentation. And it is achievable with the RAMSAC based plane fitting method. RAMSAC method finds the largest set of points that fit to a plane. The plane equation in three dimensional point cloud can be defined as:
 
@@ -71,7 +57,6 @@ Since the point cloud from the scene contains undesirable points such as points 
 Where the a,b, and c are the parameters of the plane and d is the distance of the plane from the origin.
 
 RAMSAC selects randomly three points from dataset and computes the parameters of the corresponding plane, after that it tries to enlarge the plane according to a given threshold,\cite{algPlane}. The step of segmenting the plane in order to remove it, is required condition for the subsequent use. Where a global registration is applied. 
-\\
 
 \begin{algorithm}[H]
 \SetAlgoLined
@@ -97,5 +82,50 @@ RAMSAC selects randomly three points from dataset and computes the parameters of
 
 
 
-\subsection{Feature descriptor}
+\subsection{Extract geometric feature}
+\subsubsection{3D keypoint Detection}
 
+Keypoints are relevant points that maintain as much as possible the shape of the object. In order to identify these relevant points, detection methods are used. In addition to, keypoint are found by sampling the point cloud or downsampling the cloud with  VoxelGrid filter.
+
+Voxel Grid filtering method \cite{algFiltering} creates a 3D Voxel Grid
+(3D boxes in 3D space) for each one of the point cloud (model and scene cloud). Then, in each voxel, a point is chosen to approximate all the points that lie on that voxel. Usually, the centroid (an arithmetic mean) of these points or the center (the point in the interior that is equidistant from all points) of this voxel is used as the approximation. The centroid is slower than the center approximation. As a remark, the voxel grid method often drives to geometric information loss. See Figure \ref{fig:voxeldown} to see the result of applying voxel grid. For more information, the reader should see \cite{algDownsampling}
+
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=3in]{figures03/voxelcloud1.png}
+\caption{Left to Right: Input Image, Output after voxelGrid}%\cite{temp2}}
+\label{fig:voxeldown}
+\end{center}
+\end{figure}
+
+
+%\noindent
+\textbf{Vertex normal estimation}
+
+For the subsequent use, normal estimation of both point clouds, model and scene are computed. The approach implemented for computed the normal in this thesis is the vertex normal estimation, a directional vector associated with a vertex, intended as a replacement to the true geometric normal of the surface. The algorithm is already implemented in the open3D \cite{open3d} library. 
+It computes the normal for every point by finding adjacent points and calculating the principal axis of the adjacent points.
+
+\subsubsection{Local surface feature description}
+
+Once the keypoints have been detected for the model and scene point clouds, geometric information of the local surface around those keypoints are extracted and encoded into feature descriptors. According to the approaches employed to construct the feature descriptors in \cite{survey}, classify into three group: signature based, histogram based and transform based method. In this thesis the approach of histogram based method is used. Namely, Fast Point Feature Histogram, FPFH, this method describe the local neighborhood of a s be generating histograms according to the geometric attributes(e.g.,normals) of the local surface.
+
+%\noindent
+\textbf{Fast Point Feature Histogram}
+
+
+
+
+\subsection{Searching Strategies}
+
+Henceforth we describe the most relevant Searching Strategies, in chronological order.
+
+\subsubsection{RANSAC-based methods}
+ 
+object having the property. This methodology can be applied in computational geometry problems
+[42].
+
+\subsection{Refinement}
+The last part of the registration process is the refinement of the alignment achieved by Cn Coarse Registration part because is an open problem
+nowadays. In Fine Registration topic, although some improvements are presented every year, the
+majority of the community is focused on Coarse methods, using ICP for Fine Matching.
