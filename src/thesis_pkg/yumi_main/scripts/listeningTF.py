@@ -36,17 +36,17 @@ def publish_transforms(trans,rot):
 
 if __name__ == '__main__':
 
-    rospy.init_node('robot_cam_tf_listener')
+    rospy.init_node('cam_tf_listener')
 
     listener = tf.TransformListener()
 
     rate = rospy.Rate(10.0)
     while not rospy.is_shutdown():
         try:
-            (trans1,rot1) = listener.lookupTransform('/camera_link','/world', rospy.Time(0))
-            trans1_mat = tf.transformations.translation_matrix(trans1)
-            rot1_mat   = tf.transformations.quaternion_matrix(rot1)
-            mat1 = numpy.dot(trans1_mat, rot1_mat)
+            (trans1,rot1) = listener.lookupTransform('/world','/camera_link', rospy.Time(0))
+            # trans1_mat = tf.transformations.translation_matrix(trans1)
+            # rot1_mat   = tf.transformations.quaternion_matrix(rot1)
+            # mat1 = numpy.dot(trans1_mat, rot1_mat)
         except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
             continue
         #
@@ -66,7 +66,9 @@ if __name__ == '__main__':
 
         print('here the transform from world to camera frame')
         publish_transforms(trans1,rot1)
+        print('translation')
         print(trans1)
+        print('rotation')
         print(rot1)
 
         rate.sleep()

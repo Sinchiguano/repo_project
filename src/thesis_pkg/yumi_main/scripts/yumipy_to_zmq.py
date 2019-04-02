@@ -45,25 +45,29 @@ def move(yumi_robot):
 
     g_index_last_move = (g_index_last_move + 1) % len(moves)
     print('Moving to {}'.format(moves[g_index_last_move]))
+    start = time.time()
     yumi_robot.left.goto_state(moves[g_index_last_move])
     g_timestamp_last_move = time.time()
+    print('goto_state command took {} s'.format(g_timestamp_last_move - start))
 
 def main():
 
-    print("\n============ Press 1 to open or 2 to close the gripper...")
-    temp=raw_input()
-    control_=int(temp)
+    # print("\n============ Press 1 to open or 2 to close the gripper...")
+    # temp=raw_input()
+    # control_=int(temp)
 
-    if (control_==1):
-        yumi_robot.left.open_gripper(no_wait=False, wait_for_res=True)
-    elif(control_==2):
-        yumi_robot.left.close_gripper(force=5, width=0.0, no_wait=False, wait_for_res=True)
+    # if (control_==1):
+    #     yumi_robot.left.open_gripper(no_wait=False, wait_for_res=True)
+    # elif(control_==2):
+    #     yumi_robot.left.close_gripper(force=5, width=0.0, no_wait=False, wait_for_res=True)
 
     while True:
         #  Wait for next request from client
         message = socket.recv()
 
+        start = time.time()
         pose = yumi_robot.left.get_pose()
+        print('get_pose command took {} s'.format(time.time() - start))
 
         #  Send reply back to client
         msg = b'{0.translation[0]} {0.translation[1]} {0.translation[2]} {0.quaternion[0]} {0.quaternion[1]} {0.quaternion[2]} {0.quaternion[3]}'.format(pose)
