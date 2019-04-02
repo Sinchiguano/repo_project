@@ -61,13 +61,14 @@ def main():
     # elif(control_==2):
     #     yumi_robot.left.close_gripper(force=5, width=0.0, no_wait=False, wait_for_res=True)
 
+    print('Wait for client')
     while True:
         #  Wait for next request from client
-        message = socket.recv()
+        socket.recv()
 
-        start = time.time()
+        # start = time.time()
         pose = yumi_robot.left.get_pose()
-        print('get_pose command took {} s'.format(time.time() - start))
+        # print('get_pose command took {} s'.format(time.time() - start))
 
         #  Send reply back to client
         msg = b'{0.translation[0]} {0.translation[1]} {0.translation[2]} {0.quaternion[0]} {0.quaternion[1]} {0.quaternion[2]} {0.quaternion[3]}'.format(pose)

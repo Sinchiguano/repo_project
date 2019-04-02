@@ -14,6 +14,8 @@ sys.path.insert(0, '/home/casch/yumi_depends_ws/src/thesis_pkg/yumi_main/scripts
 from thesis_library import *
 
 
+
+
 def pose_to_tf(x_y_z_qw_qx_qy_qz):
     """input in m and rad"""
     br = tf2_ros.TransformBroadcaster()
@@ -32,41 +34,39 @@ def pose_to_tf(x_y_z_qw_qx_qy_qz):
     br.sendTransform(t)
 
 
-    pose = Pose()
-    pose.position.x = x_y_z_qw_qx_qy_qz[0]
-    pose.position.y = x_y_z_qw_qx_qy_qz[1]
-    pose.position.z = x_y_z_qw_qx_qy_qz[2]
-    pose.orientation.x = x_y_z_qw_qx_qy_qz[4]
-    pose.orientation.y = x_y_z_qw_qx_qy_qz[5]
-    pose.orientation.z = x_y_z_qw_qx_qy_qz[6]
-    pose.orientation.w = x_y_z_qw_qx_qy_qz[3]
-    return pose
+    # pose = Pose()
+    # pose.position.x = x_y_z_qw_qx_qy_qz[0]
+    # pose.position.y = x_y_z_qw_qx_qy_qz[1]
+    # pose.position.z = x_y_z_qw_qx_qy_qz[2]
+    # pose.orientation.x = x_y_z_qw_qx_qy_qz[4]
+    # pose.orientation.y = x_y_z_qw_qx_qy_qz[5]
+    # pose.orientation.z = x_y_z_qw_qx_qy_qz[6]
+    # pose.orientation.w = x_y_z_qw_qx_qy_qz[3]
+    # return pose
 
 
 def main():
+
+    #pub_pose = rospy.Publisher('pose_world_yumi_tcp', Pose, queue_size=10)
+
+
     context = zmq.Context()
 
     #  Socket to talk to server
     socket = context.socket(zmq.REQ)
     socket.connect("tcp://localhost:5555")
 
-
-    pub_pose = rospy.Publisher('pose_world_yumi_tcp', Pose, queue_size=10)
-
-
+    g_period = 1
     while not rospy.is_shutdown():
         rospy.init_node('tcp_tf', anonymous=True)
 
         socket.send(b'')
 
-        #  Get the reply in the form sent by yumipy_to_zmq (currently x,y,z,qw,wx,qy,qz in m and rad).
+        #  Get the reply.
         message = socket.recv()
-        pose=pose_to_tf([float(v) for v in message.split()])
+        pose_to_tf([float(v) for v in message.split()])
+        time.sleep(g_period)
 
-        # publish pose of the yumi_tcp in base frame
-        pub_pose.publish(pose)
-
-        time.sleep(0.1)
 
 
 if __name__ == '__main__':
