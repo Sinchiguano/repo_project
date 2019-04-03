@@ -28,31 +28,31 @@ moves_deg = np.array([[-81.63, -73.53, 50.08, -2.31, -48.69, -83.33, 92.82],
                     [-86.28, -66.29, 43.21, -12.32, -45.17, -85.41, 83.62],
                     [-110.32, -47.88, 32.18, -42.41, -80.97, -83.83, 92.88],
                     [-82.88, -52.2, 40.18, -43.11, -71.83, -73.91, 75.19]])
-#[-129.51, -40.42, -5.51, 28.89, -78.44, -153.85, 160.52]
 
-#setting the hand of the robot
-#tool_cesar_cal = RigidTransform(np.array([[ 0.,  0.,  1.],[ 0.,  1.,  0.],[-1.,  0.,  0.]]), np.array([0, 0.035, 0.1892]))
-
-tool_cesar_cal = RigidTransform(np.array([[0.0007963, -0.0000000,  0.9999997],
-                                        [ 0.0015927, -0.9999987, -0.0000013],
-                                        [ 0.9999984,  0.0015927, -0.0007963]]), np.array([0, 0.035, 0.1892]))
+tool_cesar_cal = RigidTransform(np.array([[0, 0, 1],
+                                          [0, -1, 0],
+                                          [1, 0, 0]]), np.array([0, 0.035, 0.1892]))
 
 
-
-
+g_timestamp_last_move = 0
 g_index_last_move = 0
 
 def move(yumi_robot):
-
+    import time
     global g_index_last_move
-    global moves_deg
+    global g_timestamp_last_move
+
+    # if (time.time() - g_timestamp_last_move) < 3:
+    #     return
 
     #Object that encapsulates a yumi arm joint angle configuration.
     moves = [YuMiState(p) for p in moves_deg]
 
+
     g_index_last_move = (g_index_last_move + 1) % len(moves)
 
     yumi_robot.left.goto_state(moves[g_index_last_move],wait_for_res=False)
+    # g_timestamp_last_move = time.time()
 
 
 def pose_to_tf(br,pose_translation,pose_quaternion):
@@ -92,11 +92,9 @@ def main():
 
         pose = y.left.get_pose(raw_res=False)
 
-        print('translation')
-        print(pose.translation)
-        #print(pose.rotation)
-        print('quaternion')
-        print(pose.quaternion)
+        print('translation {}'.format(pose.translation))
+        print('quaternion {}'.format(pose.quaternion))
+        print('rotation matrix \n{}'.format(pose.rotation))
 
         move(y)
         pose_to_tf(br,pose.translation,pose.quaternion)
