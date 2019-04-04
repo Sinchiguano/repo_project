@@ -110,8 +110,61 @@ It computes the normal for every point by finding adjacent points and calculatin
 
 Once the keypoints have been detected for the model and scene point clouds, geometric information of the local surface around those keypoints are extracted and encoded into feature descriptors. According to the approaches employed to construct the feature descriptors in \cite{survey}, classify into three group: signature based, histogram based and transform based method. In this thesis the approach of histogram based method is used. Namely, Fast Point Feature Histogram, FPFH, this method describe the local neighborhood of a s be generating histograms according to the geometric attributes(e.g.,normals) of the local surface.
 
-%\noindent
-\textbf{Fast Point Feature Histogram}
+\noindent
+\textbf{Fast Point Feature Histogram}\\
+Fast Point Feature Histogram (FPFH) in \cite{algFpfh}, is a developed version of the Point Feature Histogram (PFH) \cite{algFpfh} with a reduced computational complexity and same discriminative power. 
+
+The generation of a FPFH descriptor consists of two steps. In the first step, a Darboux frame is defined $(u=n_{i},v=(p_{j} \times p_{i}) \cdot u,w=u\times v)$ for each point pair ($p_{i}$ and $p_{j}$). Then for each query point p it computes only the relationships between itself and its neighbors as follows:
+\begin{align}
+    \alpha& = v \cdot n_{j}\nonumber \\
+    \phi&= \frac{u \cdot (p_{j} - p_{i})}{|p_{j} - p_{i}|}\label{pfheq} \\
+    \theta &= \arctan(w \cdot n_{j} , u \cdot n_{i})\nonumber
+\end{align}
+The computation above is called a Simplified Point Feature Histogram (SPFH) which is binned by three angular variations ($\alpha , \phi , \theta$), then in the second step, the FPFH of each point is computed using both the SPFH of itself and the weighted ones of its neighbours as follow:
+
+\begin{equation}\label{fpfheq}
+    FPFH(p) = SPFH(p)+\frac{1}{k}\sum\limits_{n=1}^{k}\frac{1}{\omega _{k}}SPFH(p_{k})
+\end{equation}
+
+Where the weight $\omega _{k}$ represents the distance between query point p and a neighbor point $p_{k}$ in a given metric space.
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=3in]{figures03/fpfh1.png}
+\caption{The influence region diagram for a Fast Point Feature Histogram. \cite{algFpfh}}.
+\label{fig:fpfh}
+\end{center}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

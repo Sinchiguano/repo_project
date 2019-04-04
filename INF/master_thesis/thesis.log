@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.3.25)  31 MAR 2019 21:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.3.25)  4 APR 2019 21:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1598,7 +1598,7 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 2.
  [2]
 Chapter 2.
-<02_Background/figures02/astraorbbec.jpg, id=209, 426.59375pt x 215.80624pt>
+<02_Background/figures02/astraorbbec.jpg, id=213, 426.59375pt x 215.80624pt>
 File: 02_Background/figures02/astraorbbec.jpg Graphic file (type jpg)
 
 <use 02_Background/figures02/astraorbbec.jpg>
@@ -1606,7 +1606,7 @@ Package pdftex.def Info: 02_Background/figures02/astraorbbec.jpg used on input
 line 12.
 (pdftex.def)             Requested size: 144.54pt x 73.11958pt.
 
-<02_Background/figures02/pinhole_camera_model.png, id=210, 602.25pt x 424.58624
+<02_Background/figures02/pinhole_camera_model.png, id=214, 602.25pt x 424.58624
 pt>
 File: 02_Background/figures02/pinhole_camera_model.png Graphic file (type png)
  <use 02_Background/figures02/pinhole_camera_model.png>
@@ -1620,7 +1620,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [3
 
  <./02_Background/figures02/astraorbbec.jpg>]
-<02_Background/figures02/intrinsic.png, id=223, 395.22656pt x 223.58531pt>
+<02_Background/figures02/intrinsic.png, id=227, 395.22656pt x 223.58531pt>
 File: 02_Background/figures02/intrinsic.png Graphic file (type png)
 
 <use 02_Background/figures02/intrinsic.png>
@@ -1632,7 +1632,7 @@ ne 71.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [4 <./02_Background/figures02/pinhole_camera_model.png>]
-<02_Background/figures02/extrinsic.png, id=232, 602.25pt x 307.1475pt>
+<02_Background/figures02/extrinsic.png, id=236, 602.25pt x 307.1475pt>
 File: 02_Background/figures02/extrinsic.png Graphic file (type png)
 
 <use 02_Background/figures02/extrinsic.png>
@@ -1640,7 +1640,7 @@ Package pdftex.def Info: 02_Background/figures02/extrinsic.png used on input li
 ne 94.
 (pdftex.def)             Requested size: 144.54pt x 73.7169pt.
 
-<02_Background/figures02/pcd.png, id=234, 562.1pt x 421.575pt>
+<02_Background/figures02/pcd.png, id=238, 562.1pt x 421.575pt>
 File: 02_Background/figures02/pcd.png Graphic file (type png)
 
 <use 02_Background/figures02/pcd.png>
@@ -1653,7 +1653,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5 <./02_Background/figures02/intrinsic.png> <./02_Background/figures02/extrins
 ic.png>]
-<02_Background/figures02/ros_workflows.png, id=244, 1027.84pt x 527.9725pt>
+<02_Background/figures02/ros_workflows.png, id=248, 1027.84pt x 527.9725pt>
 File: 02_Background/figures02/ros_workflows.png Graphic file (type png)
 
 <use 02_Background/figures02/ros_workflows.png>
@@ -1662,7 +1662,7 @@ t line 134.
 (pdftex.def)             Requested size: 144.54pt x 74.24594pt.
  [6 <./02_Background/figures02/pcd.png> <./02_Background/figures02/ros_workflow
 s.png>]
-<02_Background/figures02/pcl1.png, id=254, 521.95pt x 530.98375pt>
+<02_Background/figures02/pcl1.png, id=258, 521.95pt x 530.98375pt>
 File: 02_Background/figures02/pcl1.png Graphic file (type png)
 
 <use 02_Background/figures02/pcl1.png>
@@ -1675,7 +1675,7 @@ Overfull \hbox (2.95833pt too wide) in paragraph at lines 170--171
 p-u-la-tion of any 3D data(CAD
  []
 
-<02_Background/figures02/cloudcompare.jpg, id=271, 662.475pt x 401.5pt>
+<02_Background/figures02/cloudcompare.jpg, id=275, 662.475pt x 401.5pt>
 File: 02_Background/figures02/cloudcompare.jpg Graphic file (type jpg)
 
 <use 02_Background/figures02/cloudcompare.jpg>
@@ -1683,7 +1683,7 @@ Package pdftex.def Info: 02_Background/figures02/cloudcompare.jpg used on input
  line 177.
 (pdftex.def)             Requested size: 144.54pt x 87.5951pt.
 
-<02_Background/figures02/meshlab.png, id=273, 1930.21124pt x 1139.75812pt>
+<02_Background/figures02/meshlab.png, id=277, 1930.21124pt x 1139.75812pt>
 File: 02_Background/figures02/meshlab.png Graphic file (type png)
 
 <use 02_Background/figures02/meshlab.png>
@@ -1694,7 +1694,7 @@ Package pdftex.def Info: 02_Background/figures02/meshlab.png used on input line
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<02_Background/figures02/freecad.jpg, id=275, 1027.84pt x 578.16pt>
+<02_Background/figures02/freecad.jpg, id=279, 1027.84pt x 578.16pt>
 File: 02_Background/figures02/freecad.jpg Graphic file (type jpg)
 
 <use 02_Background/figures02/freecad.jpg>
@@ -1711,7 +1711,7 @@ pg>] [10
 
 ]
 Chapter 3.
-[11] <03_Theory/figures03/pipeline.png, id=309, 853.1875pt x 345.29pt>
+[11] <03_Theory/figures03/pipeline.png, id=313, 853.1875pt x 345.29pt>
 File: 03_Theory/figures03/pipeline.png Graphic file (type png)
 
 <use 03_Theory/figures03/pipeline.png>
@@ -1719,7 +1719,7 @@ Package pdftex.def Info: 03_Theory/figures03/pipeline.png used on input line 18
 .
 (pdftex.def)             Requested size: 216.81pt x 87.74483pt.
  [12 <./03_Theory/figures03/pipeline.png>] <03_Theory/figures03/passthrough.png
-, id=320, 307.1475pt x 153.57375pt>
+, id=324, 307.1475pt x 153.57375pt>
 File: 03_Theory/figures03/passthrough.png Graphic file (type png)
 
 <use 03_Theory/figures03/passthrough.png>
@@ -1730,23 +1730,33 @@ Package pdftex.def Info: 03_Theory/figures03/passthrough.png used on input line
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [13 <./03_Theory/figures03/passthrough.png>]
-<03_Theory/figures03/voxelcloud1.png, id=335, 1499.6025pt x 653.44125pt>
+<03_Theory/figures03/voxelcloud1.png, id=339, 1499.6025pt x 653.44125pt>
 File: 03_Theory/figures03/voxelcloud1.png Graphic file (type png)
 
 <use 03_Theory/figures03/voxelcloud1.png>
 Package pdftex.def Info: 03_Theory/figures03/voxelcloud1.png used on input line
  96.
 (pdftex.def)             Requested size: 216.81pt x 94.47235pt.
- [14 <./03_Theory/figures03/voxelcloud1.png>]) (./References/reference1.tex [15
-] [16
+ [14 <./03_Theory/figures03/voxelcloud1.png>] <03_Theory/figures03/fpfh1.png, i
+d=354, 367.3725pt x 251.94125pt>
+File: 03_Theory/figures03/fpfh1.png Graphic file (type png)
 
-]
+<use 03_Theory/figures03/fpfh1.png>
+Package pdftex.def Info: 03_Theory/figures03/fpfh1.png used on input line 133.
+(pdftex.def)             Requested size: 216.81pt x 148.69017pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[15]) (./References/reference1.tex [16 <./03_Theory/figures03/fpfh1.png>]
 Underfull \hbox (badness 2293) in paragraph at lines 7--9
 \T1/lmr/m/n/10.95 (+20) BER 2006,[]$\T1/lmtt/m/n/10.95 http : / / citeseerx . i
 st . psu . edu / viewdoc / download ? doi =
  []
 
-[17]
+[17
+
+]
 Underfull \hbox (badness 10000) in paragraph at lines 53--55
 []\T1/lmr/m/n/10.95 (+20) ANIL K. JAIN and CHI-TRA DO-RAI, "3D ob-ject
  []
@@ -1818,11 +1828,11 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 88.
  ) 
 Here is how much of TeX's memory you used:
- 20884 strings out of 493029
- 360198 string characters out of 6136234
- 480727 words of memory out of 5000000
- 23873 multiletter control sequences out of 15000+600000
- 95710 words of font info for 122 fonts, out of 8000000 for 9000
+ 20899 strings out of 493029
+ 360447 string characters out of 6136234
+ 480958 words of memory out of 5000000
+ 23880 multiletter control sequences out of 15000+600000
+ 95876 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,17n,52p,10357b,788s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
@@ -1836,10 +1846,10 @@ usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/
 public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></us
 r/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pu
 blic/lm/lmtt10.pfb>
-Output written on thesis.pdf (25 pages, 1773553 bytes).
+Output written on thesis.pdf (25 pages, 1821853 bytes).
 PDF statistics:
- 479 PDF objects out of 1000 (max. 8388607)
- 413 compressed objects within 5 object streams
- 109 named destinations out of 1000 (max. 500000)
- 26391 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 490 PDF objects out of 1000 (max. 8388607)
+ 421 compressed objects within 5 object streams
+ 112 named destinations out of 1000 (max. 500000)
+ 26396 words of extra memory for PDF output out of 29859 (max. 10000000)
 

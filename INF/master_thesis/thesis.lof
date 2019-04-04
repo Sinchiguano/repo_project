@@ -31,3 +31,4 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces General architecture of proposed pose estimation pipeline\relax }}{12}{figure.3.1}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Filtration pipeline used in this thesis\relax }}{13}{figure.3.2}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Left to Right: Input Image, Output after voxelGrid\relax }}{14}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces The influence region diagram for a Fast Point Feature Histogram. \cite {algFpfh}\relax }}{16}{figure.3.4}
