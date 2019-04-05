@@ -62,7 +62,7 @@ RAMSAC selects randomly three points from dataset and computes the parameters of
 \SetAlgoLined
 \KwResult{ o (object candidate point cloud) }
 \KwData{p (3D point cloud), $\tau$ , MaxIter, IR }
- initialization\;
+ %initialization\;
  \While{$t<MaxIter$ - $InlierRatio>IR$}
  {
  Pick 3 points (A, B, C) at random from p \;
@@ -136,49 +136,105 @@ Where the weight $\omega _{k}$ represents the distance between query point p and
 \end{center}
 \end{figure}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \subsection{Searching Strategies}
 
-Henceforth we describe the most relevant Searching Strategies, in chronological order.
+Once both point clouds (object and scene) have been filtered and their shape described, the next step is to find correspondences between them. Therefore, a searching strategy is needed in order to find the proper point correspondences between the two point clouds. Approaches vary in terms of how the correspondence between the scene and model feature is achieved, how a consistent set of matches is derived from the scene-model feature correspondence and how the pose is estimated from a consistent set of correspondence. In \cite{repMatching} describes the popular and important approaches to recognition and localization of 3D objects as follow: 
+\begin{enumerate}
+    \item hypothesize and test
+    \item matching
+    \item relational structures
+    \item Hough(pose) clustering
+    \item geometry hashing
+    \item interpretation tree search and
+    \item iterative model fitting techniques.
+\end{enumerate}
 
-\subsubsection{RANSAC-based methods}
- 
-object having the property. This methodology can be applied in computational geometry problems
-[42].
+In this thesis, a hypothesize-and-test approach is used. In the hypothesize-and-test paradigm, 3D transformation from the object model coordinate frame to the scene coordinate frame is first hypothesize to relate the model feature with the scene features. The transformation is used to verify the match of model features to the scene features. This hypothesized matching is either accepted or rejected depending on the amount of matching error, e.g.  RANdom SAmple and Consesus (RANSAC) is a representative method of this approach.
 
-\subsection{Refinement}
-The last part of the registration process is the refinement of the alignment achieved by Cn Coarse Registration part because is an open problem
-nowadays. In Fine Registration topic, although some improvements are presented every year, the
-majority of the community is focused on Coarse methods, using ICP for Fine Matching.
+\subsubsection{RANSAC-based method} \label{sssec:num1}
+
+RANdom SAmple and Consesus (RANSAC)\cite{repMatching} is an iterative method designed to find the parameters of a model from a set of data which contains outliers. Given an input noisy data, RANSAC finds the parameters that adjust the input data to a given model, discarding the outliers. In this thesis the RANSAC is used for global registration. In each RANSAC iteration, random points are picked from the model point cloud. Their corresponding points in the scene point cloud are detected by querying the nearest neighbor in the 33-dimensional FPFH feature space. A pruning step takes fast pruning algorithms to quickly reject false matches early. Only matches that pass the pruning step are used to compute a transformation, which is validated on the entire point cloud. 
+
+\subsection{Local refinement}
+
+The last step of the pipeline is the so-called refinement of the alignment achieved by a coarse matching generated in \ref{sssec:num1}. This step is also commonly referred to as "Fine matching". This alignment is further refined using a surface registration method, such as the Iterative Closest Point (ICP) algorithm, this method is a standard step after the initial estimates for the relative poses due to its robustness and reliability. 
+
+
+
+\subsubsection{Iterative Closest Point}
+
+The  key  concept  of  the  standard  ICP  algorithm  can  be summarized as follow:
+\begin{enumerate}
+    \item For each point in the source point cloud, find the closest point in the target point cloud.
+    \item Estimate the combination of rotation and translation using a root mean square point to point distance metric minimization technique which will best align each source point to its correspondence found in the previous step. 
+    \item Transform the source points using the obtained transformation.
+    \item Iterate.
+\end{enumerate}
+
+Iteratively repeating these steps typically results in convergence to the desired transformation. In most implementations of ICP, the choice of the distance metric which we refer as $d_{max}$ represents a trade off between convergence and accuracy. A low value results in bad convergence(the algorithm becomes "short sighted"), a large value causes incorrect correspondences to pull the final alignment away from the correct value. The standard ICP algorithm is seen in Algorithm \ref{alg:algICP}. For more details about the ICP and its variants, the reader should refer \cite{repMatching} and \cite{algIcp}
+
+Standard ICP is seen in Algorithm kkkk.
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\KwData{
+\begin{enumerate}
+\item Two point clouds: $A=\{a_{i}\}, B=\{b_{i}\}$
+\item An initial transformation: $T_{0}$
+\end{enumerate}
+ }
+\KwResult{The correct transformation, T, which aligns A and B}
+ $T \leftarrow T_{0}$  \;
+ \While{not converged}
+ {
+  \For{$i \leftarrow 1 \ \KwTo \ N$}{
+   $m_{i} \leftarrow FindClosestPointInA(T \cdot b_{i})$\;
+   %-----------
+    \eIf{$\|m_{i}-T \cdot b_{i}\| \leqslant d_{max}$}{
+    $ \omega _{i} \leftarrow 1$\;
+    }{
+    $ \omega _{i} \leftarrow 0$\;
+	}
+  }
+  %--------------
+   $T \leftarrow \underset{T}{\mathrm{argmin}} {\sum \limits_{n=1}^{N}\omega _{i}\|m_{i}-T \cdot b_{i}\|^{2}}$\;
+}
+\caption{Standar ICP}
+\label{alg:algICP}
+\end{algorithm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

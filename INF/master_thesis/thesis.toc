@@ -50,8 +50,10 @@
 \contentsline {subsubsection}{3D keypoint Detection}{14}{subsubsection*.7}
 \contentsline {subsubsection}{Local surface feature description}{15}{subsubsection*.8}
 \contentsline {subsubsection}{Local surface feature description}{15}{subsubsection*.8}
-\contentsline {subsection}{\numberline {3.1.4}Searching Strategies}{16}{subsection.3.1.4}
-\contentsline {subsubsection}{RANSAC-based methods}{16}{subsubsection*.9}
-\contentsline {subsubsection}{RANSAC-based methods}{16}{subsubsection*.9}
-\contentsline {subsection}{\numberline {3.1.5}Refinement}{16}{subsection.3.1.5}
-\contentsline {chapter}{Bibliography}{17}{chapter*.10}
+\contentsline {subsection}{\numberline {3.1.4}Searching Strategies}{15}{subsection.3.1.4}
+\contentsline {subsubsection}{RANSAC-based method}{16}{subsubsection*.9}
+\contentsline {subsubsection}{RANSAC-based method}{16}{subsubsection*.9}
+\contentsline {subsection}{\numberline {3.1.5}Local refinement}{17}{subsection.3.1.5}
+\contentsline {subsubsection}{Iterative Closest Point}{17}{subsubsection*.10}
+\contentsline {subsubsection}{Iterative Closest Point}{17}{subsubsection*.10}
+\contentsline {chapter}{Bibliography}{19}{chapter*.11}
