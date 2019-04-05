@@ -41,19 +41,22 @@
 \contentsline {section}{\numberline {3.1}Pose estimation pipeline}{11}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Preprocessing stage}{12}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Filtering a Point cloud}{12}{subsection.3.1.2}
-\contentsline {subsubsection}{Filtering a PointCloud using a PassThrough filter}{12}{subsubsection*.5}
-\contentsline {subsubsection}{Filtering a PointCloud using a PassThrough filter}{12}{subsubsection*.5}
+\contentsline {subsubsection}{Filtering a PointCloud using a PassThrough filter}{13}{subsubsection*.5}
+\contentsline {subsubsection}{Filtering a PointCloud using a PassThrough filter}{13}{subsubsection*.5}
 \contentsline {subsubsection}{Plane Segmentation}{13}{subsubsection*.6}
 \contentsline {subsubsection}{Plane Segmentation}{13}{subsubsection*.6}
 \contentsline {subsection}{\numberline {3.1.3}Extract geometric feature}{14}{subsection.3.1.3}
 \contentsline {subsubsection}{3D keypoint Detection}{14}{subsubsection*.7}
 \contentsline {subsubsection}{3D keypoint Detection}{14}{subsubsection*.7}
-\contentsline {subsubsection}{Local surface feature description}{15}{subsubsection*.8}
-\contentsline {subsubsection}{Local surface feature description}{15}{subsubsection*.8}
-\contentsline {subsection}{\numberline {3.1.4}Searching Strategies}{15}{subsection.3.1.4}
-\contentsline {subsubsection}{RANSAC-based method}{16}{subsubsection*.9}
-\contentsline {subsubsection}{RANSAC-based method}{16}{subsubsection*.9}
-\contentsline {subsection}{\numberline {3.1.5}Local refinement}{17}{subsection.3.1.5}
-\contentsline {subsubsection}{Iterative Closest Point}{17}{subsubsection*.10}
-\contentsline {subsubsection}{Iterative Closest Point}{17}{subsubsection*.10}
-\contentsline {chapter}{Bibliography}{19}{chapter*.11}
+\contentsline {subsubsection}{Local surface feature description}{14}{subsubsection*.8}
+\contentsline {subsubsection}{Local surface feature description}{14}{subsubsection*.8}
+\contentsline {subsubsection}{Local surface feature description}{16}{subsubsection*.9}
+\contentsline {subsubsection}{Local surface feature description}{16}{subsubsection*.9}
+\contentsline {subsection}{\numberline {3.1.4}Searching Strategies}{16}{subsection.3.1.4}
+\contentsline {subsubsection}{RANSAC-based method}{17}{subsubsection*.10}
+\contentsline {subsubsection}{RANSAC-based method}{17}{subsubsection*.10}
+\contentsline {subsection}{\numberline {3.1.5}Local refinement}{18}{subsection.3.1.5}
+\contentsline {subsubsection}{Iterative Closest Point}{18}{subsubsection*.11}
+\contentsline {subsubsection}{Iterative Closest Point}{18}{subsubsection*.11}
+\contentsline {subsection}{\numberline {3.1.6}Local refinement}{19}{subsection.3.1.6}
+\contentsline {chapter}{Bibliography}{21}{chapter*.12}

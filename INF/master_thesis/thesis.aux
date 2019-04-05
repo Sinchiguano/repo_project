@@ -159,52 +159,68 @@
 \newlabel{chap:theo}{{3}{11}{Theory}{chapter.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Pose estimation pipeline}{11}{section.3.1}}
 \citation{algFiltering}
-\citation{pcl}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces General architecture of proposed pose estimation pipeline\relax }}{12}{figure.3.1}}
 \newlabel{fig:pipeline}{{3.1}{12}{General architecture of proposed pose estimation pipeline\relax }{figure.3.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Preprocessing stage}{12}{subsection.3.1.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Filtering a Point cloud}{12}{subsection.3.1.2}}
-\@writefile{toc}{\contentsline {subsubsection}{Filtering a PointCloud using a PassThrough filter}{12}{subsubsection*.5}}
-\@writefile{toc}{\contentsline {subsubsection}{Filtering a PointCloud using a PassThrough filter}{12}{subsubsection*.5}}
+\citation{pcl}
 \citation{algPlane}
 \citation{cadPipeline3}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Filtration pipeline used in this thesis\relax }}{13}{figure.3.2}}
-\newlabel{fig:passthrough}{{3.2}{13}{Filtration pipeline used in this thesis\relax }{figure.3.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Filtering a PointCloud using a PassThrough filter}{13}{subsubsection*.5}}
+\@writefile{toc}{\contentsline {subsubsection}{Filtering a PointCloud using a PassThrough filter}{13}{subsubsection*.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Flow Chart of Point Cloud Processing For Filtering Outliars\relax }}{13}{figure.3.2}}
+\newlabel{fig:passthrough}{{3.2}{13}{Flow Chart of Point Cloud Processing For Filtering Outliars\relax }{figure.3.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Plane Segmentation}{13}{subsubsection*.6}}
 \@writefile{toc}{\contentsline {subsubsection}{Plane Segmentation}{13}{subsubsection*.6}}
 \citation{algFiltering}
 \citation{algDownsampling}
 \citation{open3d}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces RANSAC for plane segmentation \cite  {cadPipeline3}\relax }}{14}{algocf.1}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces RANSAC for plane segmentation  \cite  {cadPipeline3}\relax }}{14}{algocf.1}}
+\newlabel{alg:algPlane}{{1}{14}{Plane Segmentation}{algocf.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Flow Chart of Point Cloud Processing For Plane Segmentation\relax }}{14}{figure.3.3}}
+\newlabel{fig:planesegmentation}{{3.3}{14}{Flow Chart of Point Cloud Processing For Plane Segmentation\relax }{figure.3.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Extract geometric feature}{14}{subsection.3.1.3}}
 \@writefile{toc}{\contentsline {subsubsection}{3D keypoint Detection}{14}{subsubsection*.7}}
 \@writefile{toc}{\contentsline {subsubsection}{3D keypoint Detection}{14}{subsubsection*.7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Left to Right: Input Image, Output after voxelGrid\relax }}{14}{figure.3.3}}
-\newlabel{fig:voxeldown}{{3.3}{14}{Left to Right: Input Image, Output after voxelGrid\relax }{figure.3.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Local surface feature description}{14}{subsubsection*.8}}
+\@writefile{toc}{\contentsline {subsubsection}{Local surface feature description}{14}{subsubsection*.8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Left to Right: Input Image, Output after voxelGrid\relax }}{15}{figure.3.4}}
+\newlabel{fig:voxeldown}{{3.4}{15}{Left to Right: Input Image, Output after voxelGrid\relax }{figure.3.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Flow Chart of Point Cloud Processing For Keypoints detection\relax }}{15}{figure.3.5}}
+\newlabel{fig:planesegmentation}{{3.5}{15}{Flow Chart of Point Cloud Processing For Keypoints detection\relax }{figure.3.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Flow Chart of Point Cloud Processing For Plane Segmentation\relax }}{15}{figure.3.6}}
+\newlabel{fig:planesegmentation}{{3.6}{15}{Flow Chart of Point Cloud Processing For Plane Segmentation\relax }{figure.3.6}{}}
 \citation{survey}
 \citation{algFpfh}
 \citation{algFpfh}
 \citation{algFpfh}
 \citation{algFpfh}
 \citation{repMatching}
-\@writefile{toc}{\contentsline {subsubsection}{Local surface feature description}{15}{subsubsection*.8}}
-\@writefile{toc}{\contentsline {subsubsection}{Local surface feature description}{15}{subsubsection*.8}}
-\newlabel{pfheq}{{3.2}{15}{Local surface feature description}{equation.3.1.2}{}}
-\newlabel{fpfheq}{{3.3}{15}{Local surface feature description}{equation.3.1.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Searching Strategies}{15}{subsection.3.1.4}}
+\@writefile{toc}{\contentsline {subsubsection}{Local surface feature description}{16}{subsubsection*.9}}
+\@writefile{toc}{\contentsline {subsubsection}{Local surface feature description}{16}{subsubsection*.9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Flow Chart of Point Cloud Processing For Feature Detection\relax }}{16}{figure.3.7}}
+\newlabel{fig:fpfh}{{3.7}{16}{Flow Chart of Point Cloud Processing For Feature Detection\relax }{figure.3.7}{}}
+\newlabel{pfheq}{{3.2}{16}{Local surface feature description}{equation.3.1.2}{}}
+\newlabel{fpfheq}{{3.3}{16}{Local surface feature description}{equation.3.1.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Searching Strategies}{16}{subsection.3.1.4}}
 \citation{repMatching}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces The influence region diagram for a Fast Point Feature Histogram. \cite  {algFpfh}\relax }}{16}{figure.3.4}}
-\newlabel{fig:fpfh}{{3.4}{16}{The influence region diagram for a Fast Point Feature Histogram. \cite {algFpfh}\relax }{figure.3.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{RANSAC-based method}{16}{subsubsection*.9}}
-\@writefile{toc}{\contentsline {subsubsection}{RANSAC-based method}{16}{subsubsection*.9}}
-\newlabel{sssec:num1}{{3.1.4}{16}{RANSAC-based method}{subsubsection*.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces The influence region diagram for a Fast Point Feature Histogram. \cite  {algFpfh}\relax }}{17}{figure.3.8}}
+\newlabel{fig:fpfh}{{3.8}{17}{The influence region diagram for a Fast Point Feature Histogram. \cite {algFpfh}\relax }{figure.3.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{RANSAC-based method}{17}{subsubsection*.10}}
+\@writefile{toc}{\contentsline {subsubsection}{RANSAC-based method}{17}{subsubsection*.10}}
+\newlabel{sssec:num1}{{3.1.4}{17}{RANSAC-based method}{subsubsection*.10}{}}
 \citation{repMatching}
 \citation{algIcp}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.5}Local refinement}{17}{subsection.3.1.5}}
-\@writefile{toc}{\contentsline {subsubsection}{Iterative Closest Point}{17}{subsubsection*.10}}
-\@writefile{toc}{\contentsline {subsubsection}{Iterative Closest Point}{17}{subsubsection*.10}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Standar ICP\relax }}{18}{algocf.2}}
-\newlabel{alg:algICP}{{2}{18}{Iterative Closest Point}{algocf.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Flow Chart of Point Cloud Processing For Finding Correspondence\relax }}{18}{figure.3.9}}
+\newlabel{fig:ransac}{{3.9}{18}{Flow Chart of Point Cloud Processing For Finding Correspondence\relax }{figure.3.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.5}Local refinement}{18}{subsection.3.1.5}}
+\@writefile{toc}{\contentsline {subsubsection}{Iterative Closest Point}{18}{subsubsection*.11}}
+\@writefile{toc}{\contentsline {subsubsection}{Iterative Closest Point}{18}{subsubsection*.11}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Standar ICP\relax }}{19}{algocf.2}}
+\newlabel{alg:algICP}{{2}{19}{Iterative Closest Point}{algocf.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Flow Chart of The Pose Estimation Pipeline\relax }}{19}{figure.3.10}}
+\newlabel{fig:icp}{{3.10}{19}{Flow Chart of The Pose Estimation Pipeline\relax }{figure.3.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.6}Local refinement}{19}{subsection.3.1.6}}
 \bibcite{cadPipeline1}{1}
 \bibcite{cadPipeline2}{2}
 \bibcite{cadPipeline3}{3}
@@ -215,7 +231,7 @@
 \bibcite{open3d}{8}
 \bibcite{icp}{9}
 \bibcite{normal}{10}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{19}{chapter*.11}}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{21}{chapter*.12}}
 \bibcite{fpfh}{11}
 \bibcite{cloudcompare}{12}
 \bibcite{meshlab}{13}
