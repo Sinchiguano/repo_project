@@ -1,27 +1,28 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Goal}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{Thesis structure}{chapter.1}% 4
-\BOOKMARK [0][-]{chapter.2}{Background}{}% 5
-\BOOKMARK [1][-]{section.2.1}{ RGB-D sensors}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{ Camera Pinhole Model}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.2.1}{Parameters of camera model}{section.2.2}% 8
-\BOOKMARK [2][-]{subsection.2.2.2}{Camera's Intrinsic Parameters}{section.2.2}% 9
-\BOOKMARK [2][-]{subsection.2.2.3}{Camera's Extrinsic Parameters}{section.2.2}% 10
-\BOOKMARK [1][-]{section.2.3}{Point Cloud}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.4}{Robotic Operating System}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.5}{PCL}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.6}{Open3D}{chapter.2}% 14
-\BOOKMARK [1][-]{section.2.7}{Software tools}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.7.1}{CloudCompare}{section.2.7}% 16
-\BOOKMARK [2][-]{subsection.2.7.2}{MeshLab}{section.2.7}% 17
-\BOOKMARK [2][-]{subsection.2.7.3}{FreeCAD}{section.2.7}% 18
-\BOOKMARK [0][-]{chapter.3}{Theory}{}% 19
-\BOOKMARK [1][-]{section.3.1}{Pose estimation pipeline}{chapter.3}% 20
-\BOOKMARK [2][-]{subsection.3.1.1}{Preprocessing stage}{section.3.1}% 21
-\BOOKMARK [2][-]{subsection.3.1.2}{Filtering a Point cloud}{section.3.1}% 22
-\BOOKMARK [2][-]{subsection.3.1.3}{Extract geometric feature}{section.3.1}% 23
-\BOOKMARK [2][-]{subsection.3.1.4}{Searching Strategies}{section.3.1}% 24
-\BOOKMARK [2][-]{subsection.3.1.5}{Local refinement}{section.3.1}% 25
-\BOOKMARK [2][-]{subsection.3.1.6}{Local refinement}{section.3.1}% 26
-\BOOKMARK [0][-]{chapter*.12}{Bibliography}{}% 27
+\BOOKMARK [1][-]{section.1.3}{Related Work}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Thesis structure}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 6
+\BOOKMARK [1][-]{section.2.1}{ RGB-D sensors}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{ Camera Pinhole Model}{chapter.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.1}{Parameters of camera model}{section.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.2}{Camera's Intrinsic Parameters}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.3}{Camera's Extrinsic Parameters}{section.2.2}% 11
+\BOOKMARK [1][-]{section.2.3}{Point Cloud}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.4}{Robotic Operating System}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.5}{PCL}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.6}{Open3D}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.7}{Software tools}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.7.1}{CloudCompare}{section.2.7}% 17
+\BOOKMARK [2][-]{subsection.2.7.2}{MeshLab}{section.2.7}% 18
+\BOOKMARK [2][-]{subsection.2.7.3}{FreeCAD}{section.2.7}% 19
+\BOOKMARK [0][-]{chapter.3}{Theory}{}% 20
+\BOOKMARK [1][-]{section.3.1}{Pose estimation pipeline}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.1.1}{Preprocessing stage}{section.3.1}% 22
+\BOOKMARK [2][-]{subsection.3.1.2}{Filtering a Point cloud}{section.3.1}% 23
+\BOOKMARK [2][-]{subsection.3.1.3}{Extract geometric feature}{section.3.1}% 24
+\BOOKMARK [2][-]{subsection.3.1.4}{Searching Strategies}{section.3.1}% 25
+\BOOKMARK [2][-]{subsection.3.1.5}{Local refinement}{section.3.1}% 26
+\BOOKMARK [2][-]{subsection.3.1.6}{Local refinement}{section.3.1}% 27
+\BOOKMARK [0][-]{chapter*.12}{Bibliography}{}% 28

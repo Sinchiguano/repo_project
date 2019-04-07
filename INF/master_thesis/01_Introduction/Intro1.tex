@@ -10,6 +10,9 @@ For years. The industrial robot has undergoes through enormous development. Robo
 \section{Goal}
 We attempt to provide an algorithm for determining the pose of a known parts similar to following pipeline "6D object pose estimation using RGBD data" \cite{intro2}. In addition, a robot-camera calibration needs to be done, and a main requirement a 3D object model needed.
 
+\section{Related Work}
+There are mainly two types of descriptors used for object recognition from point cloud: local descriptors, which are used to match localized features of the input point cloud with corresponding features of the objects' models; and global descritors, whic aim to match whole object or significant part of them that were previously segmented from the point clouds
+
 \section{Thesis structure}
 The thesis consists of 5 chapters, \nameref{appendix} and \nameref{chap:cd}. The current chapter briefly describes the motivation and the goal for the part localization which we refer from here on through the whole thesis as 6D pose estimation of a rigid body in order to fit to the nomenclature giving in the perception field. 
 Chapter 2 gives a background to camera calibration, openCV, open3D, ROS, prepossessing algorithm for segmenting the 3D image and related work about 6D pose estimation of the rigid body on which this work is building on. Chapter 3 describes the algorithms and the implementation for creating and collective ground data.  Chapter 4 metric pair with the ground truth data. Chapter 5 concludes the thesis and showcase possible future works.
