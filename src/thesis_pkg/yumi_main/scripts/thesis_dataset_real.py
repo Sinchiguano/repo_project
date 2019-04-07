@@ -20,7 +20,7 @@ Everthing done with open3d, pyntcloud, CloudCompare, meshLab and python_pcl bind
 """
 
 import sys
-sys.path.insert(0, '/home/sinchiguano/yumi_depends_ws/src/yumi_main/scripts/project')
+sys.path.insert(0, '/home/casch/yumi_depends_ws/src/thesis_pkg/yumi_main/scripts/project')
 
 #The order matters
 from thesis_library import *

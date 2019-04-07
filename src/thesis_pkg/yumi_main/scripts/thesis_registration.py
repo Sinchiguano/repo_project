@@ -9,8 +9,9 @@
 """
 
 """
+
 import sys
-sys.path.insert(0, '/home/sinchiguano/yumi_depends_ws/src/yumi_main/scripts/project')
+sys.path.insert(0, '/home/casch/yumi_depends_ws/src/thesis_pkg/yumi_main/scripts/project')
 
 #The order matters
 from thesis_library import *
@@ -156,20 +157,20 @@ def main():
         print(ransac_output.transformation)
 
 
-        #ICP REGISTRATION -->>local registration, point to plane approach
-        #-------------------
-        source_down = voxel_down_sample(source, 0.008)
-        target_down = voxel_down_sample(target, 0.008)
+        # #ICP REGISTRATION -->>local registration, point to plane approach
+        # #-------------------
+        # source_down = voxel_down_sample(source, 0.008)
+        # target_down = voxel_down_sample(target, 0.008)
 
-        # source_down=np.asarray(source_down.points)
-        # target_down=np.asarray(target_down.points)
-        # print('shape:',source_down.shape)
-        # print('shape:',target_down.shape)
+        # # source_down=np.asarray(source_down.points)
+        # # target_down=np.asarray(target_down.points)
+        # # print('shape:',source_down.shape)
+        # # print('shape:',target_down.shape)
         
-        icp_output = do_icp_registration(source_down, target_down,ransac_output.transformation)
-        do_drawing_registration(source, target, icp_output.transformation)
-        print('ICP')
-        print(icp_output.transformation)
+        # icp_output = do_icp_registration(source_down, target_down,ransac_output.transformation)
+        # do_drawing_registration(source, target, icp_output.transformation)
+        # print('ICP')
+        # print(icp_output.transformation)
 
 
 

@@ -269,8 +269,8 @@ def main():
 
         # Capture frame-by-frame
 
-        #frame=cv2.imread('temp3.jpg')
-        frame=camObj.get_image()
+        frame=cv2.imread('temp3.jpg')
+        #frame=camObj.get_image()
 
         #print(type(frame))
         if frame is None:
