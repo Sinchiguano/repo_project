@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.3.25)  8 APR 2019 17:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.3.25)  8 APR 2019 21:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1270,29 +1270,44 @@ Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \TX@delta=\dimen269
 \TX@cols=\count176
 \TX@ftn=\toks32
-) (./thesis.aux)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xr.sty
+Package: xr 1994/05/28 v5.02 eXternal References (DPC)
+) (./thesis.aux
+
+LaTeX Warning: Label `eq4' multiply defined.
+
+
+LaTeX Warning: Label `fig:planesegmentation' multiply defined.
+
+
+LaTeX Warning: Label `fig:planesegmentation' multiply defined.
+
+
+LaTeX Warning: Label `fig:fpfh' multiply defined.
+
+)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 70.
-
-(/usr/share/texmf/tex/latex/lm/t1lmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 73.
+ (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 70.
+LaTeX Info: Redefining \microtypecontext on input line 73.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1383,7 +1398,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 70.
+Package hyperref Info: Link coloring OFF on input line 73.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1392,9 +1407,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count183
 )
-LaTeX Info: Redefining \ref on input line 70.
-LaTeX Info: Redefining \pageref on input line 70.
-LaTeX Info: Redefining \nameref on input line 70.
+LaTeX Info: Redefining \ref on input line 73.
+LaTeX Info: Redefining \pageref on input line 73.
+LaTeX Info: Redefining \nameref on input line 73.
 
 (./thesis.out) (./thesis.out)
 \@outlinefile=\write4
@@ -1404,34 +1419,34 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 71.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 74.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 71.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 74.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 71.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 74.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 71.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 74.
 
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 71.
+(Font)              <10.95> on input line 74.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 71.
+(Font)              <8> on input line 74.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 71.
-LaTeX Font Info:    Try loading font information for U+msa on input line 71.
+(Font)              <6> on input line 74.
+LaTeX Font Info:    Try loading font information for U+msa on input line 74.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1439,7 +1454,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 71.
+LaTeX Font Info:    Try loading font information for U+msb on input line 74.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1447,19 +1462,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-<ctu_logo_black.pdf, id=8, 366.36874pt x 279.0425pt>
+<ctu_logo_black.pdf, id=128, 366.36874pt x 279.0425pt>
 File: ctu_logo_black.pdf Graphic file (type pdf)
- <use ctu_logo_black.pdf>
-Package pdftex.def Info: ctu_logo_black.pdf used on input line 71.
+
+<use ctu_logo_black.pdf>
+Package pdftex.def Info: ctu_logo_black.pdf used on input line 74.
 (pdftex.def)             Requested size: 85.86746pt x 65.40001pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 71.
+(Font)              <14.4> on input line 74.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 71.
+(Font)              <10> on input line 74.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 71.
+(Font)              <7> on input line 74.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 71--71
+Overfull \hbox (5.0pt too wide) in paragraph at lines 74--74
 []|| [][][][][][] 
  []
 
@@ -1468,7 +1484,7 @@ Overfull \hbox (5.0pt too wide) in paragraph at lines 71--71
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./ctu_logo_black.pdf>]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 71.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 74.
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1516,22 +1532,22 @@ Package microtype Info: Loading generic settings for font family
 .................................................
 . LaTeX info: "xparse/redefine-command"
 . 
-. Redefining command \chapter with sig. 'som' on line 71.
+. Redefining command \chapter with sig. 'som' on line 74.
 .................................................
 .................................................
 . LaTeX info: "xparse/redefine-command"
 . 
-. Redefining command \tableofcontents with sig. '' on line 71.
+. Redefining command \tableofcontents with sig. '' on line 74.
 .................................................
 .................................................
 . LaTeX info: "xparse/redefine-command"
 . 
-. Redefining command \listoffigures with sig. '' on line 71.
+. Redefining command \listoffigures with sig. '' on line 74.
 .................................................
 .................................................
 . LaTeX info: "xparse/redefine-command"
 . 
-. Redefining command \listoftables with sig. '' on line 71.
+. Redefining command \listoftables with sig. '' on line 74.
 .................................................
  [3
 
@@ -1590,7 +1606,312 @@ Package microtype Info: Loading generic settings for font family
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
- (./08_AppendixA/AppendixA8.tex
+ (./01_Introduction/Intro1.tex
+Chapter 1.
+[1
+
+
+
+
+
+]) (./02_RelatedWork/RelatedWork2.tex
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 2.
+ [2]
+Chapter 2.
+[3
+
+]) (./03_Background/Background3.tex [4]
+Chapter 3.
+<03_Background/figures02/astraorbbec.jpg, id=272, 426.59375pt x 215.80624pt>
+File: 03_Background/figures02/astraorbbec.jpg Graphic file (type jpg)
+
+<use 03_Background/figures02/astraorbbec.jpg>
+Package pdftex.def Info: 03_Background/figures02/astraorbbec.jpg used on input 
+line 12.
+(pdftex.def)             Requested size: 144.54pt x 73.11958pt.
+
+<03_Background/figures02/pinhole_camera_model.png, id=273, 602.25pt x 424.58624
+pt>
+File: 03_Background/figures02/pinhole_camera_model.png Graphic file (type png)
+ <use 03_Background/figures02/pinhole_camera_model.png>
+Package pdftex.def Info: 03_Background/figures02/pinhole_camera_model.png used 
+on input line 23.
+(pdftex.def)             Requested size: 144.54pt x 101.90277pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5
+
+ <./03_Background/figures02/astraorbbec.jpg>]
+<03_Background/figures02/intrinsic.png, id=287, 395.22656pt x 223.58531pt>
+File: 03_Background/figures02/intrinsic.png Graphic file (type png)
+
+<use 03_Background/figures02/intrinsic.png>
+Package pdftex.def Info: 03_Background/figures02/intrinsic.png used on input li
+ne 71.
+(pdftex.def)             Requested size: 144.54pt x 81.76659pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6 <./03_Background/figures02/pinhole_camera_model.png>]
+<03_Background/figures02/extrinsic.png, id=296, 602.25pt x 307.1475pt>
+File: 03_Background/figures02/extrinsic.png Graphic file (type png)
+
+<use 03_Background/figures02/extrinsic.png>
+Package pdftex.def Info: 03_Background/figures02/extrinsic.png used on input li
+ne 94.
+(pdftex.def)             Requested size: 144.54pt x 73.7169pt.
+
+<03_Background/figures02/pcd.png, id=298, 562.1pt x 421.575pt>
+File: 03_Background/figures02/pcd.png Graphic file (type png)
+
+<use 03_Background/figures02/pcd.png>
+Package pdftex.def Info: 03_Background/figures02/pcd.png used on input line 121
+.
+(pdftex.def)             Requested size: 144.54pt x 108.40399pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7 <./03_Background/figures02/intrinsic.png> <./03_Background/figures02/extrins
+ic.png>]
+<03_Background/figures02/ros_workflows.png, id=310, 1027.84pt x 527.9725pt>
+File: 03_Background/figures02/ros_workflows.png Graphic file (type png)
+
+<use 03_Background/figures02/ros_workflows.png>
+Package pdftex.def Info: 03_Background/figures02/ros_workflows.png used on inpu
+t line 134.
+(pdftex.def)             Requested size: 144.54pt x 74.24594pt.
+ [8 <./03_Background/figures02/pcd.png> <./03_Background/figures02/ros_workflow
+s.png>]
+<03_Background/figures02/pcl1.png, id=320, 521.95pt x 530.98375pt>
+File: 03_Background/figures02/pcl1.png Graphic file (type png)
+
+<use 03_Background/figures02/pcl1.png>
+Package pdftex.def Info: 03_Background/figures02/pcl1.png used on input line 15
+8.
+(pdftex.def)             Requested size: 144.54pt x 147.0378pt.
+ [9 <./03_Background/figures02/pcl1.png>]
+Overfull \hbox (2.95833pt too wide) in paragraph at lines 170--171
+\T1/lmr/m/n/10.95 (-20) For the pur-pose of ren-der-ing, con-ver-tion and ma-ni
+p-u-la-tion of any 3D data(CAD
+ []
+
+<03_Background/figures02/cloudcompare.jpg, id=336, 662.475pt x 401.5pt>
+File: 03_Background/figures02/cloudcompare.jpg Graphic file (type jpg)
+
+<use 03_Background/figures02/cloudcompare.jpg>
+Package pdftex.def Info: 03_Background/figures02/cloudcompare.jpg used on input
+ line 177.
+(pdftex.def)             Requested size: 144.54pt x 87.5951pt.
+
+<03_Background/figures02/meshlab.png, id=338, 1930.21124pt x 1139.75812pt>
+File: 03_Background/figures02/meshlab.png Graphic file (type png)
+
+<use 03_Background/figures02/meshlab.png>
+Package pdftex.def Info: 03_Background/figures02/meshlab.png used on input line
+ 190.
+(pdftex.def)             Requested size: 144.54pt x 85.33904pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<03_Background/figures02/freecad.jpg, id=340, 1027.84pt x 578.16pt>
+File: 03_Background/figures02/freecad.jpg Graphic file (type jpg)
+
+<use 03_Background/figures02/freecad.jpg>
+Package pdftex.def Info: 03_Background/figures02/freecad.jpg used on input line
+ 202.
+(pdftex.def)             Requested size: 144.54pt x 81.30354pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) (./04_Theory/Theory4.tex [10 <./03_Background/figures02/cloudcompare.jpg>]
+[11 <./03_Background/figures02/meshlab.png> <./03_Background/figures02/freecad.
+jpg>] [12
+
+]
+Chapter 4.
+[13] <04_Theory/diagrams/pipelineend.png, id=373, 755.82375pt x 399.4925pt>
+File: 04_Theory/diagrams/pipelineend.png Graphic file (type png)
+
+<use 04_Theory/diagrams/pipelineend.png>
+Package pdftex.def Info: 04_Theory/diagrams/pipelineend.png used on input line 
+15.
+(pdftex.def)             Requested size: 289.0728pt x 144.53648pt.
+ [14 <./04_Theory/diagrams/pipelineend.png>] <04_Theory/diagrams/passthrough.pn
+g, id=383, 397.485pt x 112.42pt>
+File: 04_Theory/diagrams/passthrough.png Graphic file (type png)
+
+<use 04_Theory/diagrams/passthrough.png>
+Package pdftex.def Info: 04_Theory/diagrams/passthrough.png used on input line 
+39.
+(pdftex.def)             Requested size: 216.81pt x 61.32172pt.
+
+<04_Theory/diagrams/planesegmentation.png, id=388, 505.89pt x 99.37125pt>
+File: 04_Theory/diagrams/planesegmentation.png Graphic file (type png)
+
+<use 04_Theory/diagrams/planesegmentation.png>
+Package pdftex.def Info: 04_Theory/diagrams/planesegmentation.png used on input
+ line 83.
+(pdftex.def)             Requested size: 216.81pt x 42.58778pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15 <./04_Theory/diagrams/passthrough.png>]
+<04_Theory/figures03/voxelcloud1.png, id=402, 1499.6025pt x 653.44125pt>
+File: 04_Theory/figures03/voxelcloud1.png Graphic file (type png)
+
+<use 04_Theory/figures03/voxelcloud1.png>
+Package pdftex.def Info: 04_Theory/figures03/voxelcloud1.png used on input line
+ 99.
+(pdftex.def)             Requested size: 216.81pt x 94.47235pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<04_Theory/diagrams/keypoints.png, id=403, 265.99374pt x 352.31625pt>
+File: 04_Theory/diagrams/keypoints.png Graphic file (type png)
+
+<use 04_Theory/diagrams/keypoints.png>
+Package pdftex.def Info: 04_Theory/diagrams/keypoints.png used on input line 10
+7.
+(pdftex.def)             Requested size: 144.54362pt x 144.5366pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[16 <./04_Theory/diagrams/planesegmentation.png>]
+<04_Theory/diagrams/vertexnormal.png, id=415, 262.9825pt x 349.305pt>
+File: 04_Theory/diagrams/vertexnormal.png Graphic file (type png)
+
+<use 04_Theory/diagrams/vertexnormal.png>
+Package pdftex.def Info: 04_Theory/diagrams/vertexnormal.png used on input line
+ 122.
+(pdftex.def)             Requested size: 144.5445pt x 144.5378pt.
+ [17 <./04_Theory/figures03/voxelcloud1.png> <./04_Theory/diagrams/keypoints.pn
+g> <./04_Theory/diagrams/vertexnormal.png>] <04_Theory/diagrams/fpfh.png, id=42
+5, 419.5675pt x 99.37125pt>
+File: 04_Theory/diagrams/fpfh.png Graphic file (type png)
+
+<use 04_Theory/diagrams/fpfh.png>
+Package pdftex.def Info: 04_Theory/diagrams/fpfh.png used on input line 133.
+(pdftex.def)             Requested size: 216.81pt x 51.34885pt.
+
+<04_Theory/figures03/fpfh1.png, id=428, 367.3725pt x 251.94125pt>
+File: 04_Theory/figures03/fpfh1.png Graphic file (type png)
+
+<use 04_Theory/figures03/fpfh1.png>
+Package pdftex.def Info: 04_Theory/figures03/fpfh1.png used on input line 159.
+(pdftex.def)             Requested size: 216.81pt x 148.69017pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[18 <./04_Theory/diagrams/fpfh.png>] [19 <./04_Theory/figures03/fpfh1.png>]
+<04_Theory/diagrams/ransac.png, id=456, 484.81125pt x 96.36pt>
+File: 04_Theory/diagrams/ransac.png Graphic file (type png)
+
+<use 04_Theory/diagrams/ransac.png>
+Package pdftex.def Info: 04_Theory/diagrams/ransac.png used on input line 186.
+(pdftex.def)             Requested size: 216.81pt x 43.09251pt.
+
+Overfull \hbox (11.2pt too wide) detected at line 239
+[][] 
+ []
+
+<04_Theory/diagrams/endpipeline.png, id=461, 713.66624pt x 136.51pt>
+File: 04_Theory/diagrams/endpipeline.png Graphic file (type png)
+
+<use 04_Theory/diagrams/endpipeline.png>
+Package pdftex.def Info: 04_Theory/diagrams/endpipeline.png used on input line 
+243.
+(pdftex.def)             Requested size: 289.07999pt x 55.29457pt.
+ [20 <./04_Theory/diagrams/ransac.png>]) (./07_References/07_reference.tex [21 
+<./04_Theory/diagrams/endpipeline.png>] [22
+
+]
+Underfull \hbox (badness 2293) in paragraph at lines 8--10
+\T1/lmr/m/n/10.95 (+20) BER 2006,[]$\T1/lmtt/m/n/10.95 http : / / citeseerx . i
+st . psu . edu / viewdoc / download ? doi =
+ []
+
+
+Underfull \hbox (badness 6332) in paragraph at lines 21--23
+\T1/lmr/m/n/10.95 (+20) Dobkin, "Shape Dis-tri-bu-tions", []$\T1/lmtt/m/n/10.95
+ http : / / graphics . stanford . edu /
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 61--63
+[]\T1/lmr/m/n/10.95 (+20) ANIL K. JAIN and CHI-TRA DO-RAI, "3D ob-ject
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--63
+\T1/lmr/m/n/10.95 (+20) recog-ni-tion: Rep-re-sen-ta-tion and match-ing" in: St
+atis-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--63
+\T1/lmr/m/n/10.95 (+20) tics and Com-put-ing(2000)10,167^^U182, []$\T1/lmtt/m/n
+/10.95 https : / / epdf . tips /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
+[]\T1/lmr/m/n/10.95 (+20) Rifat Kur-ban, Flo-renc Skuka, Hakki Bozpo-lat, "Plan
+e
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
+\T1/lmr/m/n/10.95 (+20) Seg-men-ta-tion of Kinect Point Clouds us-ing RANSAC" i
+n:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
+\T1/lmr/m/n/10.95 (+20) CIT 2015 The 7th In-ter-na-tional Con-fer-ence on In-fo
+r-ma-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
+\T1/lmr/m/n/10.95 (+20) tion Tech-nol-ogy, []$\T1/lmtt/m/n/10.95 https : / / ww
+w . semanticscholar . org / paper /
+ []
+
+
+Overfull \hbox (8.08127pt too wide) in paragraph at lines 70--72
+\T1/lmtt/m/n/10.95 Plane-[]Segmentation-[]of-[]Kinect-[]Point-[]Clouds-[]using-
+[]Kurban-[]Skuka /
+ []
+
+
+Overfull \hbox (20.07874pt too wide) in paragraph at lines 73--75
+\T1/lmtt/m/n/10.95 3D-[]Object-[]Recognition-[]in-[]Cluttered-[]Scenes-[]with-[
+]A-[]Guo-[]Bennamoun /
+ []
+
+[24]
+Underfull \hbox (badness 1596) in paragraph at lines 79--82
+[]\T1/lmr/m/n/10.95 (+20) Sebastian Thrun,Dirk Haehnel,Aleksandr V. Se-gal, "Ge
+neralized-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--82
+\T1/lmr/m/n/10.95 (+20) ICP", []$\T1/lmtt/m/n/10.95 http : / / www . robots . o
+x . ac . uk / ~avsegal / resources / papers /
+ []
+
+) (./08_AppendixA/AppendixA8.tex
 .................................................
 . LaTeX info: "xparse/redefine-command"
 . 
@@ -1601,45 +1922,63 @@ Package microtype Info: Loading generic settings for font family
 . 
 . Redefining command \appendix with sig. 'ss' on line 3.
 .................................................
+ [25] [26
 
+]
 Appendix A.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 21--95
+Underfull \hbox (badness 10000) in paragraph at lines 22--96
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 96.
-[1
-
-
-
-
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 97.
+[27]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 97.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 96.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 96.
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 03A98FCABADFC55697FC6E678DFB7162;52.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 97.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 97.
+
+
+Package rerunfilecheck Warning: File `thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis.out':
+(rerunfilecheck)             Before: A737B714CB27ED509C7FEF9ABCEC151D;1968
+(rerunfilecheck)             After:  E16AB92F67BCC3365E9D7AC551E568A4;1898.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 97.
  ) 
 Here is how much of TeX's memory you used:
- 20626 strings out of 493029
- 355375 string characters out of 6136234
- 483137 words of memory out of 5000000
- 23789 multiletter control sequences out of 15000+600000
- 63235 words of font info for 89 fonts, out of 8000000 for 9000
+ 21104 strings out of 493029
+ 363543 string characters out of 6136234
+ 489700 words of memory out of 5000000
+ 24016 multiletter control sequences out of 15000+600000
+ 104408 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,17n,49p,10357b,785s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/
-public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (7 pages, 140532 bytes).
+ 43i,17n,56p,10357b,787s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{subsection.4.1.6} has been referenced but does no
+t exist, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
+s/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/t
+exmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-m
+athit.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10
+.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sym
+bols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
+ols/msbm10.pfb>
+Output written on thesis.pdf (33 pages, 1796083 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
- 14862 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 631 PDF objects out of 1000 (max. 8388607)
+ 539 compressed objects within 6 object streams
+ 155 named destinations out of 1000 (max. 500000)
+ 27490 words of extra memory for PDF output out of 29859 (max. 10000000)
 

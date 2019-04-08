@@ -16,3 +16,27 @@
 \select@language {english}
 \select@language {english}
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces RGB-D sensor(from Astra Orbbec documentation))\relax }}{5}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces View of a Pinhole camera geometry (from Camera Calibration and 3D Reconstruction, openCV)\relax }}{6}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Overview of the transformation between the focal plane and the image plane\relax }}{7}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Overview of a world coordinate system and camera coordinate system\relax }}{7}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Overview of a point cloud (from MathWorks documentation)\relax }}{8}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces A ROS Overview\relax }}{8}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces An example of the PCL implementation pipeline for Fast Point Feature Histogram (FPFH) \cite {fpfh} estimation.\relax }}{9}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces CloudCompare (view, edit and process).\relax }}{10}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces MeshLab (view, edit and process).\relax }}{11}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces A view of the FreeCAD interface.\relax }}{11}{figure.3.10}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces General architecture of proposed pose estimation pipeline\relax }}{14}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Flow Chart of Point Cloud Processing For Filtering Outliars\relax }}{15}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Flow Chart of Point Cloud Processing For Plane Segmentation\relax }}{16}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Left to Right: Input Image, Output after voxelGrid\relax }}{17}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Flow Chart of Point Cloud Processing For Keypoints detection\relax }}{17}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Flow Chart of Point Cloud Processing For Plane Segmentation\relax }}{17}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Flow Chart of Point Cloud Processing For Feature Detection\relax }}{18}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces The influence region diagram for a Fast Point Feature Histogram. \cite {algFpfh}\relax }}{19}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Flow Chart of Point Cloud Processing For Finding Correspondence\relax }}{20}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Flow Chart of The Pose Estimation Pipeline\relax }}{21}{figure.4.10}
+\addvspace {10\p@ }
