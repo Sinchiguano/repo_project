@@ -14,8 +14,8 @@ Office B-323,Jugoslávských partyzánů 3,
 160 00  Prague 6},
 month = 5,
 year = 2019,
-keywords-czech = {manuál, závěrečnná práce, \LaTeX},
-keywords-english = {manual, degree project, \LaTeX},
+keywords-czech = {Detekce objektů, Odhad Pozice, Robotika, Bodová Data},
+keywords-english = {Object Detection, Pose Estimation, Robotics, Point Cloud Data},
 pkg-hyperref=true
 }
 \ctusetup{ pkg-amsthm = false }
@@ -36,24 +36,17 @@ Prague, \ctufield{day}.~\monthinlanguage{title}~\ctufield{year}
 \end{declaration}
 
 \begin{abstract-english}
-\iffalse
-The new generation of the collaborative robots allow the use of small robot arms working in an asynchronous or synchronous fashion with human workers.  Such an example of the collaborative robot is the YuMi robot, dual 7-DOF robot arms designed for precise manipulation of small parts better known in computer vision as rigid body. For further acceptance of such robots in the industry, some methods and sensors systems have to be developed to allow them to pick parts without the position of the part being known in advance, just as humans do.
-This thesis is focused on the implementation of an algorithm for determing the positition of the known parts. We first deal with a robot-camera calibration, then  we propose a method to obtain the ground truth position of known parts. As step in between a 3D model of the known part needs to be created.
-\fi
-The new generation of the collaborative robots allows the use of small robot arms working in an asynchronous or synchronous manner with human workers, e.g. the YuMi robot, a dual 7-DOF robot arms designed for precise manipulation of small objects. For further acceptance of such a robot in the industry, some methods and sensors systems have to be developed to allow them to perform a task such as grasping a specific object. If the robot wants to grasp an object, it has to localize the object relative to itself. This application is known in computer vision as object recognition, the art of localizing predefined objects in image sensor data. 
-This master thesis presents a pipeline for object recognition of a single isolated 3D object in point cloud data. The pipeline uses point cloud data rendered from a 3D CAD model and describes its characteristics using local feature descriptors. These are then matched with the descriptors of the point cloud data from the scene to find the 6-DoF pose of the model in the robot coordinate frame. This initial pose estimation is known as a coarse estimate which is then refined by a registration method such as ICP. A robot-camera calibration is performed also.
-One of the main contributions of this thesis is that it uses FPFH (Fast Point Feature Histogram) for describing the local region and a hypothesize-and-test paradigm such as RANSAC in the matching process. In contrast to most of the approaches those whose rely on Point Pair Features as feature descriptors and a geometry hashing, e.g. voting-scheme method for the matching process.
-A voxel grid filter is suggested to reduce the number of the point cloud of the objects for reducing the computation time of pose estimation.
 
-
+The new generation of the collaborative robots allows the use of small robot arms working with human workers, e.g. the YuMi robot, a dual 7-DOF robot arms designed for precise manipulation of small objects. For further acceptance of such a robot in the industry, some methods and sensors systems have to be developed to allow them to perform a task such as grasping a specific object. If the robot wants to grasp an object, it has to localize the object relative to itself. This is a task of object recognition in computer vision, the art of localizing predefined objects in image sensor data. 
+This master thesis presents a pipeline for object recognition of a single isolated model in point cloud. The system uses point cloud data rendered from a 3D CAD model and describes its characteristics using local feature descriptors. These are then matched with the descriptors of the point cloud data from the scene to find the 6-DoF pose of the model in the robot coordinate frame. This initial pose estimation is then refined by a registration method such as ICP. A robot-camera calibration is performed also.
+The contributions of this thesis are as followr: The syste uses FPFH (Fast Point Feature Histogram) for describing the local region and a hypothesize-and-test paradigm, e.g. RANSAC in the matching process. In contrast to several approaches those whose rely on Point Pair Features as feature descriptors and a geometry hashing, e.g. voting-scheme as matching process.
 \end{abstract-english}
 
 
-
 \begin{abstract-czech}
-Nová generace takzvaných spolupracujících robotů umožňuje použití malých robotických zbraní bez toho, aby byli izolováni od lidských pracovníků. Takovým příkladem spolupracujícího robota je robot YuMi, dvojitý 7-osý robot robotů určený pro přesnou manipulaci s malými částmi a dostupný v laboratoři Inteligentní a mobilní robotika CIIRC.
-Pro další přijetí takových robotů v průmyslu je třeba vyvinout některé metody a systémy snímačů, které by jim umožnily vybírat části bez předchozího znát umístění části, stejně jako lidé.
-Práce je zaměřena na implementaci algoritmu pro lokalizaci známých částí. Vedle lokalizace se část práce skládá z kalibrace kamery relativeley k robotovým a devolopingovým metodám pro získání pozemské pravdivé pozici dílů. \ldots
+Nová generace spolupracujících robotů umožňuje použití malých robotických ramen pracujících s lidskými pracovníky, např. robota YuMi, dvojitá robotická ramena 7-DOF určená pro přesnou manipulaci s malými předměty. Pro další přijetí takového robota v průmyslu musí být vyvinuty některé metody a systémy senzorů, které jim umožní provádět úkol, například uchopení určitého objektu. Pokud chce robot uchopit objekt, musí objekt umístit relativně vůči sobě. To je úkol rozpoznávání objektů v počítačovém vidění, což je umění lokalizace předdefinovaných objektů v datech obrazového snímače.
+Tato diplomová práce představuje potrubí pro rozpoznávání objektů jednoho izolovaného modelu v bodovém mračnu. Systém využívá data z bodového mračna vykreslená z 3D CAD modelu a popisuje jeho charakteristiky pomocí lokálních deskriptorů funkcí. Ty jsou pak porovnány s deskriptory dat z bodového mračna ze scény, aby se 6-DoF pozice modelu v souřadném rámci robota. Tento počáteční odhad pozice je pak vylepšen metodou registrace, jako je ICP. Provádí se také kalibrace robotické kamery.
+Příspěvky této práce jsou následující: Systém používá FPFH (Fast Point Feature Histogram) pro popis lokální oblasti a hypotézu - a paradigma testu, např. RANSAC v procesu párování. Na rozdíl od několika přístupů k těm, které se spoléhají na vlastnosti Point Pair jako deskriptory vlastností a geometrické hašování, např. hlasovací systém jako proces shody.
 \end{abstract-czech}
 
 
@@ -81,11 +74,14 @@ Práce je zaměřena na implementaci algoritmu pro lokalizaci známých částí
 % Introduction-->>Chapter one
 \import{01_Introduction/}{Intro1.tex}
 
+% Introduction-->>Chapter one
+%\import{02_RelatedWork/}{RelatedWork2.tex}
+
 % Background-->>Chapter two
-\import{02_Background/}{Background2.tex}
+%\import{03_Background/}{Background3.tex}
 
 % Theory-->>Chapter three
-\import{03_Theory/}{Theory3.tex}
+%\import{04_Theory/}{Theory4.tex}
 
 
 
@@ -94,7 +90,7 @@ Práce je zaměřena na implementaci algoritmu pro lokalizaci známých částí
 
 
 
-\import{References/}{reference1.tex}
+%\import{References/}{reference1.tex}
 
 
 \end{document}

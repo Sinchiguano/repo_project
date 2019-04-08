@@ -159,7 +159,7 @@ def main():
 
         # #ICP REGISTRATION -->>local registration, point to plane approach
         # #-------------------
-        # source_down = voxel_down_sample(source, 0.008)
+        # source_down = voxel_down_sample(source, 0.008)    
         # target_down = voxel_down_sample(target, 0.008)
 
         # # source_down=np.asarray(source_down.points)
