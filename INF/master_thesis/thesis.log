@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.3.25)  8 APR 2019 16:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.3.25)  8 APR 2019 17:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1252,6 +1252,24 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \c@algocf=\count175
 \algocf@algoframe=\box89
 \algocf@algobox=\box90
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2014/10/28 v2.10 `tabularx' package (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen263
+\extrarowheight=\dimen264
+\NC@list=\toks31
+\extratabsurround=\skip96
+\backup@length=\skip97
+)
+\TX@col@width=\dimen265
+\TX@old@table=\dimen266
+\TX@old@col=\dimen267
+\TX@target=\dimen268
+\TX@delta=\dimen269
+\TX@cols=\count176
+\TX@ftn=\toks32
 ) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
@@ -1270,7 +1288,8 @@ LaTeX Font Info:    ... okay on input line 70.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
 LaTeX Font Info:    Try loading font information for T1+lmr on input line 70.
- (/usr/share/texmf/tex/latex/lm/t1lmr.fd
+
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Info: Redefining \microtypecontext on input line 70.
@@ -1290,17 +1309,17 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count176
-\scratchdimen=\dimen263
+\scratchcounter=\count177
+\scratchdimen=\dimen270
 \scratchbox=\box91
-\nofMPsegments=\count177
-\nofMParguments=\count178
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count179
-\MPscratchDim=\dimen264
-\MPnumerator=\count180
-\makeMPintoPDFobject=\count181
-\everyMPtoPDFconversion=\toks32
+\nofMPsegments=\count178
+\nofMParguments=\count179
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count180
+\MPscratchDim=\dimen271
+\MPnumerator=\count181
+\makeMPintoPDFobject=\count182
+\everyMPtoPDFconversion=\toks34
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1371,7 +1390,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count182
+\c@section@level=\count183
 )
 LaTeX Info: Redefining \ref on input line 70.
 LaTeX Info: Redefining \pageref on input line 70.
@@ -1428,7 +1447,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-<ctu_logo_black.pdf, id=20, 366.36874pt x 279.0425pt>
+<ctu_logo_black.pdf, id=8, 366.36874pt x 279.0425pt>
 File: ctu_logo_black.pdf Graphic file (type pdf)
  <use ctu_logo_black.pdf>
 Package pdftex.def Info: ctu_logo_black.pdf used on input line 71.
@@ -1571,8 +1590,25 @@ Package microtype Info: Loading generic settings for font family
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
- (./01_Introduction/Intro1.tex
-Chapter 1.
+ (./08_AppendixA/AppendixA8.tex
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \chapter with sig. 's' on line 3.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \appendix with sig. 'ss' on line 3.
+.................................................
+
+Appendix A.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 21--95
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 96.
 [1
 
 
@@ -1580,45 +1616,30 @@ Chapter 1.
 
 
 ]
-
-LaTeX Warning: Reference `appendix' on page 2 undefined on input line 23.
-
-
-LaTeX Warning: Reference `chap:cd' on page 2 undefined on input line 23.
-
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 96.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 96.
- [2]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
  (./thesis.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 96.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 96.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: EB4F39100DD7CFCDE1E9642B03139549;215.
-
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Checksum: 03A98FCABADFC55697FC6E678DFB7162;52.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
  ) 
 Here is how much of TeX's memory you used:
- 20570 strings out of 493029
- 354725 string characters out of 6136234
- 481378 words of memory out of 5000000
- 23723 multiletter control sequences out of 15000+600000
- 66561 words of font info for 95 fonts, out of 8000000 for 9000
+ 20626 strings out of 493029
+ 355375 string characters out of 6136234
+ 483137 words of memory out of 5000000
+ 23789 multiletter control sequences out of 15000+600000
+ 63235 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,17n,56p,10357b,785s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,17n,49p,10357b,785s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/
 public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmsso10.pfb>
-Output written on thesis.pdf (8 pages, 158541 bytes).
+are/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on thesis.pdf (7 pages, 140532 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
- 16934 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 72 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
+ 13 named destinations out of 1000 (max. 500000)
+ 14862 words of extra memory for PDF output out of 17280 (max. 10000000)
 
