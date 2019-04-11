@@ -101,18 +101,17 @@ def publish_transforms(br):
     t1.header.stamp = rospy.Time.now()
     t1.header.frame_id = "world"
     t1.child_frame_id = "target"
-    t1.transform.translation.x = 0.30
-    t1.transform.translation.y = 0.0
-    t1.transform.translation.z = 0.0
+    t1.transform.translation.x = 0.286213
+    t1.transform.translation.y = 0.115956
+    t1.transform.translation.z = -0.00933129
 
-    # tmp_rot=np.array([[0, 1, 0], [1, 0, 0],[0, 0, -1]])
-    # tmp_trans=np.array([[0.30],[0],[0] ])
-    # myrot =np.hstack((tmp_rot,tmp_trans))
-    # myrot=np.vstack((myrot,[0.0,0.0,0.0,1.0]))
-    #print('my rotation: \n {}'.format(myrot) )
+    tmp_rot=np.array([[1, 0, 0], [0, 1, 0],[0, 0, 1]])
+    tmp_trans=np.array([[0.286213],[0.115956],[-0.00933129]])
+    myrot =np.hstack((tmp_rot,tmp_trans))
+    myrot=np.vstack((myrot,[0.0,0.0,0.0,1.0]))
+    print('my rotation: \n {}'.format(myrot) )
 
-    #q1 = tf.transformations.quaternion_from_matrix(myrot)
-    q1 = tf.transformations.quaternion_from_euler(0, 0, 0)
+    q1 = tf.transformations.quaternion_from_matrix(myrot)
     t1.transform.rotation.x = q1[0]
     t1.transform.rotation.y = q1[1]
     t1.transform.rotation.z = q1[2]

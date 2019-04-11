@@ -55,25 +55,25 @@ def publish_transforms(br):
     global euler_angles_
     global position_
 
-    t0 = geometry_msgs.msg.TransformStamped()
-    t0.header.stamp = rospy.Time.now()
-    t0.header.frame_id = "world"
-    t0.child_frame_id = "panda_link0"
-    #t0.child_frame_id = "yumi_base_link"
-    #t0.child_frame_id = "base_link"
-    t0.transform.translation.x = 0.0
-    t0.transform.translation.y = 0.0
-    t0.transform.translation.z = 0.0
-    tmp_rot=np.array([[1,0, 0], [0, 1, 0],[0, 0, 1]])
-    tmp_trans=np.array([[0.30],[0],[0] ])
-    myrot =np.hstack((tmp_rot,tmp_trans))
-    myrot=np.vstack((myrot,[0.0,0.0,0.0,1.0]))
-    q0 = tf.transformations.quaternion_from_matrix(myrot)
-    t0.transform.rotation.x = q0[0]
-    t0.transform.rotation.y = q0[1]
-    t0.transform.rotation.z = q0[2]
-    t0.transform.rotation.w = q0[3]
-    br.sendTransform(t0)
+    # t0 = geometry_msgs.msg.TransformStamped()
+    # t0.header.stamp = rospy.Time.now()
+    # t0.header.frame_id = "world"
+    # t0.child_frame_id = "panda_link0"
+    # #t0.child_frame_id = "yumi_base_link"
+    # #t0.child_frame_id = "base_link"
+    # t0.transform.translation.x = 0.0
+    # t0.transform.translation.y = 0.0
+    # t0.transform.translation.z = 0.0
+    # tmp_rot=np.array([[1,0, 0], [0, 1, 0],[0, 0, 1]])
+    # tmp_trans=np.array([[0.30],[0],[0] ])
+    # myrot =np.hstack((tmp_rot,tmp_trans))
+    # myrot=np.vstack((myrot,[0.0,0.0,0.0,1.0]))
+    # q0 = tf.transformations.quaternion_from_matrix(myrot)
+    # t0.transform.rotation.x = q0[0]
+    # t0.transform.rotation.y = q0[1]
+    # t0.transform.rotation.z = q0[2]
+    # t0.transform.rotation.w = q0[3]
+    # br.sendTransform(t0)
 
     # t1 = geometry_msgs.msg.TransformStamped()
     # t1.header.stamp = rospy.Time.now()
@@ -120,7 +120,7 @@ def print_information(rotation_vector,translation_vector,rvec_matrix):
     print("===translation_vector:")
     print(translation_vector)
 
-    print("\n\nThe camera origin in -->>world coordinate system:")
+    print("\n\nThe camera origin in -->>Yumi TCP coordinates system:")
     print("===camera rvec_matrix:")
     print(rvec_matrix.T)
     print("===camera translation_vector:")
@@ -157,9 +157,18 @@ def locate_target_orientation(frame,ret, corners):
     world_points_3d=np.hstack((y.reshape(72,1)*0.01,x.reshape(72,1)*0.01,np.zeros((72,1)))).astype(np.float32)
 
 
-    # Camera internals
+    # # Camera internals
+    # #Intrinsic parameters===>>> from the intrinsic calibration!!!!
+    # #realsense camera
+    # list_matrix=[616.5322265625, 0, 323.4304504394531, 0, 616.58984375, 233.87391662597656, 0, 0, 1]
+    # cameraMatrix_ar=np.asarray(list_matrix).reshape(3,3)
+    # distCoef=[0.1852661379687586, -0.264551739977949, -0.03684812841833995, 0.0009882520270208214, 0]
+    # distCoef_ar=np.asarray(distCoef).reshape(len(distCoef),1)
+
+
+    #astra camera
     #Intrinsic parameters===>>> from the intrinsic calibration!!!!
-    list_matrix=[616.5322265625, 0, 323.4304504394531, 0, 616.58984375, 233.87391662597656, 0, 0, 1]
+    list_matrix=[529.3652640113527, 0, 310.3141830332983, 0, 540.6164768242445, 220.3657848482968, 0, 0, 1]
     cameraMatrix_ar=np.asarray(list_matrix).reshape(3,3)
     distCoef=[0.1852661379687586, -0.264551739977949, -0.03684812841833995, 0.0009882520270208214, 0]
     distCoef_ar=np.asarray(distCoef).reshape(len(distCoef),1)
@@ -196,8 +205,8 @@ def main():
         counter+=1
 
         # Capture frame-by-frame
-        frame=cv2.imread('temp3.jpg')
-        #frame=camObj.get_image()
+        #frame=cv2.imread('temp3.jpg')
+        frame=camObj.get_image()
 
         #print(type(frame))
         if frame is None:

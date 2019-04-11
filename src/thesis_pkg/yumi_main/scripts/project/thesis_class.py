@@ -7,6 +7,7 @@
 # Distributed under terms of the BSD license.
 
 
+
 from thesis_library import *
 import pcl
 
@@ -16,12 +17,12 @@ class camera(object):
         # In ROS, nodes are uniquely named.
         rospy.init_node('camera', anonymous=True)
 
-        # #Astra camera
-        # rospy.Subscriber('/camera/rgb/image_raw', Image, self.callback_rgb)
-        # rospy.Subscriber('/camera/depth/image_raw', Image, self.callback_depth)
-        # #rospy.Subscriber('/camera/depth/camera_info', CameraInfo,self.infoDepthCallback)
-        # #rospy.Subscriber('/camera/rgb/camera_info', CameraInfo,self.infoColorCallback)
-        # rospy.Subscriber('/camera/depth_registered/points', PointCloud2, self.callback_pointCloud)
+        #Astra camera
+        rospy.Subscriber('/camera/rgb/image_raw', Image, self.callback_rgb)
+        rospy.Subscriber('/camera/depth/image_raw', Image, self.callback_depth)
+        #rospy.Subscriber('/camera/depth/camera_info', CameraInfo,self.infoDepthCallback)
+        #rospy.Subscriber('/camera/rgb/camera_info', CameraInfo,self.infoColorCallback)
+        rospy.Subscriber('/camera/depth_registered/points', PointCloud2, self.callback_pointCloud)
 
 
         # #Real sense camera
@@ -78,7 +79,7 @@ class camera(object):
                 # pcl_data.from_list(points_list)
                 self.pc=pts
         else:
-            rospy.logerr("No point cloud image, did you initialize Turtlebot(pc=True)")
+            rospy.logerr("No point cloud image")
 
     def infoDepthCallback(self,msg):
         print('received info from depth camera!!!',msg)

@@ -29,13 +29,13 @@ def do_dataset(source,target):
     global voxel_size
 
     print("Downsample the point cloud and get features with FPFH")
-    source_down, source_fpfh = do_preprocessing_pcd(source, 0.05)#1mm
+    source_down, source_fpfh = do_preprocessing_pcd(source, 0.002)#4mm good for astra
     tmp_source=np.asarray(source_down.points)
     print('shape:',tmp_source.shape)
 
 
     print("Downsample the point cloud and get features with FPFH")
-    target_down, target_fpfh = do_preprocessing_pcd(target, 0.005)#good tunning
+    target_down, target_fpfh = do_preprocessing_pcd(target, 0.002)#good tunning
     tmp_target=np.asarray(target_down.points)
     print('shape:',tmp_target.shape)
 
@@ -68,7 +68,7 @@ def do_ransac_registration(source_down, target_down, source_fpfh, target_fpfh):
     result = registration_ransac_based_on_feature_matching(source_down, target_down, source_fpfh, target_fpfh,threshold,
             TransformationEstimationPointToPoint(False), 4,
             [CorrespondenceCheckerBasedOnEdgeLength(0.9),CorrespondenceCheckerBasedOnDistance(threshold)],
-            RANSACConvergenceCriteria(400000, 1000))
+            RANSACConvergenceCriteria(800000, 2000))
     return result
 
 def do_icp_registration(source, target, transformation):
@@ -76,15 +76,15 @@ def do_icp_registration(source, target, transformation):
 
     '''Point-to-plane ICP registration is applied on original points'''
 
-    estimate_normals(source, KDTreeSearchParamHybrid(radius = 0.01, max_nn = 20))
-    estimate_normals(target, KDTreeSearchParamHybrid(radius = 0.01, max_nn = 20))
+    # estimate_normals(source, KDTreeSearchParamHybrid(radius = 0.01, max_nn = 20))
+    # estimate_normals(target, KDTreeSearchParamHybrid(radius = 0.01, max_nn = 20))
 
     threshold = 0.005
 
-    result = registration_icp(source, target, threshold,transformation,TransformationEstimationPointToPlane())
+    #result = registration_icp(source, target, threshold,transformation,TransformationEstimationPointToPlane())
 
     # #point to point registration!!!
-    # result = registration_icp(source, target, threshold, transformation,TransformationEstimationPointToPoint())
+    result = registration_icp(source, target, threshold, transformation,TransformationEstimationPointToPoint())
     return result
 
 def do_drawing_registration(source, target, transformation):
@@ -132,7 +132,7 @@ def main():
         #     draw_geometries([viewpoint_cloud])
         #exit(0)
         #LOADING A PAIR OF POINT CLOUD
-        
+
         #tmp1=read_point_cloud('pipeline_model/rightFace_m_down.pcd')
         tmp1=pcd_[0]
         tmp2=pcd_[1]
@@ -157,33 +157,33 @@ def main():
         print(ransac_output.transformation)
 
 
-        # #ICP REGISTRATION -->>local registration, point to plane approach
-        # #-------------------
-        # source_down = voxel_down_sample(source, 0.008)    
-        # target_down = voxel_down_sample(target, 0.008)
+        #ICP REGISTRATION -->>local registration, point to plane approach
+        #-------------------
+        # source_down = voxel_down_sample(source, 0.03)
+        # target_down = voxel_down_sample(target, 0.03)
 
-        # # source_down=np.asarray(source_down.points)
-        # # target_down=np.asarray(target_down.points)
-        # # print('shape:',source_down.shape)
-        # # print('shape:',target_down.shape)
-        
-        # icp_output = do_icp_registration(source_down, target_down,ransac_output.transformation)
-        # do_drawing_registration(source, target, icp_output.transformation)
-        # print('ICP')
-        # print(icp_output.transformation)
+        # source_down=np.asarray(source_down.points)
+        # target_down=np.asarray(target_down.points)
+        # print('shape:',source_down.shape)
+        # print('shape:',target_down.shape)
+
+        icp_output = do_icp_registration(source_down, target_down,ransac_output.transformation)
+        do_drawing_registration(source, target, icp_output.transformation)
+        print('ICP')
+        print(icp_output.transformation)
 
 
 
-        # print("Make a combined point cloud")
-        # pcd_combined = PointCloud()
-        # target_copy=copy.deepcopy(target)
-        # source_copy=copy.deepcopy(source)
-        # pcd_combined=target_copy
-        # source_copy.transform(icp_output.transformation)
-        # pcd_combined +=source_copy
-        # #pcd_combined_down = voxel_down_sample(pcd_combined, voxel_size = voxel_size)
-        # write_point_cloud(path_out+"multiway_registration.pcd", pcd_combined)
-        # draw_geometries([pcd_combined])
+        print("Make a combined point cloud")
+        pcd_combined = PointCloud()
+        target_copy=copy.deepcopy(target)
+        source_copy=copy.deepcopy(source)
+        pcd_combined=target_copy
+        source_copy.transform(icp_output.transformation)
+        pcd_combined +=source_copy
+        #pcd_combined_down = voxel_down_sample(pcd_combined, voxel_size = voxel_size)
+        write_point_cloud(path_out+"multiway_registration.pcd", pcd_combined)
+        draw_geometries([pcd_combined])
 
         #cv2.imshow('frame',frame)
         print('counter:',counter1)

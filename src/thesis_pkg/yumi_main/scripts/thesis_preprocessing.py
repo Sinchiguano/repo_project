@@ -63,7 +63,7 @@ def main():
     flag=True
 
     rate = rospy.Rate(10) # 10hz
-
+    #flag1=sys.argv[1]
     while not rospy.is_shutdown():
         counter1+=1
 
@@ -73,19 +73,30 @@ def main():
 
         #At present with the reals sense camera we do not have point cloud but i did my work ouround with RGB-D
         #Wednesday 20-March-2019
-        rgbd_ = [pcl.load(rgbd) for rgbd in glob.glob(rgbd_path+'*pcd')]
+        rgbd_ = [pcl.load(rgbd) for rgbd in glob.glob(pc_path+'*pcd')]
+        #rgbd_ = [pcl.load(rgbd) for rgbd in glob.glob(rgbd_path+'*pcd')]
 
         if flag:
             for i, cloud in enumerate(rgbd_):
 
                 # mask out point cloud in order to get only information in our region of interest, as we don't care about the other parts
-                filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'x', min_axis = -0.5, max_axis = 1.5)
-                filter = do_passthrough_filter(point_cloud = filter,name_axis = 'y', min_axis = -0.5, max_axis = 0.2)
+                #filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'x', min_axis = -0.5, max_axis = 0.5)
+
+                # #Threshold when working with the realsense
+                # filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'z', min_axis = -0.70, max_axis = 1)
+
+                #Threshold when working with the astra
+                filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'x', min_axis = -0.2, max_axis = 0.30)
+                filter = do_passthrough_filter(point_cloud = filter,name_axis = 'z', min_axis = -1.05, max_axis = 0.5)
+
                 pcl.save(filter, roi_name+str(i)+'.pcd')
-
-
                 # Separate the table from everything else
-                table, objects = do_ransac_plane_segmentation(filter, max_distance = 0.01)
+                #Astra
+                table, objects = do_ransac_plane_segmentation(filter, max_distance = 0.01)#before 0.01
+
+                #realsense
+                #table, objects = do_ransac_plane_segmentation(filter, max_distance = 0.0075)#before 0.01
+
                 pcl.save(table, table_name +str(i)+'.pcd')
                 pcl.save(objects,objects_name +str(i)+'.pcd')
             flag=False
