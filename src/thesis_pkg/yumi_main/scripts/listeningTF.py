@@ -57,19 +57,24 @@ if __name__ == '__main__':
         tmp=np.mean(translation_mean,axis=0)
         aux=np.mean(rotation_mean,axis=0)
         print('------------------------------------')
-        print('translation mean : \n{}'.format(tmp))
+        print('Translation mean : \n{}'.format(tmp))
         print()
-        print('rotation mean : \n{}'.format(aux))
+        print('Rotation mean : \n{}'.format(aux))
         print()
-        print('current values')
+        print('Current values')
         print(trans1)
         print(rot1)
-        # correction in order to have in openCV frame
+
+        
+        # Correction of my transform in order to have in openCV convention
         q_corre = tf.transformations.quaternion_from_euler(math.pi/2,-math.pi/2,0)
         q_corre[3]=-q_corre[3]
         q_camera = Quaternion(aux[0],aux[1],aux[2],aux[3])
         q2=quaternion_multiply(q_camera,q_corre)
-        print('quaternion for openCV\n {}'.format(q2))
+        print('Quaternion in openCV Convention: \n {}'.format(q2))
+        Rq = quaternion_matrix(q2)
+        print('Rotation in openCV Convention: \n {}'.format(Rq))
+
         print('-----------------------------------')
 
 
