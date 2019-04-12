@@ -47,6 +47,7 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
         try:
             (trans1,rot1) = listener.lookupTransform('/world','/camera_link', rospy.Time(0))
+            #(trans1,rot1) = listener.lookupTransform('/camera_link','/world', rospy.Time(0))
             if not trans1==None:
                 translation_mean.append(trans1)
                 rotation_mean.append(rot1)
@@ -63,7 +64,15 @@ if __name__ == '__main__':
         print('current values')
         print(trans1)
         print(rot1)
+        # correction in order to have in openCV frame
+        q_corre = tf.transformations.quaternion_from_euler(math.pi/2,-math.pi/2,0)
+        q_corre[3]=-q_corre[3]
+        q_camera = Quaternion(aux[0],aux[1],aux[2],aux[3])
+        q2=quaternion_multiply(q_camera,q_corre)
+        print('quaternion for openCV\n {}'.format(q2))
         print('-----------------------------------')
+
+
         #print(tmp[0],tmp[1],tmp[2])
         publish_transforms(tmp[0],tmp[1],tmp[2],aux[0],aux[1],aux[2],aux[3])
         rate.sleep()

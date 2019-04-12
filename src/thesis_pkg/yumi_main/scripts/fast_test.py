@@ -20,15 +20,6 @@ from autolab_core import RigidTransform
 
 
 
-
-# moves_deg = np.array([[-81.63, -73.53, 50.08, -2.31, -48.69, -83.33, 92.82],
-#                     [-52.0, -76.14, 47.96, -15.87, -18.56, -69.86, 81.43],
-#                     [-43.06, -76.55, 56.06, 25.05, -18.75, -100.12, 94.96],
-#                     [-36.14, -81.51, 62.48, -21.44, -15.48, -67.83, 74.02],
-#                     [-86.28, -66.29, 43.21, -12.32, -45.17, -85.41, 83.62],
-#                     [-110.32, -47.88, 32.18, -42.41, -80.97, -83.83, 92.88],
-#                     [-82.88, -52.2, 40.18, -43.11, -71.83, -73.91, 75.19]])
-
 moves_deg = np.array([[-118.83, -106.99, 0.21, 68.64, -16.03, -81.35, 42.61],
                     [-122.66, -99.11, -12.67, 81.03, -12.68, -96.27, 39.75],
                     [-118.22, -104.42, 14.18, 31.72, -25.17, -44.6, 41.04],
@@ -145,33 +136,3 @@ if __name__ == '__main__':
 
 
 
-
-
-
-
-
-
-
-
-
-    # pose_right = y.right.get_pose()
-    # pose_left = y.left.get_pose()
-    # print('left_state:')
-    # print(pose_left.translation)
-    # print('right_state:')
-    # print(pose_left.rotation)
-
-    #y.left.goto_state(state, wait_for_res=True)
-
-    #pose target
-    # pose_target= y.left.get_pose()
-    # pose_target.translation=[ 0.32355002, -0.03232,     0.10034]
-    # pose_target.rotation=[[-0.73188958, -0.27943025, -0.62149528],
-    #                         [ 0.23113712,  0.75618204, -0.61218001],
-    #                         [ 0.64102518, -0.59169879, -0.48885505]]
-
-
-
-    # move right arm forward by 5cm using goto_pose
-    # y.left.goto_pose(pose_target)
-    # y.left.close_gripper(force=5, width=0.0, no_wait=False, wait_for_res=True)
