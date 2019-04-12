@@ -110,10 +110,6 @@ def main():
     objects_name='objects_name'
     outliars_name='outliars_name'
 
-    # import sys
-    # print "This is the name of the script: ", sys.argv[0]
-    # flag=sys.argv[1]
-
     rate = rospy.Rate(10) # 10hz
 
     while not rospy.is_shutdown():
