@@ -55,6 +55,7 @@ if __name__ == '__main__':
             continue
         tmp=np.mean(translation_mean,axis=0)
         aux=np.mean(rotation_mean,axis=0)
+        print('------------------------------------')
         print('translation mean : \n{}'.format(tmp))
         print()
         print('rotation mean : \n{}'.format(aux))
@@ -62,7 +63,7 @@ if __name__ == '__main__':
         print('current values')
         print(trans1)
         print(rot1)
-        print('---------------------------')
+        print('-----------------------------------')
         #print(tmp[0],tmp[1],tmp[2])
         publish_transforms(tmp[0],tmp[1],tmp[2],aux[0],aux[1],aux[2],aux[3])
         rate.sleep()

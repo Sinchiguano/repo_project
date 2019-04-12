@@ -35,14 +35,23 @@ moves_deg = np.array([[-118.83, -106.99, 0.21, 68.64, -16.03, -81.35, 42.61],
                     [-118.78, -95.0, -18.42, 106.49, -7.06, -126.19, 35.77],
                     [-108.27, -106.58, 1.2, 69.36, -6.28, -90.27, 37.11],
                     [-112.79, -104.75, -1.72, 69.43, -8.85, -88.0, 38.16],
+                    [-112.79, -104.75, -1.72, 69.43, -8.85, -88.0, 38.16],
+                    [-121.92, -101.36, -24.07, 129.62, -17.69, -145.72, 40.5],
                     [-116.35, -105.67, -0.9, 68.06, -12.88, -83.43, 40.57],
                     [-123.22, -103.88, -5.89, 73.88, -17.0, -85.8, 42.66],
+                    [-115.78, -99.11, 8.09, 17.54, -19.96, -35.91, 35.19],
                     [-130.46, -92.83, -26.13, 97.0, -14.9, -111.37, 40.55],
                     [-122.44, -90.82, -26.37, 120.9, -8.51, -140.31, 35.86],
                     [-130.67, -99.9, -15.62, 83.18, -19.65, -93.41, 43.71],
                     [-122.44, -90.82, -26.37, 120.9, -8.51, -140.31, 35.86]])
 
-
+# [-123.17, -98.53, 6.38, 1.24, -43.0, -19.54, 40.32],
+# [-113.63, -96.68, 4.57, -19.52, -38.59, -4.68, 31.84],
+# [-114.0, -97.23, 15.7, -13.8, -62.93, -9.57, 31.5],
+# [-120.01, -85.62, 3.4, -17.61, -79.75, -6.93, 29.19],
+# [-102.46, -81.65, -5.6, -38.76, -63.84, 14.46, 24.8],
+# [-120.53, -88.07, 10.75, -9.29, -75.58, -49.55, 46.92],
+# [-110.47, -74.17, -10.43, -63.78, -58.0, -9.96, 46.22],
 
 tool_cesar_cal = RigidTransform(np.array([[0, 0, 1],
                                           [0, -1, 0],
@@ -59,7 +68,7 @@ def move(yumi_robot):
     global g_index_last_move
     global g_timestamp_last_move
 
-    if (time.time() - g_timestamp_last_move) < 1:
+    if (time.time() - g_timestamp_last_move) < 3:
         return
 
     #Object that encapsulates a yumi arm joint angle configuration.
@@ -117,10 +126,10 @@ def main():
 
         pose = y.left.get_pose(raw_res=False)
 
-        print('translation {}'.format(pose.translation))
-        print('quaternion {}'.format(pose.quaternion))
-        print('rotation matrix \n{}'.format(pose.rotation))
-
+        # print('translation {}'.format(pose.translation))
+        # print('quaternion {}'.format(pose.quaternion))
+        # print('rotation matrix \n{}'.format(pose.rotation))
+        print('moving!!!')
         move(y)
         pose_to_tf(br,pose.translation,pose.quaternion)
 
