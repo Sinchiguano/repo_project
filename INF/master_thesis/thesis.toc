@@ -61,5 +61,7 @@
 \contentsline {subsection}{\numberline {4.1.5}Local refinement}{20}{subsection.4.1.5}
 \contentsline {subsubsection}{Iterative Closest Point}{20}{subsubsection*.11}
 \contentsline {subsubsection}{Iterative Closest Point}{20}{subsubsection*.11}
-\contentsline {chapter}{Bibliography}{23}{chapter*.12}
-\contentsline {chapter}{\numberline {A}List of Notation}{27}{appendix.A}
+\contentsline {chapter}{\numberline {5}Experiments}{23}{chapter.5}
+\contentsline {chapter}{\numberline {6}Conclusions}{25}{chapter.6}
+\contentsline {chapter}{Bibliography}{27}{chapter*.12}
+\contentsline {chapter}{\numberline {A}List of Notation}{31}{appendix.A}

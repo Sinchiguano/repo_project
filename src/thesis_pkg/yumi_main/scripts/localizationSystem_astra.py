@@ -205,73 +205,77 @@ def main():
         command=cv2.waitKey(1) & 0xFF
         print('Ready to take scene data!!!')
 
-        if command == ord('e'):
-            """Get a scene cloud in the world coordinate system"""
-            pcd=do_pointcloud(frame,pc,counter2)
-            cloud=copy.deepcopy(pcd)
+        #if command == ord('e'):
+        """Get a scene cloud in the world coordinate system"""
+        pcd=do_pointcloud(frame,pc,counter2)
+        cloud=copy.deepcopy(pcd)
 
-            #######
-            #for testing purposes
-            pcl.save(pcd,'temp.pcd')
-            pcd = read_point_cloud('temp'+'.pcd')
-            write_point_cloud('temp'+'.ply', pcd)
-            draw_geometries([pcd])
-
-            #######
+        #######
+        # #for testing purposes
+        # pcl.save(pcd,'temp.pcd')
+        # pcd = read_point_cloud('temp'+'.pcd')
+        # write_point_cloud('temp'+'.ply', pcd)
+        # draw_geometries([pcd])
 
 
-            print('	//Ready to collect 3D-data')
-            print "\n============ Press `Enter` to start..."
-            raw_input()
-            counter2+=1
+        #######
 
 
-            # Mask out point cloud in order to get only information of our region of interest, as we don't care about the other parts
-            # Threshold when working with the astra
-            #filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'x', min_axis = -0.2, max_axis = 0.30)
-            filter = do_passthrough_filter(point_cloud = filter,name_axis = 'z', min_axis = -1.05, max_axis = 0.5)
-            pcl.save(filter,scene_path +'filter_objects_'+str(counter2)+'.pcd' )
-            print('filter done!')
-
-            # Separate the table from everything else
-            # Astra
-            table, objects = do_ransac_plane_segmentation(filter, max_distance = 0.01)
-            pcl.save(objects,scene_path +'objects_'+str(counter2)+'.pcd' )
-            print('segmentation done!')
-
-            pcd = read_point_cloud(scene_path+'objects_'+str(counter2)+'.pcd')
-            write_point_cloud(scene_path +'objects_'+str(counter2)+'.ply', pcd)
-            print('change done')
+        # print('	//Ready to collect 3D-data')
+        # print "\n============ Press `Enter` to start..."
+        # raw_input()
+        # counter2+=1
 
 
+        # Mask out point cloud in order to get only information of our region of interest, as we don't care about the other parts
+        
+        #--------------------------------------------------------
+        # Threshold when working with the astra
+        filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'x', min_axis = 0.25, max_axis = 0.75)
+        filter = do_passthrough_filter(point_cloud = filter,name_axis = 'y', min_axis = -0.10, max_axis = 0.50)
+        pcl.save(filter,scene_path +'filter_objects_'+str(counter2)+'.pcd' )
+        print('filter done!')
 
-            #The source cloud is my CAD model that it is already in the world coordinate system
-            source=read_point_cloud(model_path+'relay_m_down.pcd')
-            #The target cloud is a scene image, it is already mapped into the world coordinate system (T: World -> Camera)
-            target=read_point_cloud(scene_path+'objects_'+str(counter2)+'.pcd')
-            draw_geometries([source,target])
-            print('upload cloud done')
+        # Segmentation process in order to separate the object from table
+        #--------------------------------------------------------
+        # Astra
+        table, objects = do_ransac_plane_segmentation(filter, max_distance = 0.01)
+        pcl.save(objects,scene_path +'objects_'+str(counter2)+'.pcd' )
+        print('segmentation done!')
+
+        pcd = read_point_cloud(scene_path+'objects_'+str(counter2)+'.pcd')
+        write_point_cloud(scene_path +'objects_'+str(counter2)+'.ply', pcd)
+        print('change done')
 
 
 
-            #DOWNSAMPLE AND COMPUTE FAST POINT FEATURE HISTOGRAM-->PREPROCESSING STEP: DATA MANIPULATION OF THE POINT CLOUD
-            source, target, source_down, target_down, source_fpfh, target_fpfh=do_dataset(source,target)
-            draw_geometries([source_down,target_down])
+        #The source cloud is my CAD model that it is already in the world coordinate system
+        source=read_point_cloud(model_path+'relay_m_down.pcd')
+        #The target cloud is a scene image, it is already mapped into the world coordinate system (T: World -> Camera)
+        target=read_point_cloud(scene_path+'objects_'+str(counter2)+'.pcd')
+        draw_geometries([source,target])
+        print('Uploading done!!!')
 
-            #RANSAC REGISTRATION-->>global registration
-            #-------------------
-            ransac_output=do_ransac_registration(source_down, target_down, source_fpfh, target_fpfh )
 
-            do_drawing_registration(source, target, ransac_output.transformation)
-            print('RANSAC')
-            print(ransac_output.transformation)
 
-            # #ICP REGISTRATION -->>local registration, point to plane approach
-            # #-------------------
-            # icp_output = do_icp_registration(source, target,ransac_output.transformation)
-            # do_drawing_registration(source, target, icp_output.transformation)
-            # print('ICP')
-            # print(icp_output.transformation)
+        # #DOWNSAMPLE AND COMPUTE FAST POINT FEATURE HISTOGRAM-->PREPROCESSING STEP: DATA MANIPULATION OF THE POINT CLOUD
+        # source, target, source_down, target_down, source_fpfh, target_fpfh=do_dataset(source,target)
+        # draw_geometries([source_down,target_down])
+
+        # #RANSAC REGISTRATION-->>global registration
+        # #-------------------
+        # ransac_output=do_ransac_registration(source_down, target_down, source_fpfh, target_fpfh )
+
+        # do_drawing_registration(source, target, ransac_output.transformation)
+        # print('RANSAC')
+        # print(ransac_output.transformation)
+
+        # #ICP REGISTRATION -->>local registration, point to plane approach
+        # #-------------------
+        # icp_output = do_icp_registration(source, target,ransac_output.transformation)
+        # do_drawing_registration(source, target, icp_output.transformation)
+        # print('ICP')
+        # print(icp_output.transformation)
 
         cv2.imshow('frame',frame)
 
