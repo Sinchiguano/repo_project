@@ -48,7 +48,7 @@ if __name__ == '__main__':
         try:
             (trans1,rot1) = listener.lookupTransform('/world','/camera_link', rospy.Time(0))
             #(trans1,rot1) = listener.lookupTransform('/camera_link','/world', rospy.Time(0))
-            if not trans1==None:
+            if not trans1==None and not rot1==None:
                 translation_mean.append(trans1)
                 rotation_mean.append(rot1)
                 counter+=1

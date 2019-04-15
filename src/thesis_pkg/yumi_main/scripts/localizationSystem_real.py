@@ -24,6 +24,7 @@ scene_path='pipeline_pcd/'
 
 
 
+
 def do_pointcloud(frame,pc,counter):
     global scene_path
 
@@ -42,8 +43,7 @@ def do_pointcloud(frame,pc,counter):
 def do_vector3d(pc):
 
     '''With the help of open3d we render pcd'''
-    pc=np.reshape(pc,(np.size(pc[:,:,0]),3))#I took the size of my x coordinates
-    #print(pc.shape)
+    temp=np.asarray(pc)
     pc=np.nan_to_num(pc)
 
     #Pass xyz to Open3D.PointCloud and visualize
@@ -55,24 +55,19 @@ def do_vector3d(pc):
     # Flip it, otherwise the pointcloud will be upside down
     #print("Load a pcd point cloud, and flip it!!!")
     #pcd.transform([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]])
-    #Correction          
+    #Correction
 
-    # #Manual transformation        
-    # pcd.transform([[-0.0042983,  0.6532477, -0.7571321, 1.20563195],
-    #                 [0.9999467, -0.0042983, -0.0093854, 0.11559001],
-    #                 [-0.0093854, -0.7571321, -0.6531944, 0.55303995],
-    #                 [ 0.,   0.,     0.,     1.,]])
     #with the ROS library
-    pcd.transform([[-0.00921418,  0.67011762, -0.74219773,  1.20563195],
-        [ 0.99988413, -0.00281966, -0.01495911,  0.11559001],
-        [-0.01211711, -0.74224957, -0.67001399,  0.55303995],
-        [ 0. ,         0. ,         0.  ,        1.        ]])
+    pcd.transform([[-0.04094282,  0.22745249, -0.97292808,  1.1698758],
+                [ 0.99886561, -0.01437791, -0.04539561,  0.1014744],
+                [-0.02431401, -0.97368303, -0.2266058,   0.30183194],
+                [ 0.,          0.,          0.,          1.        ]])
     return pcd
 
 def do_dataset(source,target):
     '''Preprocessing step'''
     print("Downsample the point cloud and get features with FPFH")
-    source_down, source_fpfh = do_preprocessing_pcd(source, 0.003)#in mm
+    source_down, source_fpfh = do_preprocessing_pcd(source, 0.006)#in mm
     tmp_source=np.asarray(source_down.points)
     print('shape:',tmp_source.shape)
 
@@ -116,8 +111,8 @@ def do_icp_registration(source, target, transformation):
 
 
     '''Point-to-plane ICP registration is applied on original points'''
-    estimate_normals(source, KDTreeSearchParamHybrid(radius = 0.01, max_nn = 20))
-    estimate_normals(target, KDTreeSearchParamHybrid(radius = 0.01, max_nn = 20))
+    estimate_normals(source, KDTreeSearchParamHybrid(radius = 0.005, max_nn = 20))
+    estimate_normals(target, KDTreeSearchParamHybrid(radius = 0.005, max_nn = 20))
     threshold = 0.005
     result = registration_icp(source, target, threshold,transformation,TransformationEstimationPointToPlane())
     #point to point registration!!!
@@ -134,13 +129,6 @@ def do_drawing_registration(source, target, transformation):
 
     source_tmp.transform(transformation)
     draw_geometries([source_tmp, target_tmp])
-
-# Returns Downsampled version of a point cloud. The bigger the leaf size the less information retained
-def do_voxel_grid_filter(point_cloud, LEAF_SIZE = 0.01):
-    voxel_filter = point_cloud.make_voxel_grid_filter()
-    voxel_filter.set_leaf_size(LEAF_SIZE, LEAF_SIZE, LEAF_SIZE)
-    return voxel_filter.filter()
-
 
 # Returns only the point cloud information at a specific range of a specific axis
 def do_passthrough_filter(point_cloud, name_axis = 'z', min_axis = 0.6, max_axis = 1.1):
@@ -210,31 +198,30 @@ def main():
             pcd=do_pointcloud(frame,pc,counter2)
             cloud=copy.deepcopy(pcd)
 
-            #######
-            #for testing purposes
+            # #######
+            # #for testing purposes
             pcl.save(pcd,'temp.pcd')
             pcd = read_point_cloud('temp'+'.pcd')
             write_point_cloud('temp'+'.ply', pcd)
-            draw_geometries([pcd])
-
+            # draw_geometries([pcd])
             #######
 
 
-            print('	//Ready to collect 3D-data')
-            print "\n============ Press `Enter` to start..."
-            raw_input()
+            # print('	//Ready to collect 3D-data')
+            # print "\n============ Press `Enter` to start..."
+            # raw_input()
             counter2+=1
 
-
-            # Mask out point cloud in order to get only information of our region of interest, as we don't care about the other parts
+            #--------------------------------------------------------
             # Threshold when working with the astra
-            #filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'x', min_axis = -0.2, max_axis = 0.30)
-            filter = do_passthrough_filter(point_cloud = filter,name_axis = 'z', min_axis = -1.05, max_axis = 0.5)
+            filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'x', min_axis = 0.25, max_axis = 0.5)
+            filter = do_passthrough_filter(point_cloud = filter,name_axis = 'y', min_axis = -0.10, max_axis = 0.50)
             pcl.save(filter,scene_path +'filter_objects_'+str(counter2)+'.pcd' )
             print('filter done!')
 
-            # Separate the table from everything else
-            # Astra
+            # Segmentation process in order to separate the object from table
+            #--------------------------------------------------------
+            # Real
             table, objects = do_ransac_plane_segmentation(filter, max_distance = 0.01)
             pcl.save(objects,scene_path +'objects_'+str(counter2)+'.pcd' )
             print('segmentation done!')
@@ -246,11 +233,11 @@ def main():
 
 
             #The source cloud is my CAD model that it is already in the world coordinate system
-            source=read_point_cloud(model_path+'relay_m_down.pcd')
+            source=read_point_cloud(model_path+'front_face_m_down.pcd')
             #The target cloud is a scene image, it is already mapped into the world coordinate system (T: World -> Camera)
             target=read_point_cloud(scene_path+'objects_'+str(counter2)+'.pcd')
             draw_geometries([source,target])
-            print('upload cloud done')
+            print('Uploading done!!!')
 
 
 
