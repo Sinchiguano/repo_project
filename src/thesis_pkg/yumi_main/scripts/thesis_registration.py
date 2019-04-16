@@ -29,13 +29,13 @@ def do_dataset(source,target):
     global voxel_size
 
     print("Downsample the point cloud and get features with FPFH")
-    source_down, source_fpfh = do_preprocessing_pcd(source, 0.002)#4mm good for astra
+    source_down, source_fpfh = do_preprocessing_pcd(source, 0.003)#4mm good for astra
     tmp_source=np.asarray(source_down.points)
     print('shape:',tmp_source.shape)
 
 
     print("Downsample the point cloud and get features with FPFH")
-    target_down, target_fpfh = do_preprocessing_pcd(target, 0.002)#good tunning
+    target_down, target_fpfh = do_preprocessing_pcd(target, 0.003)#good tunning
     tmp_target=np.asarray(target_down.points)
     print('shape:',tmp_target.shape)
 
@@ -122,23 +122,11 @@ def main():
         print("Load a pcd, print it, and render it")
         pcd_ = [read_point_cloud(pcd) for pcd in glob.glob(path_in+'objects_name'+'*pcd')]
 
-
-
-        # for viewpoint_cloud in pcd_:
-        #     draw_geometries([viewpoint_cloud])
-        #exit(0)
-        #LOADING A PAIR OF POINT CLOUD
-
         #tmp1=read_point_cloud('pipeline_model/rightFace_m_down.pcd')
-        tmp1=pcd_[0]
-        tmp2=pcd_[1]
-        #draw_geometries([tmp1,tmp2])
-        trans_init = np.asarray([[1.0, 0.0, 0.0,  0.0],
-                                [0.0, 1.0, 0.0,  0.0],
-                                [0.0, 0.0,  1.0, 0.0],
-                                [0.0, 0.0, 0.0, 1.0]])
+        tmp1=pcd_[2]
+        tmp2=pcd_[3]
+        # #draw_geometries([tmp1,tmp2])
 
-        do_drawing_registration(tmp1,tmp2,trans_init)
 
         #DOWNSAMPLE AND COMPUTE FAST POINT FEATURE HISTOGRAM-->PREPROCESSING STEP: DATA MANIPULATION OF THE POINT CLOUD
         source, target, source_down, target_down, source_fpfh, target_fpfh=do_dataset(tmp1,tmp2)
@@ -177,8 +165,9 @@ def main():
         pcd_combined=target_copy
         source_copy.transform(icp_output.transformation)
         pcd_combined +=source_copy
-        #pcd_combined_down = voxel_down_sample(pcd_combined, voxel_size = voxel_size)
+        pcd_combined= voxel_down_sample(pcd_combined, voxel_size = 0.003)
         write_point_cloud(path_out+"multiway_registration.pcd", pcd_combined)
+        write_point_cloud(path_out+"multiway_registration.ply", pcd_combined)
         draw_geometries([pcd_combined])
 
         #cv2.imshow('frame',frame)

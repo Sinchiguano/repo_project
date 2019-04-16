@@ -59,17 +59,18 @@ def publish_transforms(br):
     # t0.header.stamp = rospy.Time.now()
     # t0.header.frame_id = "world"
     # #t0.child_frame_id = "panda_link0"
-    # t0.child_frame_id = "base_link"
+    # #t0.child_frame_id = "base_link"
+    # t0.child_frame_id = "yumi_base_link"
     # t0.transform.translation.x = 0.0
     # t0.transform.translation.y = 0.0
     # t0.transform.translation.z = 0.0
-    #
+    
     # tmp_rot=np.array([[1,0, 0], [0, 1, 0],[0, 0, 1]])
     # tmp_trans=np.array([[0.30],[0],[0] ])
     # myrot =np.hstack((tmp_rot,tmp_trans))
     # myrot=np.vstack((myrot,[0.0,0.0,0.0,1.0]))
     # #print('my rotation: \n {}'.format(myrot) )
-    #
+    
     # q0 = tf.transformations.quaternion_from_matrix(myrot)
     # t0.transform.rotation.x = q0[0]
     # t0.transform.rotation.y = q0[1]
@@ -93,27 +94,27 @@ def publish_transforms(br):
     # t1.transform.rotation.w = q1[3]
     # br.sendTransform(t1)
 
-    # t1 = geometry_msgs.msg.TransformStamped()
-    # t1.header.stamp = rospy.Time.now()
-    # t1.header.frame_id = "world"
-    # t1.child_frame_id = "target"
-    # t1.transform.translation.x = 0.50
-    # t1.transform.translation.y = 0.0
-    # t1.transform.translation.z = 0.0
+    t1 = geometry_msgs.msg.TransformStamped()
+    t1.header.stamp = rospy.Time.now()
+    t1.header.frame_id = "world"
+    t1.child_frame_id = "target"
+    t1.transform.translation.x = 0.0
+    t1.transform.translation.y = 0.0
+    t1.transform.translation.z = 0.0
 
-    # # tmp_rot=np.array([[0, 1, 0], [1, 0, 0],[0, 0, -1]])
-    # # tmp_trans=np.array([[0.30],[0],[0] ])
-    # # myrot =np.hstack((tmp_rot,tmp_trans))
-    # # myrot=np.vstack((myrot,[0.0,0.0,0.0,1.0]))
-    # #print('my rotation: \n {}'.format(myrot) )
+    # tmp_rot=np.array([[0, 1, 0], [1, 0, 0],[0, 0, -1]])
+    # tmp_trans=np.array([[0.30],[0],[0] ])
+    # myrot =np.hstack((tmp_rot,tmp_trans))
+    # myrot=np.vstack((myrot,[0.0,0.0,0.0,1.0]))
+    #print('my rotation: \n {}'.format(myrot) )
 
-    # #q1 = tf.transformations.quaternion_from_matrix(myrot)
-    # q1 = tf.transformations.quaternion_from_euler(0, 0, 0)
-    # t1.transform.rotation.x = q1[0]
-    # t1.transform.rotation.y = q1[1]
-    # t1.transform.rotation.z = q1[2]
-    # t1.transform.rotation.w = q1[3]
-    # br.sendTransform(t1)
+    #q1 = tf.transformations.quaternion_from_matrix(myrot)
+    q1 = tf.transformations.quaternion_from_euler(0, 0, 0)
+    t1.transform.rotation.x = q1[0]
+    t1.transform.rotation.y = q1[1]
+    t1.transform.rotation.z = q1[2]
+    t1.transform.rotation.w = q1[3]
+    br.sendTransform(t1)
 
     t2 = geometry_msgs.msg.TransformStamped()
     t2.header.stamp = rospy.Time.now()
@@ -211,15 +212,24 @@ def locate_target_orientation(frame,ret, corners):
     # print(corners)
     # exit(0)
 
+
     # Camera internals
     #Intrinsic parameters===>>> from the intrinsic calibration!!!!
-    list_matrix=[529.3652640113527, 0, 310.3141830332983, 0, 540.6164768242445, 220.3657848482968, 0, 0, 1]
+    #list_matrix=[529.3652640113527, 0, 310.3141830332983, 0, 540.6164768242445, 220.3657848482968, 0, 0, 1]
+    #new calibration 16 April
+    list_matrix=[509.1342693936671, 0, 307.8668860619281, 0, 508.0139759782658, 240.6956622253994, 0, 0, 1]
+    #from internet offset in z axes
+    #list_matrix=[585.3933817769559, 0, 315.1468411661461, 0, 585.1118292242563, 241.6570193534038, 0, 0, 1]
     cameraMatrix_ar=np.asarray(list_matrix).reshape(3,3)
     # print(cameraMatrix_ar.shape)
     # print(cameraMatrix_ar)
     # print(cameraMatrix_ar[1,:])
 
-    distCoef=[0.1852661379687586, -0.264551739977949, -0.03684812841833995, 0.0009882520270208214, 0]
+    #distCoef=[0.1852661379687586, -0.264551739977949, -0.03684812841833995, 0.0009882520270208214, 0]
+    #new calibration 16 April
+    distCoef=[0.02861031300862957, -0.1470654585199108, -0.002138121354153323, -0.002507769657923991, 0]
+    #from internet
+    #distCoef=[0.03865797395426305, 0.07468333044552319, 0.002909354535182612, -0.003725931525450735, 0]
     distCoef_ar=np.asarray(distCoef).reshape(len(distCoef),1)
     # print(distCoef_ar)
     # print(distCoef_ar.shape)
@@ -262,8 +272,8 @@ def main():
 
         # Capture frame-by-frame
 
-        frame=cv2.imread('temp2.jpg')
-        #frame=camObj.get_image()
+        #frame=cv2.imread('temp2.jpg')
+        frame=camObj.get_image()
 
         #print(type(frame))
         if frame is None:

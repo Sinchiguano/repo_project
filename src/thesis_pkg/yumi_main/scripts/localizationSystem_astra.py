@@ -63,9 +63,9 @@ def do_vector3d(pc):
     #                 [-0.0093854, -0.7571321, -0.6531944, 0.55303995],
     #                 [ 0.,   0.,     0.,     1.,]])
     #with the ROS library
-    pcd.transform([[-0.00921418,  0.67011762, -0.74219773,  1.20563195],
-        [ 0.99988413, -0.00281966, -0.01495911,  0.11559001],
-        [-0.01211711, -0.74224957, -0.67001399,  0.55303995],
+    pcd.transform([[-0.00921418,  0.67011762, -0.74219773,  1.2146319],
+        [ 0.99988413, -0.00281966, -0.01495911,  0.11651556],
+        [-0.01211711, -0.74224957, -0.67001399,  0.53911774],
         [ 0. ,         0. ,         0.  ,        1.        ]])
     return pcd
 
@@ -248,7 +248,9 @@ def main():
             print('change done')
 
             #The source cloud is my CAD model that it is already in the world coordinate system
-            source=read_point_cloud(model_path+'front_face_m_down.pcd')
+            #source=read_point_cloud(model_path+'front_face_m_down.pcd')
+            source=read_point_cloud(model_path+'objects_0_render_m.ply')
+
             #The target cloud is a scene image, it is already mapped into the world coordinate system (T: World -> Camera)
             target=read_point_cloud(scene_path+'objects_'+str(counter2)+'.pcd')
             draw_geometries([source,target])

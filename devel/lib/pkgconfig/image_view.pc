@@ -1,0 +1,8 @@
+prefix=/home/casch/yumi_depends_ws/devel
+
+Name: image_view
+Description: Description of image_view
+Version: 1.12.23
+Cflags: -I/home/casch/yumi_depends_ws/devel/include
+Libs: -L/home/casch/yumi_depends_ws/devel/lib 
+Requires: dynamic_reconfigure

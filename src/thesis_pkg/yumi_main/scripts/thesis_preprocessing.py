@@ -85,9 +85,11 @@ def main():
                 # #Threshold when working with the realsense
                 # filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'z', min_axis = -0.70, max_axis = 1)
 
-                #Threshold when working with the astra
-                filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'x', min_axis = -0.2, max_axis = 0.30)
-                filter = do_passthrough_filter(point_cloud = filter,name_axis = 'z', min_axis = -1.05, max_axis = 0.5)
+                #--------------------------------------------------------
+                # Threshold when working with the astra
+                filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'x', min_axis = 0.25, max_axis = 0.75)
+                filter = do_passthrough_filter(point_cloud = filter,name_axis = 'y', min_axis = -0.10, max_axis = 0.50)
+
 
                 pcl.save(filter, roi_name+str(i)+'.pcd')
                 # Separate the table from everything else

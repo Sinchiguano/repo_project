@@ -110,8 +110,13 @@ def create_vector3d(pc):
     pcd.points = Vector3dVector(pc)
     # Flip it, otherwise the pointcloud will be upside down
     print("Load a pcd point cloud, and flip it!!!")
-    pcd.transform([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]])
-    print('elapsed time:',time.time()-start_timer)
+    # pcd.transform([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]])
+    # print('elapsed time:',time.time()-start_timer)
+
+    pcd.transform([[-0.00921418,  0.67011762, -0.74219773,  1.20563195],
+        [ 0.99988413, -0.00281966, -0.01495911,  0.11559001],
+        [-0.01211711, -0.74224957, -0.67001399,  0.55303995],
+        [ 0. ,         0. ,         0.  ,        1.        ]])
 
     return pcd
 
@@ -120,12 +125,6 @@ def main():
     counter1=0
     counter2=0
     counter3=0
-    path_cloud='end_cloud/'
-    downsample_name=path_cloud+'downsample_name'
-    roi_name=path_cloud+'roi_name'
-    table_name=path_cloud+'table_name'
-    objects_name=path_cloud+'objects_name'
-
 
     import sys
     print "This is the name of the script: ", sys.argv[0]

@@ -283,7 +283,7 @@ target_gen_EXTERNAL_OBJECTS =
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkIOExodus-6.2.so.6.2.0
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkIOPostgreSQL-6.2.so.6.2.0
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkIOSQL-6.2.so.6.2.0
-/home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libsqlite3.so
+/home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /home/casch/anaconda2/envs/ros_env/lib/libsqlite3.so
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkWrappingJava-6.2.so.6.2.0
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkFiltersParallelFlowPaths-6.2.so.6.2.0
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkFiltersParallelStatistics-6.2.so.6.2.0
@@ -612,7 +612,7 @@ target_gen_EXTERNAL_OBJECTS =
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkIOExodus-6.2.so.6.2.0
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkIOPostgreSQL-6.2.so.6.2.0
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkIOSQL-6.2.so.6.2.0
-/home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libsqlite3.so
+/home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /home/casch/anaconda2/envs/ros_env/lib/libsqlite3.so
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkWrappingJava-6.2.so.6.2.0
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkFiltersParallelFlowPaths-6.2.so.6.2.0
 /home/casch/yumi_depends_ws/devel/lib/target_finder/target_gen: /usr/lib/x86_64-linux-gnu/libvtkFiltersParallelStatistics-6.2.so.6.2.0

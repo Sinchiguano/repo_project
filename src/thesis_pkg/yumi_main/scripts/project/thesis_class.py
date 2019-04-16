@@ -26,9 +26,9 @@ class camera(object):
 
 
         # #Real sense camera
-        rospy.Subscriber('/camera/color/image_raw', Image, self.callback_rgb)
-        rospy.Subscriber('/camera/aligned_depth_to_color/image_raw', Image, self.callback_depth)
-        rospy.Subscriber('/camera/depth/color/points', PointCloud2, self.callback_pointCloud)
+        #rospy.Subscriber('/camera/color/image_raw', Image, self.callback_rgb)
+        #rospy.Subscriber('/camera/aligned_depth_to_color/image_raw', Image, self.callback_depth)
+        #rospy.Subscriber('/camera/depth/color/points', PointCloud2, self.callback_pointCloud)
         #rospy.Subscriber('/camera/color/camera_info', CameraInfo,self.infoColorCallback)
         #rospy.Subscriber('/camera/depth/image_rect_raw', CameraInfo, self.callback_depth)
 
@@ -70,7 +70,7 @@ class camera(object):
                 self.pc = np.array(list(pts)).reshape((480,640,3))
             else:
                 #just for realsense camera
-                #no working 
+                #no working
                 # points_list = []
                 # for data in pc2.read_points(data, skip_nans=False, field_names=("x", "y", "z")):
                 #     points_list.append([data[0], data[1], data[2]])
