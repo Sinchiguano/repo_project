@@ -217,9 +217,13 @@ def locate_target_orientation(frame,ret, corners):
     #Intrinsic parameters===>>> from the intrinsic calibration!!!!
     #list_matrix=[529.3652640113527, 0, 310.3141830332983, 0, 540.6164768242445, 220.3657848482968, 0, 0, 1]
     #new calibration 16 April
-    list_matrix=[509.1342693936671, 0, 307.8668860619281, 0, 508.0139759782658, 240.6956622253994, 0, 0, 1]
+    #list_matrix=[509.1342693936671, 0, 307.8668860619281, 0, 508.0139759782658, 240.6956622253994, 0, 0, 1]
     #from internet offset in z axes
     #list_matrix=[585.3933817769559, 0, 315.1468411661461, 0, 585.1118292242563, 241.6570193534038, 0, 0, 1]
+
+
+    #last calibration 
+    list_matrix=[506.1338725148187, 0, 313.7031356480479, 0, 506.4623458309018, 246.4363947238303, 0, 0, 1]
     cameraMatrix_ar=np.asarray(list_matrix).reshape(3,3)
     # print(cameraMatrix_ar.shape)
     # print(cameraMatrix_ar)
@@ -227,9 +231,13 @@ def locate_target_orientation(frame,ret, corners):
 
     #distCoef=[0.1852661379687586, -0.264551739977949, -0.03684812841833995, 0.0009882520270208214, 0]
     #new calibration 16 April
-    distCoef=[0.02861031300862957, -0.1470654585199108, -0.002138121354153323, -0.002507769657923991, 0]
+    #distCoef=[0.02861031300862957, -0.1470654585199108, -0.002138121354153323, -0.002507769657923991, 0]
     #from internet
     #distCoef=[0.03865797395426305, 0.07468333044552319, 0.002909354535182612, -0.003725931525450735, 0]
+
+
+    #last calibration
+    distCoef=[-0.004755818169472225, -0.04879035388633979, -0.002404621345494799, 0.001159841420888698, 0]
     distCoef_ar=np.asarray(distCoef).reshape(len(distCoef),1)
     # print(distCoef_ar)
     # print(distCoef_ar.shape)

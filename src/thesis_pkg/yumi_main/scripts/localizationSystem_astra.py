@@ -62,11 +62,19 @@ def do_vector3d(pc):
     #                 [0.9999467, -0.0042983, -0.0093854, 0.11559001],
     #                 [-0.0093854, -0.7571321, -0.6531944, 0.55303995],
     #                 [ 0.,   0.,     0.,     1.,]])
-    #with the ROS library
-    pcd.transform([[-0.00921418,  0.67011762, -0.74219773,  1.2146319],
-        [ 0.99988413, -0.00281966, -0.01495911,  0.11651556],
-        [-0.01211711, -0.74224957, -0.67001399,  0.53911774],
-        [ 0. ,         0. ,         0.  ,        1.        ]])
+    #with the ROS library# good calibration...
+    # pcd.transform([[-0.00921418,  0.67011762, -0.74219773,  1.19737917],
+    #     [ 0.99988413, -0.00281966, -0.01495911,  0.11588732],
+    #     [-0.01211711, -0.74224957, -0.67001399,  0.51610779],
+    #     [ 0. ,         0. ,         0.  ,        1.        ]])
+    pcd.transform([[-0.00726435,  0.71031616, -0.70384529, 1.18878522],
+                    [ 0.99983368, -0.00661547, -0.01699552,  0.11757787],
+                    [-0.01672846, -0.70385168, -0.71014996,  0.54026373],
+                    [ 0.,          0.,          0.,          1.        ]])
+
+
+
+
     return pcd
 
 def do_dataset(source,target):
@@ -141,7 +149,6 @@ def do_voxel_grid_filter(point_cloud, LEAF_SIZE = 0.01):
     voxel_filter.set_leaf_size(LEAF_SIZE, LEAF_SIZE, LEAF_SIZE)
     return voxel_filter.filter()
 
-
 # Returns only the point cloud information at a specific range of a specific axis
 def do_passthrough_filter(point_cloud, name_axis = 'z', min_axis = 0.6, max_axis = 1.1):
     pass_filter = point_cloud.make_passthrough_filter()
@@ -149,11 +156,11 @@ def do_passthrough_filter(point_cloud, name_axis = 'z', min_axis = 0.6, max_axis
     pass_filter.set_filter_limits(min_axis, max_axis)
     return pass_filter.filter()
 
-
-# Use RANSAC plane segmentation to separate plane and not plane points
-# Returns inliers (plane) and outliers (not plane)
 def do_ransac_plane_segmentation(point_cloud, max_distance = 0.01):
-
+    '''
+    Use RANSAC plane segmentation to separate plane and not plane points
+    Returns inliers (plane) and outliers (not plane)
+    '''
     segmenter = point_cloud.make_segmenter()
     segmenter.set_model_type(pcl.SACMODEL_PLANE)
     segmenter.set_method_type(pcl.SAC_RANSAC)
@@ -216,18 +223,13 @@ def main():
             pcd = read_point_cloud('temp'+'.pcd')
             write_point_cloud('temp'+'.ply', pcd)
             # draw_geometries([pcd])
-
-
             #######
-
-
             # print('	//Ready to collect 3D-data')
             # print "\n============ Press `Enter` to start..."
             # raw_input()
             # counter2+=1
 
             # Mask out point cloud in order to get only information of our region of interest, as we don't care about the other parts
-
             #--------------------------------------------------------
             # Threshold when working with the astra
             filter = do_passthrough_filter(point_cloud = cloud,name_axis = 'x', min_axis = 0.25, max_axis = 0.75)
@@ -242,14 +244,13 @@ def main():
             pcl.save(objects,scene_path +'objects_'+str(counter2)+'.pcd' )
             print('segmentation done!')
 
-
             pcd = read_point_cloud(scene_path+'objects_'+str(counter2)+'.pcd')
             write_point_cloud(scene_path +'objects_'+str(counter2)+'.ply', pcd)
             print('change done')
 
             #The source cloud is my CAD model that it is already in the world coordinate system
-            #source=read_point_cloud(model_path+'front_face_m_down.pcd')
-            source=read_point_cloud(model_path+'objects_0_render_m.ply')
+            source=read_point_cloud(model_path+'front_face_m_down.pcd')
+            #source=read_point_cloud(model_path+'objects_0_render_m.ply')
 
             #The target cloud is a scene image, it is already mapped into the world coordinate system (T: World -> Camera)
             target=read_point_cloud(scene_path+'objects_'+str(counter2)+'.pcd')
