@@ -177,7 +177,7 @@ def do_ransac_plane_segmentation(point_cloud, max_distance = 0.01):
     outliers = point_cloud.extract(inlier_indices, negative = True)
     return inliers, outliers
 
-def do_csv_file(tran_rot,counter1):
+def do_csv_file(tran_rot,counter1,computation_time):
     global name_file
     aux_angles=do_rotation_matrix_to_euler_angles(tran_rot[:-1,:-1])
     tmp_list=list(tran_rot[:-1,3])
@@ -190,7 +190,7 @@ def do_csv_file(tran_rot,counter1):
     with open(name_file, 'a') as csvfile:# a means append
         filewriter = csv.writer(csvfile, delimiter=',',quotechar='|', quoting=csv.QUOTE_MINIMAL)
         #filewriter.writerow(aux_angles+tmp_list+quat)
-        filewriter.writerow(aux_angles+tmp_list)
+        filewriter.writerow(aux_angles+tmp_list+computation_time)
 
 # Calculates rotation matrix to euler angles
 def do_rotation_matrix_to_euler_angles(R) :
@@ -293,32 +293,28 @@ def main():
             target=read_point_cloud(scene_path+'objects_'+str(counter2)+'.pcd')
             draw_geometries([source,target])
             print('Uploading done!!!')
-
-
+            
             #DOWNSAMPLE AND COMPUTE FAST POINT FEATURE HISTOGRAM-->PREPROCESSING STEP: DATA MANIPULATION OF THE POINT CLOUD
             source, target, source_down, target_down, source_fpfh, target_fpfh=do_dataset(source,target)
             draw_geometries([source_down,target_down])
 
+            import time
+            start = time.time()
+
             #RANSAC REGISTRATION-->>global registration
             #-------------------
             ransac_output=do_ransac_registration(source_down, target_down, source_fpfh, target_fpfh )
-
-            do_drawing_registration(source, target, ransac_output.transformation)
-            # print('RANSAC')
-            # print('rotation')
-            # print(ransac_output.transformation[:-1,:-1])
-            # #print(ransac_output.transformation[1])
-            # print('translation')
-            # print(ransac_output.transformation[:-1,3])
-
             #ICP REGISTRATION -->>local registration, point to plane approach
             #-------------------
             icp_output = do_icp_registration(source, target,ransac_output.transformation)
+            end = time.time()
+            print(end - start)
+
+            print(icp_output)
+            do_csv_file(icp_output.transformation,counter1,[end - start])
+            do_drawing_registration(source, target, ransac_output.transformation)
             do_drawing_registration(source, target, icp_output.transformation)
             print('ICP')
-            print(icp_output)
-            do_csv_file(icp_output.transformation,counter1)
-
 
 
         cv2.imshow('frame',frame)
