@@ -23,7 +23,8 @@ model_path='pipeline_model/'
 scene_path='pipeline_pcd/'
 
 #folder where i will save my dataset#
-tmp='dataset/'
+#tmp='dataset_astra_CAD/'
+tmp='dataset_astra_ownCAD/'
 name_file=tmp+'transform_data.csv'
 
 
@@ -83,7 +84,7 @@ def do_vector3d(pc):
 def do_dataset(source,target):
     '''Preprocessing step'''
     print("Downsample the point cloud and get features with FPFH")
-    source_down, source_fpfh = do_preprocessing_pcd(source, 0.003)#in mm
+    source_down, source_fpfh = do_preprocessing_pcd(source, 0.004)#in mm
     tmp_source=np.asarray(source_down.points)
     print('shape:',tmp_source.shape)
 
@@ -180,14 +181,21 @@ def do_csv_file(tran_rot,counter1):
     global name_file
     aux_angles=do_rotation_matrix_to_euler_angles(tran_rot[:-1,:-1])
     tmp_list=list(tran_rot[:-1,3])
-    #tmp_list.append(aux_angles)
+    #q = tf.transformations.quaternion_from_matrix() 
+    from pyquaternion import Quaternion
+    a= Quaternion(matrix=tran_rot)
+    # print(a)
+    # print("{} + {}i + {}j + {}k".format(a[0], a[1], a[2], a[3]))
+    quat=[a[0], a[1], a[2], a[3]]
     with open(name_file, 'a') as csvfile:# a means append
         filewriter = csv.writer(csvfile, delimiter=',',quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        #filewriter.writerow(aux_angles+tmp_list+quat)
         filewriter.writerow(aux_angles+tmp_list)
 
 # Calculates rotation matrix to euler angles
 def do_rotation_matrix_to_euler_angles(R) :
-    
+    #inspire by the following source
+    #https://www.learnopencv.com/rotation-matrix-to-euler-angles/
     sy = math.sqrt(R[0,0] * R[0,0] +  R[1,0] * R[1,0])
      
     singular = sy < 1e-6
@@ -200,7 +208,7 @@ def do_rotation_matrix_to_euler_angles(R) :
         x = math.atan2(-R[1,2], R[1,1])
         y = math.atan2(-R[2,0], sy)
         z = 0
-    return [x, y, z]
+    return [x* 180 / math.pi, y* 180 / math.pi, z* 180 / math.pi]
 
 def main():
     counter1=0
@@ -278,8 +286,8 @@ def main():
             print('change done')
 
             #The source cloud is my CAD model that it is already in the world coordinate system
-            source=read_point_cloud(model_path+'front_face_m_down.pcd')
-            #source=read_point_cloud(model_path+'objects_0_render_m.ply')
+            #source=read_point_cloud(model_path+'front_face_m_down.pcd')
+            source=read_point_cloud(model_path+'objects_0_render_m.ply')
 
             #The target cloud is a scene image, it is already mapped into the world coordinate system (T: World -> Camera)
             target=read_point_cloud(scene_path+'objects_'+str(counter2)+'.pcd')
@@ -296,22 +304,18 @@ def main():
             ransac_output=do_ransac_registration(source_down, target_down, source_fpfh, target_fpfh )
 
             do_drawing_registration(source, target, ransac_output.transformation)
-            print('RANSAC')
-            print('rotation')
-            print(ransac_output.transformation[:-1,:-1])
-            #print(ransac_output.transformation[1])
-            print('translation')
-            print(ransac_output.transformation[:-1,3])
-            #exit(0)
-
-
+            # print('RANSAC')
+            # print('rotation')
+            # print(ransac_output.transformation[:-1,:-1])
+            # #print(ransac_output.transformation[1])
+            # print('translation')
+            # print(ransac_output.transformation[:-1,3])
 
             #ICP REGISTRATION -->>local registration, point to plane approach
             #-------------------
             icp_output = do_icp_registration(source, target,ransac_output.transformation)
             do_drawing_registration(source, target, icp_output.transformation)
             print('ICP')
-            print(icp_output.transformation)
             print(icp_output)
             do_csv_file(icp_output.transformation,counter1)
 
