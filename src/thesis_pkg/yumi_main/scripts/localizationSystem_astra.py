@@ -15,13 +15,16 @@ from thesis_library import *
 from thesis_class import *
 from open3d import uniform_down_sample,registration_icp,TransformationEstimationPointToPlane,TransformationEstimationPointToPoint
 import pcl
-
+import csv
 ######################################
 
 #from thesis_registration2 import *
 model_path='pipeline_model/'
 scene_path='pipeline_pcd/'
 
+#folder where i will save my dataset#
+tmp='dataset/'
+name_file=tmp+'transform_data.csv'
 
 
 def do_pointcloud(frame,pc,counter):
@@ -173,21 +176,45 @@ def do_ransac_plane_segmentation(point_cloud, max_distance = 0.01):
     outliers = point_cloud.extract(inlier_indices, negative = True)
     return inliers, outliers
 
+def do_csv_file(tran_rot,counter1):
+    global name_file
+    aux_angles=do_rotation_matrix_to_euler_angles(tran_rot[:-1,:-1])
+    tmp_list=list(tran_rot[:-1,3])
+    #tmp_list.append(aux_angles)
+    with open(name_file, 'a') as csvfile:# a means append
+        filewriter = csv.writer(csvfile, delimiter=',',quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        filewriter.writerow(aux_angles+tmp_list)
+
+# Calculates rotation matrix to euler angles
+def do_rotation_matrix_to_euler_angles(R) :
+    
+    sy = math.sqrt(R[0,0] * R[0,0] +  R[1,0] * R[1,0])
+     
+    singular = sy < 1e-6
+ 
+    if  not singular :
+        x = math.atan2(R[2,1] , R[2,2])
+        y = math.atan2(-R[2,0], sy)
+        z = math.atan2(R[1,0], R[0,0])
+    else :
+        x = math.atan2(-R[1,2], R[1,1])
+        y = math.atan2(-R[2,0], sy)
+        z = 0
+    return [x, y, z]
 
 def main():
     counter1=0
     counter2=0
     counter3=0
-
+    global tmp
 
     import sys
     print "This is the name of the script: ", sys.argv[0]
     rate = rospy.Rate(10) # 10hz
 
     flag=False
-    while not rospy.is_shutdown():
-        counter1+=1
 
+    while not rospy.is_shutdown():
         # Capture 2D-data
         frame=camObj.get_image()
 
@@ -207,22 +234,24 @@ def main():
             print('no depth image!!!')
             continue
 
-
         #Enter to process a depth image and generate the 6D pose estimation
         command=cv2.waitKey(1) & 0xFF
         print('Ready to take scene data!!!')
 
         if command == ord('e'):
+            counter1+=1
             """Get a scene cloud in the world coordinate system"""
             pcd=do_pointcloud(frame,pc,counter2)
             cloud=copy.deepcopy(pcd)
 
             #######
             #for testing purposes
-            pcl.save(pcd,'temp.pcd')
-            pcd = read_point_cloud('temp'+'.pcd')
-            write_point_cloud('temp'+'.ply', pcd)
-            # draw_geometries([pcd])
+            pcl.save(pcd,tmp+str(counter1)+'cloud'+'.pcd')
+            pcd = read_point_cloud(tmp+str(counter1)+'cloud'+'.pcd')
+            write_point_cloud(tmp+str(counter1)+'cloud'+'.ply', pcd)
+            cv2.imwrite(tmp+str(counter1)+'img'+'.jpg', frame)
+            #draw_geometries([pcd])
+
             #######
             # print('	//Ready to collect 3D-data')
             # print "\n============ Press `Enter` to start..."
@@ -238,7 +267,7 @@ def main():
             print('filter done!')
 
             # Segmentation process in order to separate the object from table
-            #--------------------------------------------------------
+            #----------------------------------------------------------------
             # Astra
             table, objects = do_ransac_plane_segmentation(filter, max_distance = 0.01)
             pcl.save(objects,scene_path +'objects_'+str(counter2)+'.pcd' )
@@ -268,14 +297,25 @@ def main():
 
             do_drawing_registration(source, target, ransac_output.transformation)
             print('RANSAC')
-            print(ransac_output.transformation)
+            print('rotation')
+            print(ransac_output.transformation[:-1,:-1])
+            #print(ransac_output.transformation[1])
+            print('translation')
+            print(ransac_output.transformation[:-1,3])
+            #exit(0)
 
-            # #ICP REGISTRATION -->>local registration, point to plane approach
-            # #-------------------
-            # icp_output = do_icp_registration(source, target,ransac_output.transformation)
-            # do_drawing_registration(source, target, icp_output.transformation)
-            # print('ICP')
-            # print(icp_output.transformation)
+
+
+            #ICP REGISTRATION -->>local registration, point to plane approach
+            #-------------------
+            icp_output = do_icp_registration(source, target,ransac_output.transformation)
+            do_drawing_registration(source, target, icp_output.transformation)
+            print('ICP')
+            print(icp_output.transformation)
+            print(icp_output)
+            do_csv_file(icp_output.transformation,counter1)
+
+
 
         cv2.imshow('frame',frame)
 
