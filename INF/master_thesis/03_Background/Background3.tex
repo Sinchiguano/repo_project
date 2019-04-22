@@ -4,9 +4,72 @@
 
 This chapter presents a briefly theoretical background and overview of the several API's and tools used in this thesis. The reader can skip this chapter, but it is good to know in order to better follow the thesis. To dive deeply in any topic described ahead, a reference is given.
 
-\section{ RGB-D sensors}
-Nowadays novel camera systems like the Astra Orbbec and RealSense which provide both color and depth images became readily available. There are great expectations that such systems will lead to a boost of new 3D perception-based applications in the fields of robotics. We are specifically interested in using RGB-D sensors for recognition and localization of an isolated part. In this thesis both camera are used.
 
+\section{ Mathematical Tools}
+\subsection{Rigid Transformations}
+A rigid transformation also called Euclidean transformation is a geometric transformation of a Euclidean space that preserves the Euclidean distance between every pair of points. The rigid transformations include rotations, translations, reflections, or their combination. It can be shown that all rigid transformations can be expressed as follows.
+
+\begin{equation}\label{rigidtf}
+ g_(v)=R \cdot v + t, R \in \mathbb{R}^{3}
+\end{equation}
+
+A rigid transformation can be represented by using $4x4$ matrices by employing a homogenous coordinates as follows:
+$$
+\begin{pmatrix}
+R & t \\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+P \\
+1
+\end{pmatrix}=
+\begin{pmatrix}
+RP+t \\
+1
+\end{pmatrix}
+$$
+
+ In the equation \ref{rigidtf} the matrix, R, is referred to as a rotation matrix and has the following special properties.
+\begin{itemize}
+\item $R=(a\,  b\,  c), \, a,b,c \in \mathbb{R}^{3}$
+\item $\|a\|=\|b\|=\|c\|=1 $ All columns are unit length
+\item $a \cdot b=b \cdot c=c \cdot a=0 $ The columns are mutually orthogonal
+\end{itemize}
+\subsection{Rotation Matrices}
+The matrix R, a set of 3x3 matrices with the following properties, plus the operation of matrix multiplication forms a group called SO(3) which stands for special orthogonal group $\in \mathbb{R}^{3} $
+
+$R=(a\,  b\,  c), \, a,b,c \in \mathbb{R}^{3}$ is a rotation matrix for $\mathbb{R}^{3}$ iff
+\begin{itemize}
+\item $R^{T} \cdot R=I$
+\item $det(R)=1$
+\end{itemize}
+
+\subsubsection{Rotation Representations}
+\begin{itemize}
+\item A rotation can be expressed as a $3X3$ matrix $R \in SO(3)$  where $R^{T} \cdot R= R \cdot R^{T} =I$ and $det(R)=1$
+
+\item A rotation can also be expressed in terms of an angle $\theta$  and an axix $\hat{\omega} \in \mathbb{R}^{3}$ where $\|\hat{\omega}\|=1$. It can relate to the matrix form via the Rodrigues formula.
+$$R=exp(\theta J(\omega))=I+\sin \theta J(\omega)+(1-\cos \theta)J(\hat{\omega})^{2}$$
+
+\item And finally a rotation matrix expressed as a unit quaternion:
+$$(u_{0},u)=(\cos(\frac{\theta}{2}),\sin(\frac{\theta}{2})\hat{\omega})$$
+\end{itemize}
+
+
+\section{Basics of 3D Computer Vision}
+\subsection{ RGB-D sensors} \label{rgbdcamera}
+Nowadays novel camera systems like the Astra Orbbec and RealSense which provide both color and depth images became readily available. Therefore, there are great expectations that such sensory devices will lead to a boost of new 3D perception-based applications in the fields of robotics. We are specifically interested in using RGB-D sensors for recognition and localization of an isolated part. In this thesis, both cameras are used. See Figure \ref{fig:mycam} in order to be acquainted with them.
+
+\begin{figure}%
+    \centering
+    \subfloat[Astra Camera]{{\includegraphics[width=5cm]{figures02/astraorbbec.jpg} }}%
+    \qquad
+    \subfloat[RealSense Camera]{{\includegraphics[width=5cm]{figures02/realsense.png} }}%
+    \caption{2 RGB-D sensors}%
+    \label{fig:mycam}%
+\end{figure}
+
+\iffalse
 \begin{figure}[!h]
 \begin{center}
 \includegraphics[width=2in]{figures02/astraorbbec.jpg}
@@ -14,9 +77,23 @@ Nowadays novel camera systems like the Astra Orbbec and RealSense which provide 
 \end{center}
 %\label{fig2:mypicture3}
 \end{figure}
+\fi
+
+\subsubsection{Point Cloud}
+
+ The receive measurement data from the input sensor get converted in a more generic data structure called point cloud, which is a set of vertices in a three-dimensional coordinate system usually defined by X, Y, and Z coordinates. The vertices are typically intended to represent the external surface of an object.
+ Point clouds can be acquired from hardware sensors such as stereo cameras, 3D scanners, or time-of-flight cameras, or generated from a computer program synthetically. In this thesis, the point cloud is acquired from the sensory devices briefly described above in \ref{rgbdcamera}.
 
 
-\section{ Mathematical Tools}
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=3in]{figures02/pcd.png}
+\caption{Overview of a point cloud (from MathWorks documentation)}%\cite{temp2}}
+\end{center}
+\label{fig2:mypicture3}
+\end{figure}
+
+
 \subsection{ Camera Pinhole Model}
 There are many lens models but Pinhole camera is used in this thesis. Pinhole camera is the simplest device that captures accurately the geometry of perspective projection. The image of the object is formed by the intersection of the light rays with the image plane. An illustration of the pinhole camera is seen in  Figure 1. This mapping from the three dimensions onto two dimensions is called perspective projection. The camera projects point in the world frame $ P_{w}=(X,Y,Z)^{T} \in \textbf{R}^{3}$ through the pinhole to  the point $p_{c}=(u,v)$ on the image plane.
  
@@ -48,8 +125,6 @@ Y_{w} \\
 Z_{w} \\
 1\\
 \end{array} } \right]\end{equation}
-
-
 
 \subsection{Camera's Intrinsic Parameters}
 Images coordinates are measured in pixels, normally with the origin in the left upper corner. The focal
@@ -112,35 +187,20 @@ P_{c}=\textbf{R}.P_{w}+\textbf{t}
     P_{c}=\left[\textbf{R} \ \textbf{t}\right]\left[\frac{P_{w}}{1}\right]   
 \end{equation}
 
-\section{Point Cloud}
-
- The receive measurement data from the input sensor get converted in a more generic data structure called point cloud, which is a set of vertices in a three-dimensional coordinate system usually defined by X, Y, and Z coordinates. The vertices are typically intended to represent the external surface of an object.
- Point clouds can be acquired from hardware sensors such as stereo cameras, 3D scanners, or time-of-flight cameras, or generated from a computer program synthetically.
-
-
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=2in]{figures02/pcd.png}
-\caption{Overview of a point cloud (from MathWorks documentation)}%\cite{temp2}}
-\end{center}
-\label{fig2:mypicture3}
-\end{figure}
-
-
 \section{Robotic Operating System}
 
 For this thesis The Robotic Operating System (ROS) is used as main platform. In addition, it is used for visualization purpose and debugging steps. ROS is a flexible framework for writing robot software. In addition, it is  a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behaviour across a wide variety of robotic platforms. It is based on the concepts of nodes, topics, messages and services. A node is an executable program that performs computation. Nodes need to communicate with each other to complete the whole task. The communicated data are called messages. ROS provides an easy way for passing messages and establishing communication links between nodes, which are running independently. They pass these messages to each other over a Topic, which is a simple string. However, topics are asynchronous, synchronous communication is provided by services. Services act in a call-response manner where one node requests that another node execute a one-time computation and provide a response. For more details about ROS, the reader can refer to \cite{ros}.
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=2in]{figures02/ros_workflows.png}
+\includegraphics[width=3in]{figures02/ros_workflows.png}
 \caption{A ROS Overview}%\cite{temp2}}
 \end{center}
 %\label{fig2:mypicture3}
 \end{figure}
 
-
-\section{PCL}
+\section{Open-source Libraries}
+\subsection{PCL}
 
 The PCL\cite{pcl} framework contains numerous state-of-the art algorithms including filtering, feature estimation, surface reconstruction, registration, model fitting and segmentation. These algorithms can be used, for example, to filter outliers from noisy data, align 3D point clouds together, segment relevant parts of a scene, extract keypoints and compute descriptors to recognize objects in the world based on their geometric appearance, and create surfaces from point clouds and visualize them. 
 
@@ -157,14 +217,14 @@ For different processing steps, a Python bindings for the Point Cloud Library (P
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=2in]{figures02/pcl1.png}
+\includegraphics[width=3in]{figures02/pcl1.png}
 \caption{An  example  of  the  PCL  implementation  pipeline  for  Fast  Point Feature Histogram (FPFH) \cite{fpfh} estimation.}
 \end{center}
 %\label{fig2:mypicture3}
 \end{figure}
 
 
-\section{Open3D}
+\subsection{Open3D}
 
 For the purpose of working with any ideal registration algorithm, the Open3D is used in this thesis which is an open-source library that supports rapid development of software that deals with 3D data. The Open3D frontend exposes a set of carefully selected data structures and algorithms in both C++ and Python. Open3D provides data structures for three kinds of representations: point clouds, meshes, and RGB-D images.  For each representation, it offers a complete set of basic processing algorithms such as sampling, visualization, and data conversion. In addition, Open3D  provides  implementations  of  multiple  state-of-the-art surface registration methods, including pairwise global registration, pairwise local refinement as the ICP registration \cite{icp}, and multiway registration  using  pose  graph  optimization. 
 
@@ -176,7 +236,7 @@ CloudCompare is a 3D point cloud (and triangular mesh) processing software. It h
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=2in]{figures02/cloudcompare.jpg}
+\includegraphics[width=3in]{figures02/cloudcompare.jpg}
 \caption{CloudCompare (view, edit and process).}
 \end{center}
 %\label{fig2:mypicture3}
@@ -189,7 +249,7 @@ It provides a set of tools for editing, cleaning, healing, inspecting, rendering
 
  \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=2in]{figures02/meshlab.png}
+\includegraphics[width=3in]{figures02/meshlab.png}
 \caption{MeshLab (view, edit and process).}
 \end{center}
 %\label{fig2:mypicture3}
@@ -201,7 +261,7 @@ FreeCAD is a 3D CAD/CAE parametric modeling application. It is primarily made fo
 
  \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=2in]{figures02/freecad.jpg}
+\includegraphics[width=3in]{figures02/freecad.jpg}
 \caption{A view of the FreeCAD interface.}
 \end{center}
 %\label{fig2:mypicture3}

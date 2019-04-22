@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.3.25)  14 APR 2019 20:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.3.25)  22 APR 2019 14:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1462,7 +1462,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-<ctu_logo_black.pdf, id=136, 366.36874pt x 279.0425pt>
+<ctu_logo_black.pdf, id=148, 366.36874pt x 279.0425pt>
 File: ctu_logo_black.pdf Graphic file (type pdf)
 
 <use ctu_logo_black.pdf>
@@ -1623,120 +1623,134 @@ Chapter 2.
 
 ]) (./03_Background/Background3.tex [4]
 Chapter 3.
-<03_Background/figures02/astraorbbec.jpg, id=282, 426.59375pt x 215.80624pt>
+[5
+
+]
+<03_Background/figures02/astraorbbec.jpg, id=310, 426.59375pt x 215.80624pt>
 File: 03_Background/figures02/astraorbbec.jpg Graphic file (type jpg)
 
 <use 03_Background/figures02/astraorbbec.jpg>
 Package pdftex.def Info: 03_Background/figures02/astraorbbec.jpg used on input 
-line 12.
-(pdftex.def)             Requested size: 144.54pt x 73.11958pt.
- [5
+line 65.
+(pdftex.def)             Requested size: 142.26378pt x 71.97035pt.
 
- <./03_Background/figures02/astraorbbec.jpg>]
-<03_Background/figures02/pinhole_camera_model.png, id=287, 602.25pt x 424.58624
+<03_Background/figures02/realsense.png, id=311, 417.56pt x 234.8775pt>
+File: 03_Background/figures02/realsense.png Graphic file (type png)
+
+<use 03_Background/figures02/realsense.png>
+Package pdftex.def Info: 03_Background/figures02/realsense.png used on input li
+ne 67.
+(pdftex.def)             Requested size: 142.26378pt x 80.02214pt.
+ [6 <./03_Background/figures02/astraorbbec.jpg> <./03_Background/figures02/real
+sense.png>]
+<03_Background/figures02/pcd.png, id=325, 562.1pt x 421.575pt>
+File: 03_Background/figures02/pcd.png Graphic file (type png)
+
+<use 03_Background/figures02/pcd.png>
+Package pdftex.def Info: 03_Background/figures02/pcd.png used on input line 90.
+
+(pdftex.def)             Requested size: 216.81pt x 162.60599pt.
+
+<03_Background/figures02/pinhole_camera_model.png, id=326, 602.25pt x 424.58624
 pt>
 File: 03_Background/figures02/pinhole_camera_model.png Graphic file (type png)
  <use 03_Background/figures02/pinhole_camera_model.png>
 Package pdftex.def Info: 03_Background/figures02/pinhole_camera_model.png used 
-on input line 25.
+on input line 102.
 (pdftex.def)             Requested size: 144.54pt x 101.90277pt.
 
-<03_Background/figures02/intrinsic.png, id=291, 395.22656pt x 223.58531pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7 <./03_Background/figures02/pcd.png>]
+<03_Background/figures02/intrinsic.png, id=337, 395.22656pt x 223.58531pt>
 File: 03_Background/figures02/intrinsic.png Graphic file (type png)
 
 <use 03_Background/figures02/intrinsic.png>
 Package pdftex.def Info: 03_Background/figures02/intrinsic.png used on input li
-ne 73.
+ne 148.
 (pdftex.def)             Requested size: 144.54pt x 81.76659pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[6 <./03_Background/figures02/pinhole_camera_model.png>]
-<03_Background/figures02/extrinsic.png, id=306, 602.25pt x 307.1475pt>
+ [8 <./03_Background/figures02/pinhole_camera_model.png> <./03_Background/figur
+es02/intrinsic.png>]
+<03_Background/figures02/extrinsic.png, id=345, 602.25pt x 307.1475pt>
 File: 03_Background/figures02/extrinsic.png Graphic file (type png)
 
 <use 03_Background/figures02/extrinsic.png>
 Package pdftex.def Info: 03_Background/figures02/extrinsic.png used on input li
-ne 96.
+ne 171.
 (pdftex.def)             Requested size: 144.54pt x 73.7169pt.
 
-<03_Background/figures02/pcd.png, id=308, 562.1pt x 421.575pt>
-File: 03_Background/figures02/pcd.png Graphic file (type png)
-
-<use 03_Background/figures02/pcd.png>
-Package pdftex.def Info: 03_Background/figures02/pcd.png used on input line 123
-.
-(pdftex.def)             Requested size: 144.54pt x 108.40399pt.
- [7 <./03_Background/figures02/intrinsic.png> <./03_Background/figures02/extrin
-sic.png>]
-<03_Background/figures02/ros_workflows.png, id=320, 1027.84pt x 527.9725pt>
+<03_Background/figures02/ros_workflows.png, id=348, 1027.84pt x 527.9725pt>
 File: 03_Background/figures02/ros_workflows.png Graphic file (type png)
 
 <use 03_Background/figures02/ros_workflows.png>
 Package pdftex.def Info: 03_Background/figures02/ros_workflows.png used on inpu
-t line 136.
-(pdftex.def)             Requested size: 144.54pt x 74.24594pt.
-
-Underfull \vbox (badness 7504) has occurred while \output is active []
-
- [8 <./03_Background/figures02/pcd.png> <./03_Background/figures02/ros_workflow
-s.png>]
-<03_Background/figures02/pcl1.png, id=329, 521.95pt x 530.98375pt>
-File: 03_Background/figures02/pcl1.png Graphic file (type png)
-
-<use 03_Background/figures02/pcl1.png>
-Package pdftex.def Info: 03_Background/figures02/pcl1.png used on input line 16
-0.
-(pdftex.def)             Requested size: 144.54pt x 147.0378pt.
- [9 <./03_Background/figures02/pcl1.png>]
-Overfull \hbox (2.95833pt too wide) in paragraph at lines 172--173
-\T1/lmr/m/n/10.95 (-20) For the pur-pose of ren-der-ing, con-ver-tion and ma-ni
-p-u-la-tion of any 3D data(CAD
- []
-
-<03_Background/figures02/cloudcompare.jpg, id=346, 662.475pt x 401.5pt>
-File: 03_Background/figures02/cloudcompare.jpg Graphic file (type jpg)
-
-<use 03_Background/figures02/cloudcompare.jpg>
-Package pdftex.def Info: 03_Background/figures02/cloudcompare.jpg used on input
- line 179.
-(pdftex.def)             Requested size: 144.54pt x 87.5951pt.
-
-<03_Background/figures02/meshlab.png, id=348, 1930.21124pt x 1139.75812pt>
-File: 03_Background/figures02/meshlab.png Graphic file (type png)
-
-<use 03_Background/figures02/meshlab.png>
-Package pdftex.def Info: 03_Background/figures02/meshlab.png used on input line
- 192.
-(pdftex.def)             Requested size: 144.54pt x 85.33904pt.
+t line 196.
+(pdftex.def)             Requested size: 216.81pt x 111.36891pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[10 <./03_Background/figures02/cloudcompare.jpg>]
-<03_Background/figures02/freecad.jpg, id=357, 1027.84pt x 578.16pt>
+[9 <./03_Background/figures02/extrinsic.png>]
+<03_Background/figures02/pcl1.png, id=359, 521.95pt x 530.98375pt>
+File: 03_Background/figures02/pcl1.png Graphic file (type png)
+
+<use 03_Background/figures02/pcl1.png>
+Package pdftex.def Info: 03_Background/figures02/pcl1.png used on input line 22
+0.
+(pdftex.def)             Requested size: 216.81pt x 220.56479pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[10 <./03_Background/figures02/ros_workflows.png>]
+Overfull \hbox (2.95833pt too wide) in paragraph at lines 232--233
+\T1/lmr/m/n/10.95 (-20) For the pur-pose of ren-der-ing, con-ver-tion and ma-ni
+p-u-la-tion of any 3D data(CAD
+ []
+
+<03_Background/figures02/cloudcompare.jpg, id=376, 662.475pt x 401.5pt>
+File: 03_Background/figures02/cloudcompare.jpg Graphic file (type jpg)
+
+<use 03_Background/figures02/cloudcompare.jpg>
+Package pdftex.def Info: 03_Background/figures02/cloudcompare.jpg used on input
+ line 239.
+(pdftex.def)             Requested size: 216.81pt x 131.39877pt.
+ [11 <./03_Background/figures02/pcl1.png>]
+<03_Background/figures02/meshlab.png, id=384, 1930.21124pt x 1139.75812pt>
+File: 03_Background/figures02/meshlab.png Graphic file (type png)
+
+<use 03_Background/figures02/meshlab.png>
+Package pdftex.def Info: 03_Background/figures02/meshlab.png used on input line
+ 252.
+(pdftex.def)             Requested size: 216.81pt x 128.01726pt.
+
+<03_Background/figures02/freecad.jpg, id=386, 1027.84pt x 578.16pt>
 File: 03_Background/figures02/freecad.jpg Graphic file (type jpg)
 
 <use 03_Background/figures02/freecad.jpg>
 Package pdftex.def Info: 03_Background/figures02/freecad.jpg used on input line
- 204.
-(pdftex.def)             Requested size: 144.54pt x 81.30354pt.
-) (./04_Theory/Theory4.tex [11 <./03_Background/figures02/meshlab.png> <./03_Ba
-ckground/figures02/freecad.jpg>]
-[12
+ 264.
+(pdftex.def)             Requested size: 216.81pt x 121.95532pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) (./04_Theory/Theory4.tex [12 <./03_Background/figures02/cloudcompare.jpg> <./
+03_Background/figures02/meshlab.png>] [13 <./03_Background/figures02/freecad.jp
+g>] [14
 
 ]
 Chapter 4.
-[13] <04_Theory/diagrams/pipelineend.png, id=383, 755.82375pt x 399.4925pt>
+[15] <04_Theory/diagrams/pipelineend.png, id=418, 755.82375pt x 399.4925pt>
 File: 04_Theory/diagrams/pipelineend.png Graphic file (type png)
 
 <use 04_Theory/diagrams/pipelineend.png>
 Package pdftex.def Info: 04_Theory/diagrams/pipelineend.png used on input line 
 15.
 (pdftex.def)             Requested size: 289.0728pt x 144.53648pt.
- [14 <./04_Theory/diagrams/pipelineend.png>] <04_Theory/diagrams/passthrough.pn
-g, id=393, 397.485pt x 112.42pt>
+ [16 <./04_Theory/diagrams/pipelineend.png>] <04_Theory/diagrams/passthrough.pn
+g, id=428, 397.485pt x 112.42pt>
 File: 04_Theory/diagrams/passthrough.png Graphic file (type png)
 
 <use 04_Theory/diagrams/passthrough.png>
@@ -1744,7 +1758,7 @@ Package pdftex.def Info: 04_Theory/diagrams/passthrough.png used on input line
 39.
 (pdftex.def)             Requested size: 216.81pt x 61.32172pt.
 
-<04_Theory/diagrams/planesegmentation.png, id=398, 505.89pt x 99.37125pt>
+<04_Theory/diagrams/planesegmentation.png, id=433, 505.89pt x 99.37125pt>
 File: 04_Theory/diagrams/planesegmentation.png Graphic file (type png)
 
 <use 04_Theory/diagrams/planesegmentation.png>
@@ -1754,8 +1768,8 @@ Package pdftex.def Info: 04_Theory/diagrams/planesegmentation.png used on input
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15 <./04_Theory/diagrams/passthrough.png>]
-<04_Theory/figures03/voxelcloud1.png, id=412, 1499.6025pt x 653.44125pt>
+ [17 <./04_Theory/diagrams/passthrough.png>]
+<04_Theory/figures03/voxelcloud1.png, id=448, 1499.6025pt x 653.44125pt>
 File: 04_Theory/figures03/voxelcloud1.png Graphic file (type png)
 
 <use 04_Theory/figures03/voxelcloud1.png>
@@ -1766,7 +1780,7 @@ Package pdftex.def Info: 04_Theory/figures03/voxelcloud1.png used on input line
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<04_Theory/diagrams/keypoints.png, id=413, 265.99374pt x 352.31625pt>
+<04_Theory/diagrams/keypoints.png, id=449, 265.99374pt x 352.31625pt>
 File: 04_Theory/diagrams/keypoints.png Graphic file (type png)
 
 <use 04_Theory/diagrams/keypoints.png>
@@ -1777,24 +1791,24 @@ Package pdftex.def Info: 04_Theory/diagrams/keypoints.png used on input line 10
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[16 <./04_Theory/diagrams/planesegmentation.png>]
-<04_Theory/diagrams/vertexnormal.png, id=425, 262.9825pt x 349.305pt>
+[18 <./04_Theory/diagrams/planesegmentation.png>]
+<04_Theory/diagrams/vertexnormal.png, id=461, 262.9825pt x 349.305pt>
 File: 04_Theory/diagrams/vertexnormal.png Graphic file (type png)
 
 <use 04_Theory/diagrams/vertexnormal.png>
 Package pdftex.def Info: 04_Theory/diagrams/vertexnormal.png used on input line
  122.
 (pdftex.def)             Requested size: 144.5445pt x 144.5378pt.
- [17 <./04_Theory/figures03/voxelcloud1.png> <./04_Theory/diagrams/keypoints.pn
-g> <./04_Theory/diagrams/vertexnormal.png>] <04_Theory/diagrams/fpfh.png, id=43
-6, 419.5675pt x 99.37125pt>
+ [19 <./04_Theory/figures03/voxelcloud1.png> <./04_Theory/diagrams/keypoints.pn
+g> <./04_Theory/diagrams/vertexnormal.png>] <04_Theory/diagrams/fpfh.png, id=47
+2, 419.5675pt x 99.37125pt>
 File: 04_Theory/diagrams/fpfh.png Graphic file (type png)
 
 <use 04_Theory/diagrams/fpfh.png>
 Package pdftex.def Info: 04_Theory/diagrams/fpfh.png used on input line 133.
 (pdftex.def)             Requested size: 216.81pt x 51.34885pt.
 
-<04_Theory/figures03/fpfh1.png, id=439, 367.3725pt x 251.94125pt>
+<04_Theory/figures03/fpfh1.png, id=475, 367.3725pt x 251.94125pt>
 File: 04_Theory/figures03/fpfh1.png Graphic file (type png)
 
 <use 04_Theory/figures03/fpfh1.png>
@@ -1804,8 +1818,8 @@ Package pdftex.def Info: 04_Theory/figures03/fpfh1.png used on input line 159.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[18 <./04_Theory/diagrams/fpfh.png>] [19 <./04_Theory/figures03/fpfh1.png>]
-<04_Theory/diagrams/ransac.png, id=466, 484.81125pt x 96.36pt>
+[20 <./04_Theory/diagrams/fpfh.png>] [21 <./04_Theory/figures03/fpfh1.png>]
+<04_Theory/diagrams/ransac.png, id=501, 484.81125pt x 96.36pt>
 File: 04_Theory/diagrams/ransac.png Graphic file (type png)
 
 <use 04_Theory/diagrams/ransac.png>
@@ -1816,23 +1830,23 @@ Overfull \hbox (11.2pt too wide) detected at line 239
 [][] 
  []
 
-<04_Theory/diagrams/endpipeline.png, id=471, 713.66624pt x 136.51pt>
+<04_Theory/diagrams/endpipeline.png, id=506, 713.66624pt x 136.51pt>
 File: 04_Theory/diagrams/endpipeline.png Graphic file (type png)
 
 <use 04_Theory/diagrams/endpipeline.png>
 Package pdftex.def Info: 04_Theory/diagrams/endpipeline.png used on input line 
 243.
 (pdftex.def)             Requested size: 289.07999pt x 55.29457pt.
- [20 <./04_Theory/diagrams/ransac.png>]) (./05_Experiments/Experiments5.tex [21
- <./04_Theory/diagrams/endpipeline.png>] [22
+ [22 <./04_Theory/diagrams/ransac.png>]) (./05_Experiments/Experiments5.tex [23
+ <./04_Theory/diagrams/endpipeline.png>] [24
 
 ]
 Chapter 5.
-) (./06_Conclusions_FutureWork/Conclusions_FutureWork6.tex [23] [24
+) (./06_Conclusions_FutureWork/Conclusions_FutureWork6.tex [25] [26
 
 ]
 Chapter 6.
-) (./07_References/07_reference.tex [25] [26
+) (./07_References/07_reference.tex [27] [28
 
 ]
 Underfull \hbox (badness 2293) in paragraph at lines 8--10
@@ -1846,7 +1860,7 @@ Underfull \hbox (badness 6332) in paragraph at lines 21--23
  http : / / graphics . stanford . edu /
  []
 
-[27]
+[29]
 Underfull \hbox (badness 10000) in paragraph at lines 61--63
 []\T1/lmr/m/n/10.95 (+20) ANIL K. JAIN and CHI-TRA DO-RAI, "3D ob-ject
  []
@@ -1899,7 +1913,7 @@ Overfull \hbox (20.07874pt too wide) in paragraph at lines 73--75
 ]A-[]Guo-[]Bennamoun /
  []
 
-[28]
+[30]
 Underfull \hbox (badness 1596) in paragraph at lines 79--82
 []\T1/lmr/m/n/10.95 (+20) Sebastian Thrun,Dirk Haehnel,Aleksandr V. Se-gal, "Ge
 neralized-
@@ -1922,7 +1936,7 @@ x . ac . uk / ~avsegal / resources / papers /
 . 
 . Redefining command \appendix with sig. 'ss' on line 3.
 .................................................
- [29] [30
+ [31] [32
 
 ]
 Appendix A.
@@ -1932,13 +1946,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--102
  []
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
-[31]
+[33]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
  (./thesis.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 252A87C41AA79CE58B27AC06E0A46E93;2065.
+(rerunfilecheck)             Checksum: 5547AA854C43583F46BC050298A97CD2;2317.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1946,30 +1960,30 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
- 21122 strings out of 493029
- 363881 string characters out of 6136234
- 489754 words of memory out of 5000000
- 24020 multiletter control sequences out of 15000+600000
- 104408 words of font info for 126 fonts, out of 8000000 for 9000
+ 21162 strings out of 493029
+ 364580 string characters out of 6136234
+ 489903 words of memory out of 5000000
+ 24039 multiletter control sequences out of 15000+600000
+ 113346 words of font info for 133 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,17n,56p,10357b,787s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,17n,58p,10357b,787s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texm
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/l
+m/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texm
 f/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/font
 s/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/
-public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
-ymbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sy
-mbols/msbm10.pfb>
-Output written on thesis.pdf (37 pages, 1797126 bytes).
+usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on thesis.pdf (39 pages, 1890409 bytes).
 PDF statistics:
- 661 PDF objects out of 1000 (max. 8388607)
- 565 compressed objects within 6 object streams
- 161 named destinations out of 1000 (max. 500000)
- 27506 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 700 PDF objects out of 1000 (max. 8388607)
+ 599 compressed objects within 6 object streams
+ 171 named destinations out of 1000 (max. 500000)
+ 32143 words of extra memory for PDF output out of 35830 (max. 10000000)
 
