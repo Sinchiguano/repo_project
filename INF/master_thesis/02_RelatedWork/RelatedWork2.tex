@@ -9,17 +9,18 @@ Most of the literature tackle the problem of 3D Object Recognition(object detect
 \end{enumerate}
 
 The global feature base methods process the object as a whole for recognition. They define a set of global features which describe the entire 3D object.
-On the other hand, the local feature based methods extract only local surfaces around specific keypoints. They can handle occlusion and clutter better compared to the global feature-based methods.
+On the other hand, the local feature based methods extract only local surfaces around specific keypoints. They can handle occlusion and clutter bettere when compared to the global feature-based methods.
 
 
 \section{Global Feature-Based Methods} \label{global}
+
 The global feature-based methods define a set of global features which effectively and concisely describe the entire model. Examples of the global feature approach include shape distribution \cite{shapedist}, and viewpoint feature histogram \cite{vfh}.
-The global feature method ignores any details when it comes to the shape of the object and requires a priori segmentation of the object from the scene. 
-Therefore, they are not quite popular for recognition of a partially visible object from cluttered scenes. 
+The global feature method ignores all details when it comes to the shape of the object and requires a priori segmentation of the object from the scene. 
+Therefore, they are not suitable for recognition of a partially visible object from cluttered scenes. 
 
 \section{Local Feature-Based Methods}
 
-The second class of method, the local feature based methods extract only local surfaces around specific keypoint. Yulan Guo et al. \cite{survey} presents a survey of local feature descriptors and cluster them into three main groups as follow:
+The second class of method, the local feature based methods extract only local surfaces around specific keypoint. Yulan Guo et al. \cite{survey} presents a survey of local feature descriptors and cluster them into the three main groups which follow:
 \begin{enumerate}
 \item signature-based,
 \item histogram-based, and

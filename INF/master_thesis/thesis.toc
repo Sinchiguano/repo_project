@@ -34,10 +34,10 @@
 \contentsline {subsubsection}{Rotation Representations}{6}{subsubsection*.5}
 \contentsline {section}{\numberline {3.2}Basics of 3D Computer Vision}{6}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1} RGB-D sensors}{6}{subsection.3.2.1}
-\contentsline {subsubsection}{Point Cloud}{7}{subsubsection*.6}
-\contentsline {subsubsection}{Point Cloud}{7}{subsubsection*.6}
+\contentsline {subsubsection}{Point Cloud}{6}{subsubsection*.6}
+\contentsline {subsubsection}{Point Cloud}{6}{subsubsection*.6}
 \contentsline {subsection}{\numberline {3.2.2} Camera Pinhole Model}{7}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Parameters of camera model}{7}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.3}Parameters of camera model}{8}{subsection.3.2.3}
 \contentsline {subsection}{\numberline {3.2.4}Camera's Intrinsic Parameters}{8}{subsection.3.2.4}
 \contentsline {subsection}{\numberline {3.2.5}Camera's Extrinsic Parameters}{8}{subsection.3.2.5}
 \contentsline {section}{\numberline {3.3}Robotic Operating System}{9}{section.3.3}
