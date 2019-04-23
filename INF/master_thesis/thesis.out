@@ -23,14 +23,9 @@
 \BOOKMARK [2][-]{subsection.3.5.1}{CloudCompare}{section.3.5}% 23
 \BOOKMARK [2][-]{subsection.3.5.2}{MeshLab}{section.3.5}% 24
 \BOOKMARK [2][-]{subsection.3.5.3}{FreeCAD}{section.3.5}% 25
-\BOOKMARK [0][-]{chapter.4}{Theory}{}% 26
-\BOOKMARK [1][-]{section.4.1}{Pose estimation pipeline}{chapter.4}% 27
-\BOOKMARK [2][-]{subsection.4.1.1}{Preprocessing stage}{section.4.1}% 28
-\BOOKMARK [2][-]{subsection.4.1.2}{Filtering a Point cloud}{section.4.1}% 29
-\BOOKMARK [2][-]{subsection.4.1.3}{Extract geometric feature}{section.4.1}% 30
-\BOOKMARK [2][-]{subsection.4.1.4}{Searching Strategies}{section.4.1}% 31
-\BOOKMARK [2][-]{subsection.4.1.5}{Local refinement}{section.4.1}% 32
-\BOOKMARK [0][-]{chapter.5}{Experiments}{}% 33
-\BOOKMARK [0][-]{chapter.6}{Conclusions}{}% 34
-\BOOKMARK [0][-]{chapter*.14}{Bibliography}{}% 35
-\BOOKMARK [0][-]{appendix.A}{List of Notation}{}% 36
+\BOOKMARK [0][-]{chapter.4}{Robot-Camera Calibration}{}% 26
+\BOOKMARK [1][-]{section.4.1}{Camera Calibration}{chapter.4}% 27
+\BOOKMARK [2][-]{subsection.4.1.1}{Camera model}{section.4.1}% 28
+\BOOKMARK [2][-]{subsection.4.1.2}{Overview of the system}{section.4.1}% 29
+\BOOKMARK [0][-]{chapter*.8}{Bibliography}{}% 30
+\BOOKMARK [0][-]{appendix.A}{List of Notation}{}% 31

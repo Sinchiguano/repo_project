@@ -48,28 +48,11 @@
 \contentsline {subsection}{\numberline {3.5.1}CloudCompare}{11}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}MeshLab}{12}{subsection.3.5.2}
 \contentsline {subsection}{\numberline {3.5.3}FreeCAD}{12}{subsection.3.5.3}
-\contentsline {chapter}{\numberline {4}Theory}{15}{chapter.4}
-\contentsline {section}{\numberline {4.1}Pose estimation pipeline}{15}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Preprocessing stage}{16}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Filtering a Point cloud}{16}{subsection.4.1.2}
-\contentsline {subsubsection}{Filtering a PointCloud using a PassThrough filter}{17}{subsubsection*.7}
-\contentsline {subsubsection}{Filtering a PointCloud using a PassThrough filter}{17}{subsubsection*.7}
-\contentsline {subsubsection}{Plane Segmentation}{17}{subsubsection*.8}
-\contentsline {subsubsection}{Plane Segmentation}{17}{subsubsection*.8}
-\contentsline {subsection}{\numberline {4.1.3}Extract geometric feature}{18}{subsection.4.1.3}
-\contentsline {subsubsection}{3D keypoint Detection}{18}{subsubsection*.9}
-\contentsline {subsubsection}{3D keypoint Detection}{18}{subsubsection*.9}
-\contentsline {subsubsection}{Local surface feature description}{18}{subsubsection*.10}
-\contentsline {subsubsection}{Local surface feature description}{18}{subsubsection*.10}
-\contentsline {subsubsection}{Local surface feature description}{20}{subsubsection*.11}
-\contentsline {subsubsection}{Local surface feature description}{20}{subsubsection*.11}
-\contentsline {subsection}{\numberline {4.1.4}Searching Strategies}{20}{subsection.4.1.4}
-\contentsline {subsubsection}{RANSAC-based method}{21}{subsubsection*.12}
-\contentsline {subsubsection}{RANSAC-based method}{21}{subsubsection*.12}
-\contentsline {subsection}{\numberline {4.1.5}Local refinement}{22}{subsection.4.1.5}
-\contentsline {subsubsection}{Iterative Closest Point}{22}{subsubsection*.13}
-\contentsline {subsubsection}{Iterative Closest Point}{22}{subsubsection*.13}
-\contentsline {chapter}{\numberline {5}Experiments}{25}{chapter.5}
-\contentsline {chapter}{\numberline {6}Conclusions}{27}{chapter.6}
-\contentsline {chapter}{Bibliography}{29}{chapter*.14}
-\contentsline {chapter}{\numberline {A}List of Notation}{33}{appendix.A}
+\contentsline {chapter}{\numberline {4}Robot-Camera Calibration}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}Camera Calibration}{15}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Camera model}{15}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Overview of the system}{16}{subsection.4.1.2}
+\contentsline {subsubsection}{RANSAC-based method}{16}{subsubsection*.7}
+\contentsline {subsubsection}{RANSAC-based method}{16}{subsubsection*.7}
+\contentsline {chapter}{Bibliography}{19}{chapter*.8}
+\contentsline {chapter}{\numberline {A}List of Notation}{23}{appendix.A}
