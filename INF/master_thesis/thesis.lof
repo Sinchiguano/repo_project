@@ -36,5 +36,10 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Overview of the camera pose estimation system. The system estimates the distance and orientation to the local coordinate system of the checkerboard\relax }}{17}{figure.4.3}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Overview of a 7X9 checkerboard calibration grid \relax }}{18}{figure.4.4}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces ARTag, AprilTag and CALTag markers example. Image from \cite {fiducialTargets}\relax }}{19}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Overview of the setup, a ABB YUMI robot with a gripper holding the calibration plate. The camera is fixed around the robot workspace and pointed at the checkerboard\relax }}{19}{figure.4.6}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces An 8X9 Checkerboard Calibration Target fixed on a custom-made plate\relax }}{19}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Visualization of the 3D world coordinates system projeted onto the 2D image plane\relax }}{20}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Overview of the setup, a ABB YUMI robot with a gripper holding the calibration plate. The camera is fixed around the robot workspace and pointed at the checkerboard\relax }}{21}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Right: Visualization of the transform (camera and target) relative to the robot base frame using ROS Rviz package. Left: Show an image used in the camera pose estimation.\relax }}{21}{figure.4.9}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -57,5 +57,9 @@
 \contentsline {subsection}{\numberline {4.3.2}Checkerboard Patterns}{18}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Augmented Reality (AR)}{18}{subsection.4.3.3}
 \contentsline {subsection}{\numberline {4.3.4}Selection}{19}{subsection.4.3.4}
-\contentsline {chapter}{Bibliography}{21}{chapter*.7}
-\contentsline {chapter}{\numberline {A}List of Notation}{25}{appendix.A}
+\contentsline {subsection}{\numberline {4.3.5}Checkerboard Estimator}{19}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}oooooooooo }{20}{subsection.4.3.6}
+\contentsline {chapter}{\numberline {5}Experiments}{23}{chapter.5}
+\contentsline {chapter}{\numberline {6}Conclusions}{25}{chapter.6}
+\contentsline {chapter}{Bibliography}{27}{chapter*.7}
+\contentsline {chapter}{\numberline {A}List of Notation}{31}{appendix.A}

@@ -46,6 +46,7 @@ The technique proposed by Zhang only requires the camera to observe a calibratio
 
 In order to know the pose of the camera coordinate system relative to the world coordinate system also known as robot base frame, extrinsic calibration (estimation of the rotation and translation of the camera frame) methods will be used. In this thesis, the method for extrinsic camera calibration based on calibration planer target is used. It is assumed camera intrinsic parameters and distortion coefficients are known a priori as describe in \ref{intrinsic} and fixed during the entire sequence. Such a system is shown in Figure \ref{fig:camposest}.
 
+
 \begin{figure}[!h]
 \begin{center}
 \includegraphics[width=3in]{figures03/camposest.png}
@@ -55,7 +56,7 @@ and orientation to the local coordinate system of the checkerboard}%\cite{temp2}
 \end{center}
 \end{figure}
 
-\subsection{Calibration Targets}
+\subsection{Calibration Targets}\label{caltar}
 There are many types of camera calibration targets for use in imaging systems. In this thesis the planar targets are use since they can be easily printed with a standard
 printer and fixed to a surface. Planar targets can be subdivided as follow:
 \begin{itemize}
@@ -83,18 +84,51 @@ AR markers also called Fiducial (individually identifiable) markers have become 
 \begin{figure}[!h]
 \begin{center}
 \includegraphics[width=3in]{figures03/fiducials.png}
-\caption{ARTag, AprilTag and CALTag markers example. Image from \cite{fiducialTargets}}%\cite{temp2}}
+\caption{ARTag, AprilTag and CALTag markers example. Image from \cite{fiducialTargets}}
 \label{fig:fiducial}
 \end{center}
 \end{figure}
 
 \subsection{Selection}
-In this thesis, the checkerboard pattern is used.  This pattern is simple to produce and allows for high accuracy because the corner points can be detected to subpixel precision \cite{planarTargets}.
+In this thesis, the checkerboard pattern is used.  This pattern is simple to produce and allows for high accuracy because the corner points can be detected to subpixel precision \cite{planarTargets}. The calibration target located on the custom-made plate is shown in Figure \ref{fig:target2}
+
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=4in]{figures03/target1.png}
+\caption{An 8X9 Checkerboard Calibration Target fixed on a custom-made plate}
+\label{fig:target2}
+\end{center}
+\end{figure}
+
+\subsection{Checkerboard Estimator}
+
+The task of estimating the pose of a calibrated camera given a set of n 3D points in the world and their corresponding 2D projections in the image is a fundamental and well-understood topic in computer vision, and it is referred to as the Perspective-n-Point problem in most of the literature. OpenCV provides solution to solve the Perspective-n-Point problem which return R (rotation) and t(translation).  
+
+A solution to the problem exists for $n = 3$ called P3P, and many solutions are available for the general case of $n\geq 3$. In this thesis, the solution Perspective-n-point(PnP) \cite{pnp} is used, which is already available and well tested in OpenCV a open source communitive. A projection of 3D points expressed in world frame onto the 2D image plane is shown in Figure \ref{fig:target3}.
+
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=4in]{figures03/calibrationtarget1.png}
+\caption{Visualization of the 3D world coordinates system projeted onto the 2D image plane}
+\label{fig:target3}
+\end{center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{oooooooooo }
+kkkkkkkkkkkkkkkkkkkkk
+
+
+In \ref{caltar} methods to estimate the position of the camera relative to a calibration targets have been briefly reviewed. This position data, plus the pose of calibration plate relative to the robot base frame are used to calculate the pose of the camera coordinate system relative to the robot base coordinate system with the help of TF ROS packages.
 
 
 
 
-
+In Figure \ref{fig:setup} an example setup is given of a robot arm with a gripper holding a calibration plate with a the 6x9  checkerboard sticks on it. The robot arm can move the calibration plate around the robot workspace where a camera is fixed and takes a sequence of pictures from different movement.
 
 
 \begin{figure}[!h]
@@ -107,40 +141,17 @@ In this thesis, the checkerboard pattern is used.  This pattern is simple to pro
 
 
 
-\iffalse
-
-
-
-
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=3in]{figures03/rviz1.png}
-\caption{Overview of the intrinsic calibration based on industrial calibration (ROS package)}%\cite{temp2}}
+\includegraphics[width=4in]{figures03/rviz1.png}
+\caption{Right: Visualization of the transform (camera and target) relative to the robot base frame using ROS Rviz package. Left: Show an image used in the camera pose estimation.}
 \label{fig:rosCAL}
 \end{center}
 \end{figure}
 
 
 
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=3in]{figures03/calibrationtarget1.png}
-\caption{Checkerboard Calibration Target}%\cite{temp2}}
-\label{fig:pipeline}
-\end{center}
-\end{figure}
 
-Camera calibration procedure is performed to obtain the intrinsic and extrinsic camera parameters.The intrinsic parameters are used for obtaining the relative position of the object according to the frame fixed with camera. This procedure is performed only once. The extrinsic parameters are the pose (translation and rotation) of the camera frame with respect to the robot-base frame, this procedure needs to be repeated each time the position of the camera changed with respect to the robot-base frame. 
-
-
-The robot-camera calibration is based on a checkerboard calibration target attached rigidly to the end-effector of the robot. The position of the calibration target in the end-effector frame is estimated according to the design of the calibration plate in the FreeCAD software, and the pose between the camera frame and the robot base frame is calculated by the Eq. , for convinience of faster calculation, we use the tf-ROS package. The overview of the estimated parameters is presented in Figure. \ref{fig:rviz1} 
-
-
-
-industrial calibration OpenCV 2.3 library are used. For cameras position calibration,method presented by Motai and Kosaka[13]has been adopted andimplemented
-Although not being the main focus of this project, robot-camera calibration is an essential part for the subsequent step, recognition and estimation of the position of an object with a camera, the main objective of this master thesis. Therefore, the exact transformation between the base frame of the robot and the camera has to be known. 
-
-\fi
 
 
 
