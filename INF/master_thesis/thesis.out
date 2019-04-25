@@ -25,7 +25,12 @@
 \BOOKMARK [2][-]{subsection.3.5.3}{FreeCAD}{section.3.5}% 25
 \BOOKMARK [0][-]{chapter.4}{Robot-Camera Calibration}{}% 26
 \BOOKMARK [1][-]{section.4.1}{Camera Calibration}{chapter.4}% 27
-\BOOKMARK [2][-]{subsection.4.1.1}{Camera model}{section.4.1}% 28
-\BOOKMARK [2][-]{subsection.4.1.2}{Overview of the system}{section.4.1}% 29
-\BOOKMARK [0][-]{chapter*.8}{Bibliography}{}% 30
-\BOOKMARK [0][-]{appendix.A}{List of Notation}{}% 31
+\BOOKMARK [1][-]{section.4.2}{Sensor internal parameter calibration}{chapter.4}% 28
+\BOOKMARK [2][-]{subsection.4.2.1}{Camera Model}{section.4.2}% 29
+\BOOKMARK [1][-]{section.4.3}{Eye-to-Hand Calibration}{chapter.4}% 30
+\BOOKMARK [2][-]{subsection.4.3.1}{Calibration Targets}{section.4.3}% 31
+\BOOKMARK [2][-]{subsection.4.3.2}{Checkerboard Patterns}{section.4.3}% 32
+\BOOKMARK [2][-]{subsection.4.3.3}{Augmented Reality \(AR\)}{section.4.3}% 33
+\BOOKMARK [2][-]{subsection.4.3.4}{Selection}{section.4.3}% 34
+\BOOKMARK [0][-]{chapter*.7}{Bibliography}{}% 35
+\BOOKMARK [0][-]{appendix.A}{List of Notation}{}% 36

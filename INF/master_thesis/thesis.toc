@@ -50,9 +50,12 @@
 \contentsline {subsection}{\numberline {3.5.3}FreeCAD}{12}{subsection.3.5.3}
 \contentsline {chapter}{\numberline {4}Robot-Camera Calibration}{15}{chapter.4}
 \contentsline {section}{\numberline {4.1}Camera Calibration}{15}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Camera model}{15}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Overview of the system}{16}{subsection.4.1.2}
-\contentsline {subsubsection}{RANSAC-based method}{16}{subsubsection*.7}
-\contentsline {subsubsection}{RANSAC-based method}{16}{subsubsection*.7}
-\contentsline {chapter}{Bibliography}{19}{chapter*.8}
-\contentsline {chapter}{\numberline {A}List of Notation}{23}{appendix.A}
+\contentsline {section}{\numberline {4.2}Sensor internal parameter calibration}{16}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Camera Model}{16}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Eye-to-Hand Calibration}{17}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Calibration Targets}{18}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Checkerboard Patterns}{18}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Augmented Reality (AR)}{18}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Selection}{19}{subsection.4.3.4}
+\contentsline {chapter}{Bibliography}{21}{chapter*.7}
+\contentsline {chapter}{\numberline {A}List of Notation}{25}{appendix.A}
